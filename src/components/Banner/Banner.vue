@@ -1,7 +1,7 @@
 <template>
   <div class="banner">
     <div class="banner__image">
-      <Slider :slider-data="sliderItems" />
+      <Slider />
     </div>
   </div>
 </template>
@@ -17,12 +17,12 @@ import Slider from '@/components/Slider/Slider.vue';
 })
 export default class Banner extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 1, name: 'img1', img: '1.jpeg' },
-    { id: 2, name: 'img2', img: '2.jpeg' },
-    { id: 3, name: 'img3', img: '3.jpeg' },
-    { id: 4, name: 'img4', img: '1.jpeg' },
-    { id: 5, name: 'img5', img: '2.jpeg' },
-    { id: 6, name: 'img6', img: '3.jpeg' },
+    { id: 1, name: 'img1', img: '1.jpg' },
+    { id: 2, name: 'img2', img: '2.jpg' },
+    { id: 3, name: 'img3', img: '3.jpg' },
+    { id: 4, name: 'img4', img: '1.jpg' },
+    { id: 5, name: 'img5', img: '2.jpg' },
+    { id: 6, name: 'img6', img: '3.jpg' },
   ];
 }
 </script>

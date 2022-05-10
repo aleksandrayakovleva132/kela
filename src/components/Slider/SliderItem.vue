@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <img src="./images/object-2.png" width="100%">
+  <div class="slider-item">
+    <img :src="require('./images/' + itemData.img)" width="100%">
   </div>
 </template>
 <script lang="ts">
@@ -15,4 +15,8 @@ export default class SliderItem extends Vue {
   readonly itemData!: sliderItemType;
 }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+.slider-item {
+  width: 100vw;
+}
+</style>
