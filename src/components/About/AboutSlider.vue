@@ -20,13 +20,13 @@
         <button class="about-slider__button"
                 :class="{'about-slider__button--lock': scrollPosition === 0}"
                 @click="right()">
-          <img src="src/assets/icons/left.svg"/>
+          <img src="./images/left.svg"/>
         </button>
         <button
           class="about-slider__button"
           :class="{'about-slider__button--lock': maximumLeftPosition === false}"
           @click="left()">
-          <img src="../../assets/icons/right.svg"/>
+          <img src="./images/right.svg"/>
         </button>
       </div>
     </div>

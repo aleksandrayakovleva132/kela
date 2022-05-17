@@ -1,5 +1,10 @@
 <template>
   <div class="banner">
+    <div class="banner__header">
+      <div class="banner__header-content">
+        <Header home-menu />
+      </div>
+    </div>
     <div class="banner__image">
       <Slider />
     </div>
@@ -11,9 +16,10 @@ import {
 } from 'vue-property-decorator';
 import { sliderTypes } from '@/components/Slider/types';
 import Slider from '@/components/Slider/Slider.vue';
+import Header from '@/components/Header/Header.vue';
 
 @Component({
-  components: { Slider },
+  components: { Header, Slider },
 })
 export default class Banner extends Vue {
   sliderItems: sliderTypes[] = [
@@ -31,6 +37,7 @@ export default class Banner extends Vue {
   overflow: hidden;
   width: 100%;
   padding-bottom: 54.17%;
+  position: relative;
 
   &__image {
     display: flex;
@@ -48,6 +55,21 @@ export default class Banner extends Vue {
       bottom: 0;
       right: 0;
       left: 0;
+    }
+  }
+
+  &__header {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100px;
+    z-index: 3;
+
+    &-content {
+      width: 88%;
+      margin: 0 auto;
     }
   }
 }
