@@ -7,5 +7,6 @@
 <style lang="scss">
 @import "assets/style.scss";
 @import "assets/color.scss";
+@import "assets/mixins.scss";
 
 </style>

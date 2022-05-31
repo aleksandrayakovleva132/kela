@@ -46,6 +46,8 @@ import AboutSlider from '@/components/About/AboutSlider.vue';
 export default class About extends Vue {}
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
+
 .about {
   display: flex;
   &__column {
@@ -95,6 +97,44 @@ export default class About extends Vue {}
 
   &__slider-container {
     margin-bottom: 40px;
+  }
+
+  @include for-phone-only {
+    flex-direction: column;
+
+    &__column {
+      width: 100%;
+    }
+
+    &__content {
+      padding: 30px 15px 32px 15px;
+    }
+
+    &__title {
+      font-size: 38px;
+      margin-bottom: 10px;
+    }
+
+    &__text {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    &__content-container {
+      position: relative;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+    }
+    &__slider-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__text-block {
+      margin-bottom: 30px;
+    }
   }
 }
 </style>

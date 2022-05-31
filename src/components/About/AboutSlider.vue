@@ -127,6 +127,7 @@ export default class AboutSlider extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
 .about-slider {
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -189,6 +190,28 @@ export default class AboutSlider extends Vue {
   }
   &__image {
     opacity: 20%;
+  }
+
+  @include for-phone-only {
+    padding:  20px 0;
+    &__container {
+      flex-direction: column;
+    }
+
+    &__label {
+      font-weight: 500;
+    }
+
+    &__frame {
+      margin-bottom: 36px;
+    }
+
+    &__buttons {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin:  0 auto 0 0;
+    }
   }
 }
 </style>

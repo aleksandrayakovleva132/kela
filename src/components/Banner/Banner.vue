@@ -1,13 +1,13 @@
 <template>
   <div class="banner">
-    <div class="banner__header">
-      <div class="banner__header-content">
-        <Header home-menu />
-      </div>
-    </div>
-    <div class="banner__image">
-      <Slider />
-    </div>
+<!--    <div class="banner__header">-->
+<!--      <div class="banner__header-content">-->
+<!--        <Header home-menu />-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div class="banner__image">-->
+<!--      <Slider />-->
+<!--    </div>-->
   </div>
 </template>
 <script lang="ts">
@@ -33,11 +33,13 @@ export default class Banner extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
 .banner {
   overflow: hidden;
   width: 100%;
   padding-bottom: 54.17%;
   position: relative;
+  background-color: darkcyan;
 
   &__image {
     display: flex;
@@ -71,6 +73,10 @@ export default class Banner extends Vue {
       width: 88%;
       margin: 0 auto;
     }
+  }
+
+  @include for-phone-only {
+      background-color: red;
   }
 }
 </style>
