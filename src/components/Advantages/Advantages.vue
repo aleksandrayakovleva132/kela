@@ -114,6 +114,57 @@ export default class Advantages extends Vue {
     &__background-image {
       display: none;
     }
+
+    &__title {
+      font-size: 38px;
+      line-height: 44px;
+      margin-bottom: 30px;
+    }
+
+    &__list {
+      flex-direction: column;
+    }
+
+    &__item:nth-child(1) {
+      margin-bottom: 20px;
+    }
+
+    &__content {
+      width: 100%;
+      padding: 0 15px 15px 20px;
+
+      &-text {
+        margin: 0;
+      }
+    }
+
+    &__item {
+      width: 100%;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      &-content {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &-inside {
+        padding: 40px 15px 20px 15px;
+      }
+    }
+
+    &__image {
+      width: 128px;
+      margin: 0 auto 40px;
+    }
   }
 }
 </style>

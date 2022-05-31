@@ -4,10 +4,10 @@
     <About />
     <Advantages class="home__advantages"
       :array="advantages"/>
-<!--    <Team />-->
-<!--    <ProjectHome />-->
-<!--    <Contacts />-->
-<!--    <Footer />-->
+    <Team />
+    <ProjectHome />
+    <Contacts />
+    <Footer />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="contacts">
-    <h2 class="contacts__title">Связаться с нами</h2>
+    <h2 class="contacts__title">Связаться с&nbsp;нами</h2>
     <div class="contacts__block">
       <div class="contacts__column contacts__column-left">
         <form class="contacts__form">
@@ -9,7 +9,7 @@
           <input class="contacts__input" type="text" placeholder="Тема*">
           <input class="contacts__input" type="text" placeholder="Отправьте сообщение">
           <button class="contacts__button" type="submit">
-            <Link/>
+            <Link label="отправить"/>
           </button>
         </form>
       </div>
@@ -57,6 +57,7 @@ export default class Contacts extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
 .contacts {
   width: 100%;
   background-image: url("./images/polygon.svg");
@@ -153,6 +154,27 @@ export default class Contacts extends Vue {
     color: var(--Black);
     fill: var(--Black);
     font-weight: 300;
+  }
+
+  @include for-phone-only {
+    background-image: none;
+    &__title {
+      margin: 80px 20px 30px;
+      font-size: 38px;
+      line-height: 44px;
+    }
+    &__block {
+      flex-direction: column;
+    }
+    &__column {
+      width: 100%;
+      padding: 0 15px;
+      margin: 0;
+
+      &-left {
+        margin-bottom: 60px;
+      }
+    }
   }
 }
 </style>
