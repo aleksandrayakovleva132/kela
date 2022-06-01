@@ -6,7 +6,7 @@
       <img v-else src="./images/kela.svg" width="98" alt="kela">
     </div>
     </router-link>
-    <div class="header__right-column" v-if="homeMenu">
+    <div class="header__right-column" v-if="homeMenu && this.$layout.current === 'desktop'">
       <ul class="header__menu">
         <li class="header__menu-item">EN | RUS</li>
         <li class="header__menu-item">Проекты</li>
@@ -14,9 +14,12 @@
         <li class="header__menu-item header__menu-item--contact">Контакты</li>
       </ul>
     </div>
-    <div class="header__menu" v-else>
+    <div class="header__menu" v-if="!homeMenu && this.$layout.current === 'desktop'">
       <img  v-if="light" src="./images/menu-2.svg" width="39" alt="menu"/>
       <img v-else src="./images/menu.svg" width="39"  alt="menu"/>
+    </div>
+    <div class="header__menu-mobile" v-if="homeMenu && this.$layout.current === 'phone'">
+      <div><img src="./images/menu-mobile.svg" width="30"  alt="menu"></div>
     </div>
   </div>
 </template>
@@ -41,11 +44,12 @@ export default class Header extends Vue {
 </script>
 
 <style scoped lang="scss">
+@import "../../assets/mixins.scss";
 .header {
   display: flex;
   justify-content: space-between;
   align-items: start;
-  padding: 42px 0;
+  padding: 40px 0;
 
   &__right-column {
     position: relative;
@@ -80,6 +84,14 @@ export default class Header extends Vue {
           background-color: var(--Orange);
         }
       }
+    }
+  }
+
+  @include for-phone-only {
+    align-items: center;
+    padding: 40px 15px;
+    &__logo {
+      width: 98px;
     }
   }
 }

@@ -123,6 +123,7 @@ export default class ProjectHome extends Vue {
     &__column {
       width: 100%;
       height: 376px;
+      overflow: hidden;
     }
     &__text {
       font-size: 38px;

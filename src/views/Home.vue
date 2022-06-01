@@ -1,13 +1,13 @@
 <template>
   <div class="home">
-<!--    <Banner />-->
-    <About />
-    <Advantages class="home__advantages"
-      :array="advantages"/>
-    <Team />
-    <ProjectHome />
-    <Contacts />
-    <Footer />
+    <Banner />
+<!--    <About />-->
+<!--    <Advantages class="home__advantages"-->
+<!--      :array="advantages"/>-->
+<!--    <Team />-->
+<!--    <ProjectHome />-->
+<!--    <Contacts />-->
+<!--    <Footer />-->
   </div>
 </template>
 
