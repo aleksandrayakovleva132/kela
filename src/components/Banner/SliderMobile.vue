@@ -6,12 +6,18 @@
     <div class="slider__container"
          :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
       <div class="slider__slide" v-for="item in sliderItems"
-           :key="item.id" :style="{backgroundColor: item.img}">
-
-<!--        <div class="slider__slide-img" :style="{backgroundColor: item.img}"></div>-->
+           :key="item.id"
+           :style="{'background-image': `url(${item.img})`}"
+           >
+      <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
+      <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
+        {{ item.name }}
+        <Link class="slider__link"/>
+      </p>
       </div>
       <div class="slider__slide-mask"></div>
       <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+      <div class="slider__decoration"></div>
     </div>
     </div>
   </div>
@@ -22,15 +28,16 @@ import { Component, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header/Header.vue';
 import SliderButtons from '@/components/Banner/SliderButtons.vue';
 import { sliderTypes } from '@/components/Slider/types';
+import Link from '@/components/Link/Link.vue';
 
 @Component({
-  components: { SliderButtons, Header },
+  components: { Link, SliderButtons, Header },
 })
 export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 1, name: 'img1', img: 'red' },
-    { id: 2, name: 'img2', img: 'purple' },
-    { id: 3, name: 'img3', img: 'lightblue' },
+    { id: 1, name: 'Котедж на крутом склоне', img: '1.jpg' },
+    { id: 2, name: 'Метро', img: '2.jpg' },
+    { id: 3, name: 'Жилой комплекс', img: '3.jpg' },
     // { id: 3, name: 'img3', img: '3.jpg' },
   ];
 
@@ -45,7 +52,8 @@ export default class BannerMobile extends Vue {
 
   nextSlide() {
     if (this.currentSlideIndex >= this.sliderItems.length - 1) {
-      this.currentSlideIndex = 0;
+      // eslint-disable-next-line no-plusplus,no-unused-expressions
+      this.currentSlideIndex = this.sliderItems.length - 2;
     }
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
@@ -63,6 +71,7 @@ export default class BannerMobile extends Vue {
   &__slide {
     width: 100vw;
     height: 100vh;
+    background-color: lightgray;
        &-img {
          position: absolute;
          top: 0;
@@ -96,6 +105,36 @@ export default class BannerMobile extends Vue {
        opacity: 0.6;
        z-index: 2;
      }
+  }
+
+  &__decoration {
+    width: 414px;
+    height: 364px;
+    position: absolute;
+    bottom: -270px;
+    left: -215px;
+    z-index: 4;
+    background-image: url('@/assets/images/polygon.svg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  &__link {
+    margin-top: 40px;
+    fill: var(--White);
+  }
+
+  &__title {
+    margin: 0;
+    position: absolute;
+    z-index: 5;
+    bottom: 20vh;
+    right: 15px;
+    left: 15px;
+    font-size: 54px;
+    line-height: 62px;
+    text-transform: uppercase;
+    color: var(--White);
   }
 }
 
