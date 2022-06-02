@@ -1,14 +1,18 @@
 <template>
   <div class="slider">
     <Header class="slider__header" home-menu />
-    <div class="slider__container" :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
+<!--    :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}"-->
+    <div>
+    <div class="slider__container"
+         :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
       <div class="slider__slide" v-for="item in sliderItems"
            :key="item.id" :style="{backgroundColor: item.img}">
-          {{ item.name }}
+
 <!--        <div class="slider__slide-img" :style="{backgroundColor: item.img}"></div>-->
       </div>
       <div class="slider__slide-mask"></div>
-      <SliderButtons class="slider__slide-buttons" @nextSlide="clickNext" @prevSlide="beforeSlide"/>
+      <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+    </div>
     </div>
   </div>
 </template>
@@ -24,22 +28,22 @@ import { sliderTypes } from '@/components/Slider/types';
 })
 export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 0, name: 'img1', img: 'red' },
-    { id: 1, name: 'img2', img: 'orange' },
-    { id: 2, name: 'img3', img: 'purple' },
+    { id: 1, name: 'img1', img: 'red' },
+    { id: 2, name: 'img2', img: 'purple' },
+    { id: 3, name: 'img3', img: 'lightblue' },
     // { id: 3, name: 'img3', img: '3.jpg' },
   ];
 
-  currentSlideIndex = 1;
+  currentSlideIndex = 0;
 
-  beforeSlide() {
+  prevSlide() {
     if (this.currentSlideIndex > 0) {
       // eslint-disable-next-line no-plusplus
       this.currentSlideIndex--;
     }
   }
 
-  clickNext() {
+  nextSlide() {
     if (this.currentSlideIndex >= this.sliderItems.length - 1) {
       this.currentSlideIndex = 0;
     }
@@ -57,9 +61,8 @@ export default class BannerMobile extends Vue {
   }
 
   &__slide {
-    display: flex;
-    transition: all ease 1.5s;
-    width: 100%;
+    width: 100vw;
+    height: 100vh;
        &-img {
          position: absolute;
          top: 0;
@@ -79,14 +82,7 @@ export default class BannerMobile extends Vue {
 
   &__container {
      display: flex;
-     transition: all ease 1.5s;
-     //overflow: hidden;
-     position: absolute;
-     top: 0;
-     bottom: 0;
-     right: 0;
-     left: 0;
-     background-color: green;
+     transition: all ease 0.5s;
 
      &::after {
        content: '';

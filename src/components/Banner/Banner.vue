@@ -99,7 +99,8 @@ export default class Banner extends Vue {
   position: relative;
 
   @include for-phone-only {
-    padding-bottom: 208.33%;
+    padding-bottom: 0;
+    height: 100vh
   }
 }
 </style>
