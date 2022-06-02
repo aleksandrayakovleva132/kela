@@ -17,6 +17,11 @@
       </div>
       <div class="slider__slide-mask"></div>
       <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+      <div  class="slider__counter">
+        <div class="slider__counter-item"
+             :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
+             v-for="slide in sliderItems" :key="slide.id"></div>
+      </div>
       <div class="slider__decoration"></div>
     </div>
     </div>
@@ -135,6 +140,31 @@ export default class BannerMobile extends Vue {
     line-height: 62px;
     text-transform: uppercase;
     color: var(--White);
+  }
+
+  &__counter {
+    display: flex;
+    z-index: 5;
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 106px;
+
+    &-item {
+      width: 22px;
+      height: 1px;
+      color: black;
+      background-color: var(--White);
+      margin-right: 6px;
+
+      &--active {
+        background-color: var(--Orange);
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }
 
