@@ -2,6 +2,12 @@
   <div class="about">
     <div class="about__column">
       <div class="about__photo">
+        <div class="about__decoration about__decoration--top">
+          <Decoration size="120" width="3"/>
+        </div>
+        <div class="about__decoration about__decoration--bottom">
+          <Decoration size="232" width="3"/>
+        </div>
       </div>
     </div>
     <div class="about__column">
@@ -39,9 +45,10 @@ import {
 } from 'vue-property-decorator';
 import Slider from '@/components/Swiper.vue';
 import AboutSlider from '@/components/About/AboutSlider.vue';
+import Decoration from '@/components/Decoration/Decoration.vue';
 
 @Component({
-  components: { AboutSlider, Slider },
+  components: { Decoration, AboutSlider, Slider },
 })
 export default class About extends Vue {}
 </script>
@@ -59,6 +66,8 @@ export default class About extends Vue {}
     background-image: url('@/assets/images/about.png');
     background-size: 100%;
     background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
   }
   &__content {
     width: 100%;
@@ -99,6 +108,23 @@ export default class About extends Vue {}
     margin-bottom: 40px;
   }
 
+  &__decoration {
+    position: absolute;
+    z-index: 3;
+    &--top {
+      width: 232px;
+      height: 202px;
+      top: -40px;
+      right: -47px;
+    }
+    &--bottom {
+      width: 247px;
+      height: 216px;
+      bottom: -80px;
+      left: -127px;
+    }
+  }
+
   @include for-phone-only {
     flex-direction: column;
 
@@ -134,6 +160,23 @@ export default class About extends Vue {}
 
     &__text-block {
       margin-bottom: 30px;
+    }
+
+    &__decoration {
+      position: absolute;
+      z-index: 3;
+      &--top {
+        width: 120px;
+        height: 106px;
+        top: -40px;
+        right: -47px;
+      }
+      &--bottom {
+        width: 247px;
+        height: 216px;
+        bottom: -80px;
+        left: -127px;
+      }
     }
   }
 }

@@ -1,7 +1,6 @@
 <template>
   <div class="slider">
     <Header class="slider__header" home-menu />
-<!--    :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}"-->
     <div>
     <div class="slider__container"
          :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
@@ -22,7 +21,9 @@
              :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
              v-for="slide in sliderItems" :key="slide.id"></div>
       </div>
-      <div class="slider__decoration"></div>
+      <div class="slider__decoration">
+        <Decoration size="418"/>
+      </div>
     </div>
     </div>
   </div>
@@ -34,9 +35,12 @@ import Header from '@/components/Header/Header.vue';
 import SliderButtons from '@/components/Banner/SliderButtons.vue';
 import { sliderTypes } from '@/components/Slider/types';
 import Link from '@/components/Link/Link.vue';
+import Decoration from '@/components/Decoration/Decoration.vue';
 
 @Component({
-  components: { Link, SliderButtons, Header },
+  components: {
+    Decoration, Link, SliderButtons, Header,
+  },
 })
 export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
@@ -113,15 +117,10 @@ export default class BannerMobile extends Vue {
   }
 
   &__decoration {
-    width: 414px;
-    height: 364px;
     position: absolute;
     bottom: -270px;
-    left: -215px;
+    left: -206px;
     z-index: 4;
-    background-image: url('@/assets/images/polygon.svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
   }
 
   &__link {
@@ -169,30 +168,3 @@ export default class BannerMobile extends Vue {
 }
 
 </style>
-
-<!--@include for-phone-only {-->
-<!--padding-bottom: 208.33%;-->
-<!--&__header-content {-->
-<!--width: 100%;-->
-<!--padding: 0 15px;-->
-<!--}-->
-
-<!--//&__slider {-->
-<!--//  border: 2px solid purple;-->
-<!--//  position: absolute;-->
-<!--//  top: 0;-->
-<!--//  bottom: 0;-->
-<!--//  right: 0;-->
-<!--//  left: 0;-->
-<!--//}-->
-
-<!--&__slider {-->
-<!--width: 100%;-->
-<!--&&#45;&#45;mobile {-->
-<!--display: block;-->
-<!--}-->
-<!--&&#45;&#45;desktop {-->
-<!--display: none;-->
-<!--}-->
-<!--}-->
-<!--}-->

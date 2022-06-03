@@ -2,12 +2,12 @@
   <div class="home">
     <Banner />
     <About />
-    <Advantages class="home__advantages"
-      :array="advantages"/>
-    <Team />
-    <ProjectHome />
-    <Contacts />
-    <Footer />
+<!--    <Advantages class="home__advantages"-->
+<!--      :array="advantages"/>-->
+<!--    <Team />-->
+<!--    <ProjectHome />-->
+<!--    <Contacts />-->
+<!--    <Footer />-->
   </div>
 </template>
 
@@ -21,9 +21,11 @@ import Team from '@/components/Team/Team.vue';
 import ProjectHome from '@/components/ProjectHome/ProjectHome.vue';
 import Contacts from '@/components/Contacts/Contacts.vue';
 import Banner from '@/components/Banner/Banner.vue';
+import Decoration from '@/components/Decoration/Decoration.vue';
 
 @Component({
   components: {
+    Decoration,
     Banner,
     Contacts,
     ProjectHome,

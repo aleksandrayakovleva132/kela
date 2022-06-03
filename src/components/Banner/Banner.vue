@@ -1,40 +1,7 @@
 <template>
   <div class="banner">
-<!--    <div class="banner__header">-->
-<!--      <div class="banner__header-content">-->
-<!--        <Header home-menu />-->
-<!--      </div>-->
-<!--    </div>-->
-    <div>
       <SliderMobile v-if = "this.$layout.current === 'phone'" />
       <SliderDesktop v-else />
-    </div>
-<!--    <div class="banner__slider-container"-->
-<!--         :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}"-->
-<!--    >-->
-<!--      <div class="banner__slider banner__slider&#45;&#45;mobile"-->
-<!--           v-for="item in sliderItems" :key="item.id">-->
-<!--          <img  class="banner__slider-img"-->
-<!--                :src="require('./images/' + item.img)" width="100%" />-->
-<!--      </div>-->
-
-<!--      <div class="banner__slider banner__slider&#45;&#45;desktop"-->
-<!--           v-for="item in sliderItemsDesktop" :key="item.id">-->
-<!--        <img  class="banner__slider-img"-->
-<!--              :src="require('./images/desktop/' + item.img)" height="100%" />-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div  class="banner__buttons">-->
-<!--      <button class="banner__button banner__button&#45;&#45;left" @click="prevSlide">-->
-<!--        <img src="./images/left.svg"/>-->
-<!--      </button>-->
-<!--      <button class="banner__button banner__button&#45;&#45;right" @click="nextSlide">-->
-<!--        <img src="./images/right.svg"/>-->
-<!--      </button>-->
-<!--    </div>-->
-<!--    <div class="banner__image">-->
-<!--      <Slider />-->
-<!--    </div>-->
   </div>
 </template>
 <script lang="ts">
@@ -95,7 +62,6 @@ export default class Banner extends Vue {
 .banner {
   overflow: hidden;
   width: 100%;
-  padding-bottom: 54.17%;
   position: relative;
 
   @include for-phone-only {
