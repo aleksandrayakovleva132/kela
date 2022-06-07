@@ -34,6 +34,9 @@
     </div>
     <div class="project-home__row">
      <Link big label="bim"/>
+     <div class="project-home__decoration project-home__decoration--mobile">
+       <Decoration size="180" width="3"/>
+     </div>
     </div>
   </div>
 </template>
@@ -42,9 +45,10 @@ import {
   Component, Vue,
 } from 'vue-property-decorator';
 import Link from '@/components/Link/Link.vue';
+import Decoration from '@/components/Decoration/Decoration.vue';
 
 @Component({
-  components: { Link },
+  components: { Decoration, Link },
 })
 
 export default class ProjectHome extends Vue {
@@ -73,6 +77,8 @@ export default class ProjectHome extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+    position: relative;
   }
   &__item {
     width: 100%;
@@ -116,6 +122,10 @@ export default class ProjectHome extends Vue {
     margin-bottom: 47px;
   }
 
+  &__decoration--mobile {
+    display: none;
+  }
+
   @include for-phone-only {
     &__main {
       flex-direction: column;
@@ -147,6 +157,15 @@ export default class ProjectHome extends Vue {
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    &__decoration {
+      &--mobile {
+        display: block;
+      }
+      position: absolute;
+      left: -80px;
+      bottom: -80px;
     }
   }
 }

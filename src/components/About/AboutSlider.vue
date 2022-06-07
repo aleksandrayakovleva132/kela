@@ -196,6 +196,7 @@ export default class AboutSlider extends Vue {
     padding:  20px 0;
     &__container {
       flex-direction: column;
+      overflow: hidden;
     }
 
     &__label {

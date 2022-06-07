@@ -19,6 +19,13 @@
             <span class="advantages__background-image">
                 <img src="./images/rect.svg" width="100%">
             </span>
+            <div class="advantages__decoration advantages__decoration--mobile">
+              <svg width="67" height="74" viewBox="0 0 67 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.00001 0V43.2701C1.00001 45.4222 2.15257 47.4094 4.02053
+                48.4781L45.6519 72.2954C47.4979 73.3515 49.7649 73.3515 51.6109
+                72.2954L66.1108 64" stroke="black"/>
+              </svg>
+            </div>
           </div>
         </li>
       </ul>
@@ -28,8 +35,11 @@
 <script lang="ts">
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { AdvantagesArray } from '@/components/Advantages/types';
+import Decoration from '@/components/Decoration/Decoration.vue';
 
-@Component({})
+@Component({
+  components: { Decoration },
+})
 export default class Advantages extends Vue {
   @Prop({
     type: Array,
@@ -107,6 +117,10 @@ export default class Advantages extends Vue {
      width: 67%;
    }
 
+  &__decoration--mobile {
+    display: none;
+  }
+
   @include for-phone-only {
     width: 100%;
     padding: 50px 15px 0 15px;
@@ -141,6 +155,7 @@ export default class Advantages extends Vue {
     &__item {
       width: 100%;
       margin-bottom: 20px;
+      overflow: hidden;
 
       &:last-child {
         margin-bottom: 0;
@@ -164,6 +179,21 @@ export default class Advantages extends Vue {
     &__image {
       width: 128px;
       margin: 0 auto 40px;
+    }
+
+    &__decoration {
+      &--mobile {
+        display: block;
+      }
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 65.11px;
+    }
+
+    &__item:nth-child(odd) .advantages__decoration{
+      left: 0;
+      transform: scaleX(-1);
     }
   }
 }
