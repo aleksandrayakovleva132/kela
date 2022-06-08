@@ -3,10 +3,11 @@
     <div class="about__column">
       <div class="about__photo">
         <div class="about__decoration about__decoration--top">
-          <Decoration size="120" width="3"/>
+          <Decoration :size="this.$layout.current === 'phone' ? 120 : 232" width="3"/>
         </div>
         <div class="about__decoration about__decoration--bottom">
-          <Decoration size="232" width="3"/>
+          <Decoration :size="this.$layout.current === 'phone' ? 232 : 418"
+                      :width="this.$layout.current === 'phone' ? 3 : 2"/>
         </div>
       </div>
     </div>
@@ -114,14 +115,14 @@ export default class About extends Vue {}
     &--top {
       width: 232px;
       height: 202px;
-      top: -40px;
-      right: -47px;
+      top: -82px;
+      right: -75px;
     }
     &--bottom {
       width: 247px;
       height: 216px;
-      bottom: -80px;
-      left: -127px;
+      bottom: 60px;
+      left: -193px;
     }
   }
 
