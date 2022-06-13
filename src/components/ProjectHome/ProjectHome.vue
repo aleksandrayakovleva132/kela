@@ -7,7 +7,7 @@
             <div class="project-home__content">
               <div class="project-home__label">
                 <p class="project-home__text">Объекты <br> промышленного <br>строительства:</p>
-                <Link />
+                <Link label="подробнее" />
               </div>
               <div class="project-home__image">
                 <img src="./images/object-1.png" width="100%">
@@ -22,7 +22,7 @@
             <div class="project-home__content">
               <div class="project-home__label">
                 <p class="project-home__text">Объекты <br> гражданского <br>строительства:</p>
-                <Link />
+                <Link label="подробнее" />
               </div>
               <div class="project-home__image">
                 <img src="./images/object-2.png" width="100%">

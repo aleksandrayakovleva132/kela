@@ -11,12 +11,20 @@
              <div>
                <img :src="require(`./images/${item.image}.png`)" width="100%" alt="item.image"/>
              </div>
-            <p class="catalog__title">Котедж на крутом склоне</p>
-            <span class="catalog__date">20.03.19</span>
+            <p class="catalog__title">
+              <span>Котедж на крутом склоне</span>
+              <span>
+                <Link class="catalog__arrow" label=""/>
+              </span>
+            </p>
           </router-link>
           </li>
         </ul>
+        <div class="catalog__bottom">
+          <button class="catalog__show-more">Показать еще  <Link /> </button>
+        </div>
       </div>
+      <Footer />
     </div>
   </div>
 </template>
@@ -26,9 +34,11 @@ import {
 } from 'vue-property-decorator';
 import Header from '@/components/Header/Header.vue';
 import { catalogTypes } from '@/components/Catalog/types';
+import Link from '@/components/Link/Link.vue';
+import Footer from '@/components/Footer/Footer.vue';
 
 @Component({
-  components: { Header },
+  components: { Footer, Link, Header },
 })
 
 export default class Catalog extends Vue {
@@ -91,7 +101,14 @@ export default class Catalog extends Vue {
     font-weight: bold;
     font-size: 24px;
     line-height: 38px;
-    margin-bottom: 20px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 17px;
+    display: flex;
+    color: white;
+    align-items: center;
+    z-index: 3;
   }
 
   &__date {
@@ -110,20 +127,55 @@ export default class Catalog extends Vue {
 
   &__list-item {
     padding: 0;
-    margin: 0 0 50px 0;
+    margin: 0 0 40px 0;
     color: var(--Black);
-    border-bottom: 1px solid var(--Black);
-    padding-bottom: 12px;
     width: 25%;
+    position: relative;
 
     &--long {
       width: 40%;
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 160px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
     }
   }
 
   &__box-list {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  &__arrow {
+    fill: white;
+  }
+  &__show-more {
+    width: 240px;
+    height: 38px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    font-weight: 300;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin: 0 auto 70px;
+    border: 1px solid orange;
+  }
+
+  &__bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

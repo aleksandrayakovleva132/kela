@@ -34,7 +34,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator';
 export default class Link extends Vue {
   @Prop({
     type: String,
-    default: 'Подробнее',
+    default: '',
   })
   readonly label!: string;
 
