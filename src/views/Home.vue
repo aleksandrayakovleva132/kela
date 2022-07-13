@@ -1,6 +1,7 @@
 <template>
   <div class="home">
-    <Banner />
+    <Language />
+<!--    <Banner />-->
     <About />
     <Advantages class="home__advantages"
       :array="advantages"/>
@@ -22,9 +23,11 @@ import ProjectHome from '@/components/ProjectHome/ProjectHome.vue';
 import Contacts from '@/components/Contacts/Contacts.vue';
 import Banner from '@/components/Banner/Banner.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Language from '@/components/Header/Language.vue';
 
 @Component({
   components: {
+    Language,
     Decoration,
     Banner,
     Contacts,
