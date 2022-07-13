@@ -21,6 +21,9 @@
           </li>
         </ul>
         <div class="catalog__bottom">
+          <span class="catalog__progress-label"> 9 из 25</span>
+          <div class="catalog__progress">
+          </div>
           <button class="catalog__show-more">Показать еще  <Link /> </button>
         </div>
       </div>
@@ -69,7 +72,7 @@ export default class Catalog extends Vue {
       image: 'pic-1',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
-      long: true,
+      long: false,
     },
     {
       index: 5,
@@ -80,6 +83,27 @@ export default class Catalog extends Vue {
     },
     {
       index: 6,
+      image: 'pic-2',
+      title: 'Котедж на крутом склоне',
+      date: '20.03.19',
+      long: true,
+    },
+    {
+      index: 7,
+      image: 'pic-1',
+      title: 'Котедж на крутом склоне',
+      date: '20.03.19',
+      long: true,
+    },
+    {
+      index: 8,
+      image: 'pic-2',
+      title: 'Котедж на крутом склоне',
+      date: '20.03.19',
+      long: false,
+    },
+    {
+      index: 9,
       image: 'pic-2',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
@@ -129,11 +153,9 @@ export default class Catalog extends Vue {
     padding: 0;
     margin: 0 0 40px 0;
     color: var(--Black);
-    width: 25%;
     position: relative;
 
     &--long {
-      width: 40%;
     }
 
     &:after {
@@ -168,7 +190,7 @@ export default class Catalog extends Vue {
     font-size: 15px;
     text-transform: uppercase;
     margin: 0 auto 70px;
-    border: 1px solid orange;
+    border: 1px solid var(--Orange);
   }
 
   &__bottom {
@@ -176,6 +198,35 @@ export default class Catalog extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+  }
+
+  &__progress {
+    background-color: var(--Black);
+    height: 1px;
+    width: 174px;
+    margin-bottom: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30%;
+      background-color: var(--Orange);
+    }
+  }
+
+  &__progress-label {
+    text-align: center;
+    display: block;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 14px;
+    margin-bottom: 7px;
   }
 }
 </style>
