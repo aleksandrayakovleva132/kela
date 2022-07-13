@@ -5,7 +5,8 @@ import DeviceOs from '@/utils/DeviceOs';
 import DeviceBrowser from '@/utils/DeviceBrowser';
 
 import DeviceLayout from '@/utils/DeviceLayout';
-import RootState from './RootState';
+import Local from '@/store/enums/Local';
+import RootState from '@/store/root/RootState';
 
 export default class RootMutations extends Mutations<RootState> {
   setMenu(menu: MenuStatus): void {
@@ -14,6 +15,10 @@ export default class RootMutations extends Mutations<RootState> {
 
   setLayout(layout: DeviceLayout): void {
     this.state.layout = layout;
+  }
+
+  setLocal(local: Local): void {
+    this.state.local = local;
   }
 
   setOs(os: DeviceOs): void {

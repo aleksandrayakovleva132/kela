@@ -89,6 +89,10 @@ export default class ProjectItem extends Vue {
     font-weight: 300;
     font-size: 48px;
     line-height: 56px;
+    width: 88%;
+    left: 6%;
+    right: 6%;
+    text-align: center;
   }
 
   &__bottom {

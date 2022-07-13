@@ -1,7 +1,7 @@
 import { Actions } from 'vuex-smart-module';
-import RootState from './RootState';
+import RootState from '@/store/root/RootState';
+import RootMutations from '@/store/root/RootMutations';
 import RootGetters from './RootGetters';
-import RootMutations from './RootMutations';
 
 export default class RootActions extends Actions<
 RootState,

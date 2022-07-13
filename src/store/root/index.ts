@@ -4,9 +4,9 @@ import {
   Module,
 } from 'vuex-smart-module';
 
-import RootState from './RootState';
+import RootState from '@/store/root/RootState';
+import RootMutations from '@/store/root/RootMutations';
 import RootGetters from './RootGetters';
-import RootMutations from './RootMutations';
 import RootActions from './RootActions';
 
 // Create a module with module asset classes

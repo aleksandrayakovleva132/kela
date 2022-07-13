@@ -15,26 +15,34 @@
       <div class="about__content">
         <div class="about__content-container">
           <div class="about__text-block">
-          <h2 class="about__title">Про нас</h2>
-          <p class="about__text">KELA - команда инженеров-проектировщиков в области
-            промышленного и гражданского строительства.</p>
-          <p class="about__text"> Основное направление нашей деятельности - разработка разделов
-            конструкций зданий и сооружений (КР, КЖ, КМ, КД).</p>
-          <p class="about__text">Состав нашей команды включает в себя не только конструкторов,
-            но и архитекторов, инженеров
-            для разработки оптимальных решений при соблюдении всех действующих
-            стандартов нормативной документации в строительстве.</p>
-          <p class="about__text">Опыт и квалификация сотрудников команды позволяет
-            проектировать здания и сооружения различной
-          степени сложности, в том числе объекты в районах вечной
-            мерзлоты, зонах повышенной сейсмической активности.</p>
+          <h2 class="about__title">
+            <template v-if="rus">
+              {{ data.title.ru }}
+            </template>
+            <template v-else>{{ data.title.eng }}</template>
+          </h2>
+           <template v-if="rus">
+             <p class="about__text">{{ data.paragraph1.ru }}</p>
+             <p class="about__text">{{ data.paragraph2.ru }}</p>
+             <p class="about__text">{{ data.paragraph3.ru }}</p>
+             <p class="about__text">{{ data.paragraph4.ru}}</p>
+             <p class="about__text">{{ data.paragraph5.ru}}</p>
+           </template>
+            <template v-else>
+              <p class="about__text">{{ data.paragraph1.eng }}</p>
+              <p class="about__text">{{ data.paragraph2.eng }}</p>
+              <p class="about__text">{{ data.paragraph3.eng }}</p>
+              <p class="about__text">{{ data.paragraph4.eng}}</p>
+              <p class="about__text">{{ data.paragraph5.eng}}</p>
+            </template>
           </div>
           <div class="about__slider-container">
             <AboutSlider />
           </div>
-          <p class="about__text">Наша основная цель - разрабатывать конструктивные
-            решения, отвечающие современным требованиям технологичности,
-            энергоэффективности, экономичности.</p>
+          <template v-if="rus">
+            <p class="about__text">{{ data.paragraph6.ru}}</p>
+          </template>
+          <template v-else><p class="about__text">{{ data.paragraph6.eng }}</p></template>
         </div>
       </div>
     </div>
@@ -47,15 +55,52 @@ import {
 import Slider from '@/components/Swiper.vue';
 import AboutSlider from '@/components/About/AboutSlider.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: { Decoration, AboutSlider, Slider },
 })
-export default class About extends Vue {}
+export default class About extends Vue {
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
+
+  private $local: any;
+
+  data = {
+    title: {
+      ru: 'Про нас',
+      eng: 'About',
+    },
+    paragraph1: {
+      ru: 'Конструкторской бюро KELA - команда инженеров-проектировщиков в области промышленного и гражданского строительства.',
+      eng: 'Design Bureau KELA is a team of design engineers in the field of industrial and civil construction.\n',
+    },
+    paragraph2: {
+      ru: 'Основное направление нашей деятельности - разработка разделов конструкций зданий и сооружений (КР, КЖ, КМ, КД).',
+      eng: 'Our main focus is structural engineering of building sections (construction solutions, concrete structures, metal structures, wooden structures).\n',
+    },
+    paragraph3: {
+      ru: 'Состав нашей команды включает в себя не только конструкторов, но и архитекторов, инженеров для разработки оптимальных решений при соблюдении всех действующих стандартов нормативной документации в строительстве.',
+      eng: 'Our team comprises designers, architects and engineers providing optimal solutions in compliance with all the building and construction regulations.',
+    },
+    paragraph4: {
+      ru: 'Опыт и квалификация сотрудников команды KELA позволяет проектировать конструкции зданий и сооружений различной степени сложности, в том числе объекты в районах вечной мерзлоты, зонах повышенной сейсмической активности.\n',
+      eng: 'The experience and qualification of the KELA’s team allows designing buildings and structures of various degrees of complexity, including those located in permafrost zones and areas of increased seismic activity.\n',
+    },
+    paragraph5: {
+      ru: 'Мы работаем в программных комплексах: Autodesk AutoCAD, Autodesk Revit, Tekla Structures , SCAD, ЛИРА.\n',
+      eng: '',
+    },
+    paragraph6: {
+      ru: 'Наша основная цель - разрабатывать конструктивные решения, отвечающие современным требованиям технологичности, энергоэффективности, экономичности.',
+      eng: 'We use various software (Autodesk AutoCAD, Autodesk Revit, Tekla Structures, SCAD, LIRA) to attain our main goal – to provide design solutions that meet modern requirements for manufacturability, energy efficiency and cost-effectiveness.',
+    },
+  };
+}
 </script>
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
-
 .about {
   display: flex;
   &__column {

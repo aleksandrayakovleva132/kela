@@ -7,8 +7,32 @@
     </div>
     </router-link>
     <div class="header__right-column" v-if="homeMenu && this.$layout.current === 'desktop'">
+      <span style="padding: 20px;
+      background-color: blue;
+      color: white;
+      position: absolute;
+      top: 100px; right: 300px;">
+        {{ isRus }}
+      </span>
+      <button @click="toggleLang">
+        {{ isRus }}
+      </button>
       <ul class="header__menu">
-        <li class="header__menu-item">EN | RUS</li>
+        <li class="header__menu-item">
+          <label for="eng"
+                 :class="{'header__menu-lang--active' : this.$language.current === 'eng' }">
+            EN
+            <input type="radio" id="eng" name="lang" :checked="isRus">
+          </label>
+          |
+          <label for="rus"
+                 :class="{'header__menu-lang--active' : this.$language.current === 'rus' }"
+          >
+            RU
+            <input type="radio" id="rus" name="lang"
+                   @click="this.$language.set(LanguageStatus.RUS)">
+          </label>
+        </li>
         <li class="header__menu-item">Проекты</li>
         <li class="header__menu-item">BIM</li>
         <li class="header__menu-item header__menu-item--contact">Контакты</li>
@@ -26,7 +50,9 @@
 
 <script lang="ts">
 import {
-  Component, Vue, Prop,
+  Component,
+  Prop,
+  Vue,
 } from 'vue-property-decorator';
 
 @Component({})
@@ -40,6 +66,15 @@ export default class Header extends Vue {
     type: Boolean,
   })
   readonly homeMenu!: boolean;
+
+  @Prop({
+    type: Boolean,
+  })
+  readonly isRus!: boolean;
+
+  toggleLang() {
+    return this.isRus === !this.isRus;
+  }
 }
 </script>
 
@@ -64,6 +99,10 @@ export default class Header extends Vue {
     text-transform: uppercase;
     text-align: right;
     color: var(--White);
+
+    &-lang--active {
+      color: var(--Orange);
+    }
 
     &-item {
       margin-bottom: 42px;

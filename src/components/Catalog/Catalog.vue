@@ -9,7 +9,7 @@
               v-for="item in catalogList" :key="item.index">
             <router-link to="/project-item">
              <div>
-               <img :src="require(`./images/${item.image}.png`)" width="100%" alt="item.image"/>
+            <img :src="require(`./images/${item.image}.png`)" alt="item.image" width="100%"/>
              </div>
             <p class="catalog__title">
               <span>Котедж на крутом склоне</span>
@@ -69,7 +69,7 @@ export default class Catalog extends Vue {
     },
     {
       index: 4,
-      image: 'pic-1',
+      image: 'pic-2',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
       long: false,
@@ -83,7 +83,7 @@ export default class Catalog extends Vue {
     },
     {
       index: 6,
-      image: 'pic-2',
+      image: 'pic-1',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
       long: true,
@@ -147,6 +147,7 @@ export default class Catalog extends Vue {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    width: 100%;
   }
 
   &__list-item {
@@ -154,8 +155,12 @@ export default class Catalog extends Vue {
     margin: 0 0 40px 0;
     color: var(--Black);
     position: relative;
+    height: 400px;
+    width: calc(30% - 40px);
+    overflow: hidden;
 
     &--long {
+      width: 40%;
     }
 
     &:after {

@@ -9,9 +9,13 @@ import DeviceOs from '@/utils/DeviceOs.ts';
 import DeviceBrowser from '@/utils/DeviceBrowser.ts';
 // eslint-disable-next-line import/extensions
 import MenuStatus from '@/store/enums/MenuStatus.ts';
+// eslint-disable-next-line import/extensions
+import Local from '@/store/enums/Local.ts';
 
 export default class RootState {
   menu: MenuStatus = MenuStatus.IS_HIDDEN;
+
+  local: Local = Local.RU;
 
   layout: DeviceLayout = DeviceMeta.getLayout();
 
