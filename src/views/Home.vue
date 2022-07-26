@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <Language />
-<!--    <Banner />-->
+    <Banner />
     <About />
     <Advantages class="home__advantages"
       :array="advantages"/>

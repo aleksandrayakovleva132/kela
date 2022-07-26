@@ -43,7 +43,9 @@
       <img v-else src="./images/menu.svg" width="39"  alt="menu"/>
     </div>
     <div class="header__menu-mobile" v-if="homeMenu && this.$layout.current === 'phone'">
-      <div><img src="./images/menu-mobile.svg" width="30"  alt="menu"></div>
+      <div>
+        <Language />
+      </div>
     </div>
   </div>
 </template>
@@ -54,8 +56,11 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
+import Language from '@/components/Header/Language.vue';
 
-@Component({})
+@Component({
+  components: { Language },
+})
 export default class Header extends Vue {
   @Prop({
     type: Boolean,

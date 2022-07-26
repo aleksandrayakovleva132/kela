@@ -1,14 +1,17 @@
 <template>
   <div class="switch language">
     <label>
-      <span class="language__label" :class="{'language__label--active': !isRuLocale}">English</span>
-      <input type="checkbox" v-model="isRuLocale"
-             @click="changeLang">
-      <span class="lever"></span>
-      <span class="language__label" :class="{'language__label--active': isRuLocale}">Русский</span>
+      <div class="language__box">
+        <span class="language__label" :class="{'language__label--active': isRuLocale}">RU</span>
+        <div class="language__divider">|</div>
+        <input type="checkbox" v-model="isRuLocale"
+               class="language__checkbox"
+               @click="changeLang">
+        <span class="lever"></span>
+        <span class="language__label" :class="{'language__label--active': !isRuLocale}">EN</span>
+      </div>
     </label>
     <br>
-    <div>{{ this.$local.current}}</div>
   </div>
 </template>
 <script lang="ts">
@@ -44,18 +47,28 @@ export default class Language extends Vue {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 120px;
-  width: 100%;
-  background-color: gray;
 
   &__label {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--White);
-    font-weight: 500;
+    font-weight: 400;
 
     &--active {
       color: var(--Orange);
     }
+  }
+
+  &__divider {
+    padding: 0 12px;
+    color: var(--White);
+  }
+
+  &__checkbox {
+   display: none;
+  }
+
+  &__box {
+    display: flex;
   }
 }
 </style>
