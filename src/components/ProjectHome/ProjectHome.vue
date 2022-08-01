@@ -53,15 +53,15 @@
     <div class="project-home__row">
      <Link big label="bim"/>
      <div class="project-home__decoration project-home__decoration--mobile">
-       <Decoration size="180" width="3"/>
+       <Decoration size="180" :width="3"/>
      </div>
       <div class="project-home__decoration project-home__decoration--desktop
                   project-home__decoration-3">
-        <Decoration size="190" width="3"/>
+        <Decoration size="190" :width="3"/>
       </div>
       <div class="project-home__decoration project-home__decoration--desktop
                   project-home__decoration-4">
-        <Decoration size="190" width="3"/>
+        <Decoration size="190" :width="3"/>
       </div>
     </div>
   </div>

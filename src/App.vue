@@ -31,6 +31,8 @@ export default class App extends Vue {
 .app {
   &--open-menu {
     position: relative;
+    overflow: hidden;
+    height: 100vh;
     &::after {
       content: '';
       display: block;

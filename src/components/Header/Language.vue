@@ -2,13 +2,15 @@
   <div class="switch language" :class="{'language--mobile': isMobile}">
     <label>
       <div class="language__box">
-        <span class="language__label" :class="{'language__label--active': isRuLocale}">RU</span>
+        <span class="language__label"
+              :class="{'language__label--active': this.$local.current === 'ru'}">RU</span>
         <div class="language__divider">|</div>
         <input type="checkbox" v-model="isRuLocale"
                class="language__checkbox"
                @click="changeLang">
         <span class="lever"></span>
-        <span class="language__label" :class="{'language__label--active': !isRuLocale}">EN</span>
+        <span class="language__label"
+              :class="{'language__label--active':  this.$local.current === 'en'}">EN</span>
       </div>
     </label>
     <br>
@@ -42,7 +44,7 @@ export default class Language extends Vue {
   }
 
   changeLang(): void {
-    console.log(this.$local);
+    console.log(this.$local.current);
     this.$local.set(this.$local.current === Local.RU ? Local.ENG : Local.RU);
   }
 }
@@ -51,7 +53,7 @@ export default class Language extends Vue {
 .language {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
   &__label {
     font-size: 14px;
@@ -82,6 +84,7 @@ export default class Language extends Vue {
   }
 
   &--mobile {
+    justify-content: center;
     & .language__label {
       color: var(--Black);
       font-size: 16px;

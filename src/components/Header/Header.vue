@@ -112,7 +112,7 @@ export default class Header extends Vue {
 
   @include for-phone-only {
     align-items: center;
-    padding: 40px 15px;
+    padding: 40px 0;
     &__logo {
       width: 98px;
     }

@@ -6,7 +6,7 @@
       :array="advantages"/>
     <Team />
     <ProjectHome />
-    <Contacts />
+    <Contacts  id="contact"/>
     <Footer />
   </div>
 </template>
