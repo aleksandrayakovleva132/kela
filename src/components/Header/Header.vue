@@ -6,46 +6,16 @@
       <img v-else src="./images/kela.svg" width="98" alt="kela">
     </div>
     </router-link>
-    <div class="header__right-column" v-if="homeMenu && this.$layout.current === 'desktop'">
-      <span style="padding: 20px;
-      background-color: blue;
-      color: white;
-      position: absolute;
-      top: 100px; right: 300px;">
-        {{ isRus }}
-      </span>
-      <button @click="toggleLang">
-        {{ isRus }}
-      </button>
-      <ul class="header__menu">
-        <li class="header__menu-item">
-          <label for="eng"
-                 :class="{'header__menu-lang--active' : this.$language.current === 'eng' }">
-            EN
-            <input type="radio" id="eng" name="lang" :checked="isRus">
-          </label>
-          |
-          <label for="rus"
-                 :class="{'header__menu-lang--active' : this.$language.current === 'rus' }"
-          >
-            RU
-            <input type="radio" id="rus" name="lang"
-                   @click="this.$language.set(LanguageStatus.RUS)">
-          </label>
-        </li>
-        <li class="header__menu-item">Проекты</li>
-        <li class="header__menu-item">BIM</li>
-        <li class="header__menu-item header__menu-item--contact">Контакты</li>
-      </ul>
+<!--    v-if="homeMenu && this.$layout.current === 'desktop'-->
+    <div class="header__right-column" v-if="this.$layout.current === 'desktop'">
+      <Menu />
     </div>
-    <div class="header__menu" v-if="!homeMenu && this.$layout.current === 'desktop'">
+    <div v-else class="header__menu" @click="openMenu">
       <img  v-if="light" src="./images/menu-2.svg" width="39" alt="menu"/>
       <img v-else src="./images/menu.svg" width="39"  alt="menu"/>
     </div>
-    <div class="header__menu-mobile" v-if="homeMenu && this.$layout.current === 'phone'">
-      <div>
-        <Language />
-      </div>
+    <div  v-if="this.$menu.current === 'is-open'" class="header__mobile-menu">
+       <Menu is-mobile/>
     </div>
   </div>
 </template>
@@ -56,10 +26,12 @@ import {
   Prop,
   Vue,
 } from 'vue-property-decorator';
+import Menu from '@/components/Header/Menu.vue';
 import Language from '@/components/Header/Language.vue';
+import MenuStatus from '@/store/enums/MenuStatus';
 
 @Component({
-  components: { Language },
+  components: { Language, Menu },
 })
 export default class Header extends Vue {
   @Prop({
@@ -79,6 +51,13 @@ export default class Header extends Vue {
 
   toggleLang() {
     return this.isRus === !this.isRus;
+  }
+
+  private $menu: any;
+
+  openMenu(): void {
+    this.$menu.set(this.$menu.current === MenuStatus.IS_HIDDEN
+      ? MenuStatus.IS_OPEN : MenuStatus.IS_HIDDEN);
   }
 }
 </script>
@@ -136,6 +115,18 @@ export default class Header extends Vue {
     padding: 40px 15px;
     &__logo {
       width: 98px;
+    }
+
+    &__mobile-menu {
+      width: 80%;
+      height: 100vh;
+      background-color: var(--LightGray);
+      position: absolute;
+      top: 0;
+      right: -25px;
+      z-index: 100;
+      box-shadow: -5px 6px 17px 0px rgba(34, 60, 80, 0.1);
+      padding: 30px;
     }
   }
 }

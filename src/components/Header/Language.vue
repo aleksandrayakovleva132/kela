@@ -1,5 +1,5 @@
 <template>
-  <div class="switch language">
+  <div class="switch language" :class="{'language--mobile': isMobile}">
     <label>
       <div class="language__box">
         <span class="language__label" :class="{'language__label--active': isRuLocale}">RU</span>
@@ -30,16 +30,21 @@ export default class Language extends Vue {
  })
   readonly isRuLocale!: boolean;
 
- private $local: any;
+  @Prop({
+    type: Boolean,
+  })
+ readonly isMobile!: boolean;
 
- get localStatus(): boolean {
-   return this.$local.current === Local.RU;
- }
+  private $local: any;
 
- changeLang(): void {
-   console.log(this.$local);
-   this.$local.set(this.$local.current === Local.RU ? Local.ENG : Local.RU);
- }
+  get localStatus(): boolean {
+    return this.$local.current === Local.RU;
+  }
+
+  changeLang(): void {
+    console.log(this.$local);
+    this.$local.set(this.$local.current === Local.RU ? Local.ENG : Local.RU);
+  }
 }
 </script>
 <style lang="scss">
@@ -51,7 +56,7 @@ export default class Language extends Vue {
   &__label {
     font-size: 14px;
     color: var(--White);
-    font-weight: 400;
+    font-weight: 300;
 
     &--active {
       color: var(--Orange);
@@ -69,6 +74,25 @@ export default class Language extends Vue {
 
   &__box {
     display: flex;
+  }
+
+  &--mobile {
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &--mobile {
+    & .language__label {
+      color: var(--Black);
+      font-size: 16px;
+
+      &--active {
+        color: var(--Orange);
+      }
+    }
+    & .language__divider {
+      color: var(--Black);
+    }
   }
 }
 </style>

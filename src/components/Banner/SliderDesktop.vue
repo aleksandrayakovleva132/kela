@@ -1,6 +1,5 @@
 <template>
-  <div class="slider">
-    <Header class="slider__header" home-menu />
+  <div class="slider" >
     <!--    :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}"-->
     <div>
       <div class="slider__container"
@@ -77,6 +76,7 @@ export default class BannerDesktop extends Vue {
     z-index: 2;
     width: 88%;
     margin: 0 6%;
+    border: 1px solid green;
   }
 
   &__slide {

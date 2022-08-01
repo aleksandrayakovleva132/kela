@@ -1,5 +1,6 @@
 <template>
   <div class="banner">
+      <Header class="banner__header"/>
       <SliderMobile v-if = "this.$layout.current === 'phone'" />
       <SliderDesktop v-else />
   </div>
@@ -63,6 +64,12 @@ export default class Banner extends Vue {
   overflow: hidden;
   width: 100%;
   position: relative;
+
+  &__header {
+    position: absolute;
+    width: 88%;
+    left: 6%;
+  }
 
   @include for-phone-only {
     padding-bottom: 0;

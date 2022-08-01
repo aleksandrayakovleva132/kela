@@ -113,6 +113,7 @@ export default class Catalog extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
 .catalog {
   &__content {
     margin-left: 6%;
@@ -232,6 +233,17 @@ export default class Catalog extends Vue {
     font-size: 12px;
     line-height: 14px;
     margin-bottom: 7px;
+  }
+
+  @include for-phone-only {
+    &__list {
+      border: 1px solid purple;
+      flex-wrap: wrap;
+    }
+
+    &__list-item {
+      width: 100%;
+    }
   }
 }
 </style>

@@ -1,30 +1,33 @@
 <template>
-  <div class="slider">
-    <Header class="slider__header" home-menu />
-    <div>
-    <div class="slider__container"
-         :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
-      <div class="slider__slide" v-for="item in sliderItems"
-           :key="item.id"
-           :style="{'background-image': `url(${item.img})`}"
-           >
-      <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
-      <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
-        {{ item.name }}
-        <Link class="slider__link"/>
-      </p>
+  <div>
+<!--    <Header class="slider__header" home-menu />-->
+    <div class="slider">
+      <div>
+        <div class="slider__container"
+             :style="{'margin-left': '-' + (100 * currentSlideIndex) + 'vw'}">
+          <div class="slider__slide" v-for="item in sliderItems"
+               :key="item.id"
+               :style="{'background-image': `url(${item.img})`}"
+          >
+            <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
+            <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
+              {{ item.name }}
+              <Link class="slider__link"/>
+            </p>
+          </div>
+          <div class="slider__slide-mask"></div>
+          <SliderButtons class="slider__slide-buttons"
+                         @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+          <div  class="slider__counter">
+            <div class="slider__counter-item"
+                 :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
+                 v-for="slide in sliderItems" :key="slide.id"></div>
+          </div>
+          <div class="slider__decoration">
+            <Decoration size="418"/>
+          </div>
+        </div>
       </div>
-      <div class="slider__slide-mask"></div>
-      <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
-      <div  class="slider__counter">
-        <div class="slider__counter-item"
-             :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
-             v-for="slide in sliderItems" :key="slide.id"></div>
-      </div>
-      <div class="slider__decoration">
-        <Decoration size="418"/>
-      </div>
-    </div>
     </div>
   </div>
 </template>
