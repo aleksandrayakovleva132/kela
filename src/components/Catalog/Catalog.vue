@@ -6,19 +6,37 @@
         <ul class="catalog__list">
           <li class="catalog__list-item"
               :class="{'catalog__list-item--long': item.long }"
-              v-for="item in catalogList" :key="item.index" @click="showInfo(item.index)">
+              v-for="item in catalogList" :key="item.index">
              <div class="catalog__item-cover">
             <img :src="require(`./images/civil/mobile/${item.image}.jpg`)"
                  alt="item.image" height="100%"/>
-               <p class="catalog__title">
-                 <span class="catalog__label">{{ item.title }}</span>
+               <p class="catalog__title" @click="showInfo(item.index)">
+                 <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
+                 <span v-else class="catalog__label">{{ item.titleEn }}</span>
                  <button class="catalog__open-item">
                    <img class="catalog__open-arrow" src="./images/right.svg"/>
                  </button>
                </p>
              </div>
             <div v-if="activeIndex === item.index" class="catalog__item-content">
-               <div> test content</div>
+              <template v-if="rus">
+                <div class="catalog__item-paragraph"
+                     v-for="(description, index) in item.descriptionRu" :key="index">
+                  {{ description }}
+                </div>
+              </template>
+              <template v-else>
+                <div class="catalog__item-paragraph"
+                     v-for="(description, index) in item.descriptionEn" :key="index">
+                  {{ description }}
+                </div>
+              </template>
+               <div>
+                 <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
+                   <img :src="require(`./images/civil/mobile/${img}.jpg`)" width="100%"/>
+                 </div>
+               </div>
+              <button class="catalog__show-more" @click="activeIndex = 0"> Cвернуть </button>
             </div>
           </li>
         </ul>
@@ -41,6 +59,7 @@ import Header from '@/components/Header/Header.vue';
 import { catalogTypes } from '@/components/Catalog/types';
 import Link from '@/components/Link/Link.vue';
 import Footer from '@/components/Footer/Footer.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: { Footer, Link, Header },
@@ -51,25 +70,34 @@ export default class Catalog extends Vue {
     {
       index: 1,
       image: 'ferma',
-      title: 'Сельскохозяйственный рынок',
+      titleRu: 'Сельскохозяйственный рынок',
+      titleEn: 'Greenmarket',
+      descriptionRu: ['Сельскохозяйственный рынок. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
+      descriptionEn: ['Greenmarket. Saint Petersburg, 2011.'],
       date: '20.03.19',
       long: true,
-      content: '',
       open: true,
+      images: ['ferma-1', 'ferma-2', 'ferma-3', 'ferma-4'],
     },
     {
       index: 2,
-      image: 'ferma',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
+      image: 'parking',
+      titleRu: 'Многоэтажный паркинг',
+      titleEn: 'Multi-storey car park',
+      descriptionRu: ['Многоэтажный паркинг. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
+      descriptionEn: ['Multi-storey car park. Saint Petersburg, 2011.'],
+      images: ['parking-1', 'parking-2', 'parking-3'],
       long: false,
       open: false,
     },
     {
       index: 3,
-      image: 'ferma',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
+      image: 'lesnaya',
+      titleRu: 'Жилой комплекс "Life Лесная"',
+      titleEn: 'Residential complex “Life Lesnaya”',
+      descriptionRu: ['Жилой комплекс "Life Лесная". Разработка раздела КЖ. Санкт-Петербург, 2017.'],
+      descriptionEn: ['Residential complex “Life Lesnaya”. St. Petersburg, 2017.'],
+      images: ['lesnaya-1'],
       long: false,
       open: false,
     },
@@ -86,7 +114,12 @@ export default class Catalog extends Vue {
 
   showInfo(index: null): any {
     this.activeIndex = index;
-    this.isOpen = true;
+  }
+
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
   }
 }
 </script>
@@ -162,7 +195,7 @@ export default class Catalog extends Vue {
     fill: white;
   }
   &__show-more {
-    width: 240px;
+    width: 100%;
     height: 38px;
     border-radius: 8px;
     display: flex;
@@ -172,7 +205,7 @@ export default class Catalog extends Vue {
     font-weight: 300;
     font-size: 15px;
     text-transform: uppercase;
-    margin: 0 auto 70px;
+    margin: 0 auto;
     border: 1px solid var(--Orange);
   }
 
@@ -250,12 +283,13 @@ export default class Catalog extends Vue {
 
     &__item-content {
       display: block;
-      padding: 15px 8px 30px 8px;
+      padding: 15px 0 30px 0;
     }
 
     &__item-cover {
       height: 240px;
       position: relative;
+      box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
       &:after {
         content: '';
         display: block;
@@ -270,6 +304,16 @@ export default class Catalog extends Vue {
 
     &__label {
       width: 80%;
+    }
+
+    &__item-paragraph {
+      line-height: 22px;
+      margin-bottom: 24px;
+    }
+
+    &__item-img {
+      margin-bottom: 20px;
+      box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
     }
   }
 }

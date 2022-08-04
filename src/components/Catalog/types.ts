@@ -1,9 +1,12 @@
 export type catalogTypes = {
   index?: number,
   image?: string,
-  title?: string,
+  titleRu?: string,
+  titleEn?: string,
   date?: string,
   long?: boolean,
-  content?: string,
+  images?: object,
+  descriptionRu?: object,
+  descriptionEn?: object,
   open?: boolean,
 }
