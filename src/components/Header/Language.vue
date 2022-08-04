@@ -1,5 +1,8 @@
 <template>
-  <div class="switch language" :class="{'language--mobile': isMobile}">
+  <div class="switch language" :class="{
+    'language--mobile': isMobile,
+    'language--light': isLight,
+  }">
     <label>
       <div class="language__box">
         <span class="language__label"
@@ -36,6 +39,11 @@ export default class Language extends Vue {
     type: Boolean,
   })
  readonly isMobile!: boolean;
+
+  @Prop({
+    type: Boolean,
+  })
+  readonly isLight!: boolean;
 
   private $local: any;
 
@@ -93,6 +101,19 @@ export default class Language extends Vue {
         color: var(--Orange);
       }
     }
+    & .language__divider {
+      color: var(--Black);
+    }
+  }
+  &--light {
+    & .language__label {
+      color: var(--Black);
+
+      &--active {
+        color: var(--Orange);
+      }
+    }
+
     & .language__divider {
       color: var(--Black);
     }

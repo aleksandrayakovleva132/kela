@@ -1,11 +1,16 @@
 <template>
-  <div class="menu" >
+  <div class="menu" :class="{
+    'menu--horizontal': isHorizontal,
+    'menu--mobile': isMobile
+  }" >
     <div v-if="isMobile" class="menu__close"  @click="closeMenu">
       <img src="../../assets/images/cross.svg" alt="" width="22">
     </div>
-    <Language class="menu__lang" :is-mobile="isMobile" />
-    <ul class="menu__list" :class="{'menu__list--mobile': isMobile}">
-      <li class="menu__item" v-for="(item, index) in menuList" :key="index" @click="closeMenu">
+    <Language class="menu__lang" :is-mobile="isMobile" :is-light="isLight"/>
+    <ul v-if="this.$layout.current === 'mobile'"
+        class="menu__list" :class="{'menu__list--mobile': isMobile}">
+      <li class="menu__item" v-for="(item, index) in menuListMobile"
+          :key="index" @click="closeMenu">
         <router-link v-if="rus" :to="item.link">
           {{ item.rus }}
         </router-link>
@@ -13,12 +18,18 @@
           {{ item.eng }}
         </router-link>
       </li>
-<!--      <li class="menu__item">-->
-<!--        BIM-->
-<!--      </li>-->
-<!--      <li class="menu__item menu__item&#45;&#45;contact">-->
-<!--        Контакты-->
-<!--      </li>-->
+    </ul>
+    <ul v-else
+        class="menu__list">
+      <li class="menu__item" v-for="(item, index) in menuListDesktop"
+          :key="index" @click="closeMenu">
+        <router-link v-if="rus" :to="item.link">
+          {{ item.rus }}
+        </router-link>
+        <router-link v-else :to="item.link">
+          {{ item.eng }}
+        </router-link>
+      </li>
     </ul>
   </div>
 </template>
@@ -42,6 +53,20 @@ export default class Menu extends Vue {
   })
   readonly isMobile!: boolean;
 
+  @Prop({
+    type: Boolean,
+  })
+  readonly isHorizontal!: boolean;
+
+  @Prop({
+    type: Boolean,
+  })
+  readonly isLight!: boolean;
+
+  private $menu: any;
+
+  private $local: any;
+
   closeMenu(): void {
     this.$menu.set(this.$menu.current === MenuStatus.IS_OPEN
       ? MenuStatus.IS_HIDDEN : MenuStatus.IS_OPEN);
@@ -51,26 +76,44 @@ export default class Menu extends Vue {
     return this.$local.current === Local.RU;
   }
 
-  menuList: menuTypes[] = [
+  menuListMobile: menuTypes[] = [
     {
       eng: 'Industrial engineering',
       rus: 'Промышленное строительство',
-      link: '/catalog',
+      link: { path: '/catalog' },
     },
     {
       eng: 'Civil engineering',
       rus: 'Гражданское строительство',
-      link: '/catalog',
+      link: { path: '/catalog' },
     },
     {
       eng: 'BIM',
       rus: 'BIM',
-      link: '/catalog',
+      link: { path: '/catalog' },
     },
     {
       eng: 'Contacts',
       rus: 'Контакты',
-      link: '/#contact',
+      link: { path: '/', hash: '#contact' },
+    },
+  ];
+
+  menuListDesktop: menuTypes[] = [
+    {
+      eng: 'Projects',
+      rus: 'Проекты',
+      link: { path: '/', hash: '#projects' },
+    },
+    {
+      eng: 'BIM',
+      rus: 'BIM',
+      link: { path: '/', hash: '#bim' },
+    },
+    {
+      eng: 'Contacts',
+      rus: 'Контакты',
+      link: { path: '/', hash: '#contactы' },
     },
   ];
 }
@@ -137,6 +180,31 @@ export default class Menu extends Vue {
       &::before {
         display: none;
       }
+    }
+  }
+
+  &--mobile {
+    & .menu__list {
+      text-align: center;
+      font-size: 16px;
+    }
+  }
+
+  &--horizontal {
+    display: flex;
+    align-items: center;
+
+    & .menu__list {
+      display: flex;
+    }
+    & .menu__item {
+      margin-bottom: 0;
+      margin-left: 30px;
+      line-height: 20px;
+    }
+
+    & .menu__lang {
+      margin-bottom: 0;
     }
   }
 }

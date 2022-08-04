@@ -1,31 +1,33 @@
 <template>
   <div class="catalog">
     <div class="catalog__content">
-      <Header light />
+      <Header light is-horizontal />
       <div class="catalog__box-list">
         <ul class="catalog__list">
           <li class="catalog__list-item"
               :class="{'catalog__list-item--long': item.long }"
-              v-for="item in catalogList" :key="item.index">
-            <router-link to="/project-item">
-             <div>
-            <img :src="require(`./images/${item.image}.png`)" alt="item.image" width="100%"/>
+              v-for="item in catalogList" :key="item.index" @click="showInfo(item.index)">
+             <div class="catalog__item-cover">
+            <img :src="require(`./images/civil/mobile/${item.image}.jpg`)"
+                 alt="item.image" height="100%"/>
+               <p class="catalog__title">
+                 <span class="catalog__label">{{ item.title }}</span>
+                 <button class="catalog__open-item">
+                   <img class="catalog__open-arrow" src="./images/right.svg"/>
+                 </button>
+               </p>
              </div>
-            <p class="catalog__title">
-              <span>Котедж на крутом склоне</span>
-              <span>
-                <Link class="catalog__arrow" label=""/>
-              </span>
-            </p>
-          </router-link>
+            <div v-if="activeIndex === item.index" class="catalog__item-content">
+               <div> test content</div>
+            </div>
           </li>
         </ul>
-        <div class="catalog__bottom">
-          <span class="catalog__progress-label"> 9 из 25</span>
-          <div class="catalog__progress">
-          </div>
-          <button class="catalog__show-more">Показать еще  <Link /> </button>
-        </div>
+<!--        <div class="catalog__bottom">-->
+<!--          <span class="catalog__progress-label"> 9 из 25</span>-->
+<!--          <div class="catalog__progress">-->
+<!--          </div>-->
+<!--          <button class="catalog__show-more">Показать еще  <Link /> </button>-->
+<!--        </div>-->
       </div>
       <Footer />
     </div>
@@ -33,7 +35,7 @@
 </template>
 <script lang="ts">
 import {
-  Component, Vue,
+  Component, Vue, Prop,
 } from 'vue-property-decorator';
 import Header from '@/components/Header/Header.vue';
 import { catalogTypes } from '@/components/Catalog/types';
@@ -48,68 +50,44 @@ export default class Catalog extends Vue {
   catalogList: catalogTypes[] = [
     {
       index: 1,
-      image: 'pic-1',
-      title: 'Котедж на крутом склоне',
+      image: 'ferma',
+      title: 'Сельскохозяйственный рынок',
       date: '20.03.19',
       long: true,
+      content: '',
+      open: true,
     },
     {
       index: 2,
-      image: 'pic-2',
+      image: 'ferma',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
       long: false,
+      open: false,
     },
     {
       index: 3,
-      image: 'pic-2',
+      image: 'ferma',
       title: 'Котедж на крутом склоне',
       date: '20.03.19',
       long: false,
-    },
-    {
-      index: 4,
-      image: 'pic-2',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: false,
-    },
-    {
-      index: 5,
-      image: 'pic-2',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: false,
-    },
-    {
-      index: 6,
-      image: 'pic-1',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: true,
-    },
-    {
-      index: 7,
-      image: 'pic-1',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: true,
-    },
-    {
-      index: 8,
-      image: 'pic-2',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: false,
-    },
-    {
-      index: 9,
-      image: 'pic-2',
-      title: 'Котедж на крутом склоне',
-      date: '20.03.19',
-      long: false,
+      open: false,
     },
   ];
+
+  // @Prop({
+  //   type: Boolean,
+  // })
+  // private isOpen?: boolean;
+
+  isOpen = false;
+
+  activeIndex = null;
+
+  showInfo(index: null): any {
+    this.activeIndex = index;
+    this.isOpen = true;
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -156,7 +134,6 @@ export default class Catalog extends Vue {
     margin: 0 0 40px 0;
     color: var(--Black);
     position: relative;
-    height: 400px;
     width: calc(30% - 40px);
     overflow: hidden;
 
@@ -235,14 +212,64 @@ export default class Catalog extends Vue {
     margin-bottom: 7px;
   }
 
+  &__open-item {
+    display: none;
+  }
+
+  &__item-content {
+    display: none;
+  }
+
   @include for-phone-only {
     &__list {
-      border: 1px solid purple;
       flex-wrap: wrap;
     }
 
     &__list-item {
       width: 100%;
+      &:after {
+        display: none;
+      }
+    }
+
+    &__title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    &__open-item {
+      display: block;
+      position: absolute;
+      border: 1px solid var(--White);
+      background: transparent;
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      bottom: 10px;
+      right: 10px;
+    }
+
+    &__item-content {
+      display: block;
+      padding: 15px 8px 30px 8px;
+    }
+
+    &__item-cover {
+      height: 240px;
+      position: relative;
+      &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: 160px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    &__label {
+      width: 80%;
     }
   }
 }

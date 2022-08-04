@@ -8,15 +8,16 @@
     </router-link>
 <!--    v-if="homeMenu && this.$layout.current === 'desktop'-->
     <div class="header__right-column" v-if="this.$layout.current === 'desktop'">
-      <Menu />
+      <Menu :is-horizontal="isHorizontal" :is-light="light" />
     </div>
     <div v-else class="header__menu" @click="openMenu">
       <img  v-if="light" src="./images/menu-2.svg" width="39" alt="menu"/>
       <img v-else src="./images/menu.svg" width="39"  alt="menu"/>
     </div>
-    <div  v-if="this.$menu.current === 'is-open'" class="header__mobile-menu">
-       <Menu is-mobile/>
-    </div>
+      <div  v-if="this.$menu.current === 'is-open' && this.$layout.current === 'phone'"
+            class="header__mobile-menu">
+        <Menu is-mobile />
+      </div>
   </div>
 </template>
 
@@ -49,13 +50,22 @@ export default class Header extends Vue {
   })
   readonly isRus!: boolean;
 
+  @Prop({
+    type: Boolean,
+  })
+  readonly isHorizontal!: boolean;
+
   toggleLang() {
     return this.isRus === !this.isRus;
   }
 
   private $menu: any;
 
+  private $layout: any;
+
   openMenu(): void {
+    console.log(this.$menu.current);
+    console.log(this.$layout.current);
     this.$menu.set(this.$menu.current === MenuStatus.IS_HIDDEN
       ? MenuStatus.IS_OPEN : MenuStatus.IS_HIDDEN);
   }

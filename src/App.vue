@@ -1,6 +1,7 @@
 <template>
   <div id="app" :class="{'app--open-menu': this.$menu.current === 'is-open' }">
-    <div v-if="this.$menu.current === 'is-open'" class="app__mask"
+    <div v-if="this.$menu.current === 'is-open' && this.$layout.current === 'phone'"
+         class="app__mask"
          @click="closeMenu"></div>
     <router-view/>
   </div>
@@ -16,6 +17,8 @@ import MenuStatus from '@/store/enums/MenuStatus';
   components: {},
 })
 export default class App extends Vue {
+  private $menu: any;
+
   closeMenu(): void {
     this.$menu.set(this.$menu.current === MenuStatus.IS_OPEN
       ? MenuStatus.IS_HIDDEN : MenuStatus.IS_OPEN);
@@ -31,8 +34,8 @@ export default class App extends Vue {
 .app {
   &--open-menu {
     position: relative;
-    overflow: hidden;
-    height: 100vh;
+    //overflow: hidden;
+    //height: 100vh;
     &::after {
       content: '';
       display: block;
