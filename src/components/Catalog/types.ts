@@ -6,6 +6,7 @@ export type catalogTypes = {
   date?: string,
   long?: boolean,
   images?: object,
+  bigImage?: string,
   descriptionRu?: object,
   descriptionEn?: object,
   open?: boolean,

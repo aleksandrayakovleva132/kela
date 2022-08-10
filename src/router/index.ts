@@ -20,7 +20,13 @@ const routes: Array<RouteConfig> = [
   },
   {
     path: '/catalog',
-    name: 'Catalog',
+    name: 'catalog',
+    component: () => import('../components/Catalog/Catalog.vue'),
+  },
+  {
+    path: '/catalog/:itemId(\\d+)',
+    props: true,
+    name: 'catalogItem',
     component: () => import('../components/Catalog/Catalog.vue'),
   },
   {

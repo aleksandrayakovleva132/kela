@@ -2,53 +2,95 @@
   <div class="catalog">
     <div class="catalog__content">
       <Header light is-horizontal />
+      <div style="background-color: orange;">
+        номер стр: {{ $route.params.itemId }}<br>
+        name стр: {{ $route.name }}
+      </div>
       <div class="catalog__box-list">
         <ul class="catalog__list">
           <li class="catalog__list-item"
-              :class="{'catalog__list-item--long': item.long }"
-              v-for="item in catalogList" :key="item.index">
+              :class="{
+            'catalog__list-item--long': item.long,
+            'catalog__list-item--open': item.index === activeIndex,
+          }"
+              v-for="item in catalogList" :key="item.index"
+          >
              <div class="catalog__item-cover">
-            <img :src="require(`./images/civil/mobile/${item.image}.jpg`)"
-                 alt="item.image" height="100%"/>
+               <template v-if="mobile" >
+                 <img :src="require(`./images/civil/mobile/${item.image}.jpg`)"
+                      alt="item.image" height="100%"
+                 />
+               </template>
+               <template v-else>
+                 <img :src="require(`./images/civil/desktop/${item.image}.jpg`)"
+                      alt="item.image" width="100%"/>
+               </template>
                <p class="catalog__title" @click="showInfo(item.index)">
                  <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
-                 <span v-else class="catalog__label">{{ item.titleEn }}</span>
-                 <button class="catalog__open-item">
+                 <span v-else class="catalog__label">
+                   {{ item.titleEn }}
+                 </span>
+                 <button v-if="!mobile" class="catalog__open-item">
+                   <img src="./images/arrow.svg"/>
+                 </button>
+                 <button v-else class="catalog__open-item">
                    <img class="catalog__open-arrow" src="./images/right.svg"/>
                  </button>
                </p>
              </div>
-            <div v-if="activeIndex === item.index" class="catalog__item-content">
-              <template v-if="rus">
-                <div class="catalog__item-paragraph"
-                     v-for="(description, index) in item.descriptionRu" :key="index">
-                  {{ description }}
+            <div v-if="activeIndex === item.index && mobile" class="catalog__item-content">
+              <div>
+                <template v-if="rus">
+                  <div class="catalog__item-paragraph"
+                       v-for="(description, index) in item.descriptionRu" :key="index">
+                    {{ description }}
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="catalog__item-paragraph"
+                       v-for="(description, index) in item.descriptionEn" :key="index">
+                    {{ description }}
+                  </div>
+                </template>
+                <div>
+                  <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
+                    <img :src="require(`./images/civil/mobile/${img}.jpg`)" width="100%"/>
+                  </div>
                 </div>
-              </template>
-              <template v-else>
-                <div class="catalog__item-paragraph"
-                     v-for="(description, index) in item.descriptionEn" :key="index">
-                  {{ description }}
-                </div>
-              </template>
-               <div>
-                 <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                   <img :src="require(`./images/civil/mobile/${img}.jpg`)" width="100%"/>
-                 </div>
-               </div>
-              <button class="catalog__show-more" @click="activeIndex = 0"> Cвернуть </button>
+                <button class="catalog__show-more" @click="activeIndex = 0"> Cвернуть </button>
+              </div>
             </div>
           </li>
         </ul>
-<!--        <div class="catalog__bottom">-->
-<!--          <span class="catalog__progress-label"> 9 из 25</span>-->
-<!--          <div class="catalog__progress">-->
-<!--          </div>-->
-<!--          <button class="catalog__show-more">Показать еще  <Link /> </button>-->
-<!--        </div>-->
+        <div class="catalog__item-modal"
+             v-if="(activeIndex !== null && !mobile) && $route.params.itemId !== ''" >
+          <button class="catalog__modal-close" @click="activeIndex = null"></button>
+          <span v-for="item in catalogList" :key="item.index">
+            <template v-if="activeIndex === item.index">
+            <img :src="require(`./images/civil/desktop/${item.bigImage}.jpg`)"
+                        width="100%"/>
+             <template v-if="rus">
+                <div class="catalog__modal-title"> {{ item.titleRu }} </div>
+                  <div class="catalog__item-paragraph"
+                       v-for="(description, index) in item.descriptionRu" :key="index">
+                    {{ description }}
+                  </div>
+                </template>
+                <template v-else>
+                  <div class="catalog__modal-title"> {{ item.titleEn }} </div>
+                  <div class="catalog__item-paragraph"
+                       v-for="(description, index) in item.descriptionEn" :key="index">
+                    {{ description }}
+                  </div>
+                </template>
+            </template>
+          </span>
+        </div>
+        <div class="catalog__item-mask" v-if="activeIndex !== null &&  !mobile"
+             @click="activeIndex = null"></div>
       </div>
-      <Footer />
     </div>
+    <Footer class="catalog__footer" />
   </div>
 </template>
 <script lang="ts">
@@ -60,6 +102,7 @@ import { catalogTypes } from '@/components/Catalog/types';
 import Link from '@/components/Link/Link.vue';
 import Footer from '@/components/Footer/Footer.vue';
 import Local from '@/store/enums/Local';
+import DeviceLayout from '@/utils/DeviceLayout';
 
 @Component({
   components: { Footer, Link, Header },
@@ -78,6 +121,7 @@ export default class Catalog extends Vue {
       long: true,
       open: true,
       images: ['ferma-1', 'ferma-2', 'ferma-3', 'ferma-4'],
+      bigImage: 'ferma-1',
     },
     {
       index: 2,
@@ -89,6 +133,7 @@ export default class Catalog extends Vue {
       images: ['parking-1', 'parking-2', 'parking-3'],
       long: false,
       open: false,
+      bigImage: 'ferma-1',
     },
     {
       index: 3,
@@ -100,32 +145,57 @@ export default class Catalog extends Vue {
       images: ['lesnaya-1'],
       long: false,
       open: false,
+      bigImage: 'ferma-1',
     },
   ];
 
-  // @Prop({
-  //   type: Boolean,
-  // })
-  // private isOpen?: boolean;
-
   isOpen = false;
 
-  activeIndex = null;
+  activeIndex = 0;
 
-  showInfo(index: null): any {
+  activeIdString = 0;
+
+  // eslint-disable-next-line consistent-return
+  getId() {
+    if (this.activeIndex !== null) {
+      console.log(this.activeIndex, 'число');
+    }
+    console.log(this.activeIndex, 'null');
+  }
+
+  getPageId(id: string): object {
+    return this.$router.push({
+      name: 'catalogItem',
+      params: { itemId: id },
+    });
+  }
+
+  // showPageId() {
+  //   return this.getPageId === this.activeIndex;
+  // }
+
+  showInfo(index: number): any {
     this.activeIndex = index;
+    this.getPageId(index.toString());
   }
 
   private $local: any;
 
+  private $layout: any;
+
   get rus(): boolean {
     return this.$local.current === Local.RU;
+  }
+
+  get mobile(): boolean {
+    return this.$layout.current === DeviceLayout.PHONE;
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
 .catalog {
+  padding-bottom: 120px;
   &__content {
     margin-left: 6%;
     margin-right: 6%;
@@ -246,11 +316,63 @@ export default class Catalog extends Vue {
   }
 
   &__open-item {
-    display: none;
+    display: block;
+    border: none;
+    padding-left: 10px;
+    background: transparent;
   }
 
-  &__item-content {
-    display: none;
+  &__item-modal {
+    width: 1000px;
+    min-height: 668px;
+    background-color: var(--White);
+    box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 500px);
+    z-index: 5;
+    padding: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__modal-close {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -8px;
+    right: -46px;
+    background-image: url("../../assets/images/cross.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 24px;
+    border: none;
+    background-color: transparent;
+  }
+
+  &__modal-title {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 500;
+    margin: 12px 0;
+  }
+
+  &__item-mask {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 3;
+  }
+
+  &__footer {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
   }
 
   @include for-phone-only {
@@ -263,12 +385,16 @@ export default class Catalog extends Vue {
       &:after {
         display: none;
       }
+      &--open {
+        box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+        z-index: 3;
+
+        & .catalog__item-content {
+          padding: 10px;
+        }
+      }
     }
 
-    &__title {
-      font-size: 18px;
-      line-height: 24px;
-    }
     &__open-item {
       display: block;
       position: absolute;
@@ -281,10 +407,15 @@ export default class Catalog extends Vue {
       right: 10px;
     }
 
-    &__item-content {
-      display: block;
-      padding: 15px 0 30px 0;
-    }
+    display: block;
+    //position: absolute;
+    border: 1px solid var(--White);
+    background-color: var(--LightGray);
+    //width: 30px;
+    //height: 30px;
+    border-radius: 5px;
+    bottom: 10px;
+    right: 10px;
 
     &__item-cover {
       height: 240px;
@@ -298,7 +429,7 @@ export default class Catalog extends Vue {
         position: absolute;
         left: 0;
         bottom: 0;
-        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 60%);
       }
     }
 
@@ -313,8 +444,20 @@ export default class Catalog extends Vue {
 
     &__item-img {
       margin-bottom: 20px;
-      box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+    }
+
+    &__item-content {
+      background-color: var(--White);
     }
   }
+
+    &__title {
+      font-size: 18px;
+      line-height: 24px;
+    }
+    &__item-content {
+      display: block;
+      padding: 15px 0 30px 0;
+    }
 }
 </style>
