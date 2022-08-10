@@ -63,10 +63,12 @@
           </li>
         </ul>
         <div class="catalog__item-modal"
-             v-if="(activeIndex !== null && !mobile) && $route.params.itemId !== ''" >
-          <button class="catalog__modal-close" @click="activeIndex = null"></button>
+             v-if="activeIndex !== null && !mobile
+              && $route.params.itemId !== ''"
+        >
+          <button class="catalog__modal-close" @click="activeIndex = null "></button>
           <span v-for="item in catalogList" :key="item.index">
-            <template v-if="activeIndex === item.index">
+            <template v-if=" item.index === $route.params.itemId || activeIndex === item.index">
             <img :src="require(`./images/civil/desktop/${item.bigImage}.jpg`)"
                         width="100%"/>
              <template v-if="rus">
@@ -86,8 +88,9 @@
             </template>
           </span>
         </div>
-        <div class="catalog__item-mask" v-if="activeIndex !== null &&  !mobile"
-             @click="activeIndex = null"></div>
+        <div class="catalog__item-mask"
+             v-if="activeIndex !== null &&  !mobile && $route.name !== 'catalog'"
+             @click="activeIndex = null "></div>
       </div>
     </div>
     <Footer class="catalog__footer" />
