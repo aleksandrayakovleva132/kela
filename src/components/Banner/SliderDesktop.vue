@@ -45,9 +45,9 @@ import Decoration from '@/components/Decoration/Decoration.vue';
 })
 export default class BannerDesktop extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 1, name: 'Котедж на крутом склоне', img: '4.jpg' },
-    { id: 2, name: 'Метро', img: '2.jpg' },
-    { id: 3, name: 'Жилой комплекс', img: '3.jpg' },
+    { id: 1, name: 'Котедж на крутом склоне', img: '7.jpg' },
+    { id: 2, name: 'Метро', img: '7.jpg' },
+    { id: 3, name: 'Жилой комплекс', img: '7.jpg' },
     // { id: 3, name: 'img3', img: '3.jpg' },
   ];
 
@@ -142,7 +142,7 @@ export default class BannerDesktop extends Vue {
     margin: 0;
     position: absolute;
     z-index: 5;
-    bottom: 20vh;
+    bottom: 10vh;
     width: 50%;
     left: 6%;
     font-size: 64px;

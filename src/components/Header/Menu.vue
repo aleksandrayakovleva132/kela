@@ -128,7 +128,7 @@ export default class Menu extends Vue {
     line-height: 16px;
     text-transform: uppercase;
     text-align: right;
-    color: var(--Black);
+    color: var(--White);
     position: relative;
   }
 
