@@ -10,10 +10,11 @@
                :style="{'background-image': `url(${item.img})`}"
           >
             <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
-            <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
-              {{ item.name }}
-              <Link class="slider__link"/>
-            </p>
+              <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
+                 @click="openItem(item.id)">
+                {{ item.name }}
+                <Link class="slider__link"/>
+              </p>
           </div>
           <div class="slider__slide-mask"></div>
           <SliderButtons class="slider__slide-buttons"
@@ -69,6 +70,13 @@ export default class BannerMobile extends Vue {
     }
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
+  }
+
+  openItem(id: string) {
+    return this.$router.push({
+      name: 'catalogItem',
+      params: { itemId: id },
+    });
   }
 }
 </script>

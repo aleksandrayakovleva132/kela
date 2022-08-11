@@ -9,7 +9,8 @@
              :style="{'background-image': `url(${item.img})`}"
         >
           <img :src="require('./images/desktop/' + item.img)" width="100%" height="auto"/>
-          <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
+          <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
+             @click="openItem(item.id)">
             {{ item.name }}
             <Link class="slider__link"/>
           </p>
@@ -66,6 +67,13 @@ export default class BannerDesktop extends Vue {
     }
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
+  }
+
+  openItem(id: string) {
+    return this.$router.push({
+      name: 'catalogItem',
+      params: { itemId: id },
+    });
   }
 }
 </script>

@@ -2,10 +2,6 @@
   <div class="catalog">
     <div class="catalog__content">
       <Header light is-horizontal />
-      <div style="background-color: orange;">
-        номер стр: {{ $route.params.itemId }}<br>
-        name стр: {{ $route.name }}
-      </div>
       <div class="catalog__box-list">
         <ul class="catalog__list">
           <li class="catalog__list-item"
@@ -38,7 +34,10 @@
                  </button>
                </p>
              </div>
-            <div v-if="activeIndex === item.index && mobile" class="catalog__item-content">
+            <div v-if="activeIndex === item.index && mobile ||
+                        item.index === Number($route.params.itemId)
+                        && mobile && activeIndex !== null"
+                 class="catalog__item-content">
               <div>
                 <template v-if="rus">
                   <div class="catalog__item-paragraph"
@@ -57,12 +56,12 @@
                     <img :src="require(`./images/civil/mobile/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
-                <button class="catalog__show-more" @click="activeIndex = 0"> Cвернуть </button>
+                <button class="catalog__show-more" @click="activeIndex = null"> Cвернуть </button>
               </div>
             </div>
           </li>
         </ul>
-        <div class="catalog__item-modal" style="border: 3px solid purple;"
+        <div class="catalog__item-modal"
              v-if="activeIndex !== null && !mobile
               && $route.name !== 'catalog'"
         >
@@ -108,50 +107,15 @@ import Footer from '@/components/Footer/Footer.vue';
 import Local from '@/store/enums/Local';
 import DeviceLayout from '@/utils/DeviceLayout';
 
+// eslint-disable-next-line import/extensions
+import data from '@/data/data.ts';
+
 @Component({
   components: { Footer, Link, Header },
 })
 
 export default class Catalog extends Vue {
-  catalogList: catalogTypes[] = [
-    {
-      index: 1,
-      image: 'ferma',
-      titleRu: 'Сельскохозяйственный рынок',
-      titleEn: 'Greenmarket',
-      descriptionRu: ['Сельскохозяйственный рынок. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
-      descriptionEn: ['Greenmarket. Saint Petersburg, 2011.'],
-      date: '20.03.19',
-      long: true,
-      open: true,
-      images: ['ferma-1', 'ferma-2', 'ferma-3', 'ferma-4'],
-      bigImage: 'ferma-1',
-    },
-    {
-      index: 2,
-      image: 'parking',
-      titleRu: 'Многоэтажный паркинг',
-      titleEn: 'Multi-storey car park',
-      descriptionRu: ['Многоэтажный паркинг. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
-      descriptionEn: ['Multi-storey car park. Saint Petersburg, 2011.'],
-      images: ['parking-1', 'parking-2', 'parking-3'],
-      long: false,
-      open: false,
-      bigImage: 'ferma-1',
-    },
-    {
-      index: 3,
-      image: 'lesnaya',
-      titleRu: 'Жилой комплекс "Life Лесная"',
-      titleEn: 'Residential complex “Life Lesnaya”',
-      descriptionRu: ['Жилой комплекс "Life Лесная". Разработка раздела КЖ. Санкт-Петербург, 2017.'],
-      descriptionEn: ['Residential complex “Life Lesnaya”. St. Petersburg, 2017.'],
-      images: ['lesnaya-1'],
-      long: false,
-      open: false,
-      bigImage: 'ferma-1',
-    },
-  ];
+  catalogList: catalogTypes[] = data.projects;
 
   isOpen = false;
 
@@ -331,6 +295,7 @@ export default class Catalog extends Vue {
     display: flex;
     align-items: center;
     justify-content: center;
+    //border: 2px solid var(--Orange);
   }
 
   &__modal-close {
