@@ -62,13 +62,14 @@
             </div>
           </li>
         </ul>
-        <div class="catalog__item-modal"
+        <div class="catalog__item-modal" style="border: 3px solid purple;"
              v-if="activeIndex !== null && !mobile
-              && $route.params.itemId !== ''"
+              && $route.name !== 'catalog'"
         >
           <button class="catalog__modal-close" @click="activeIndex = null "></button>
           <span v-for="item in catalogList" :key="item.index">
-            <template v-if=" item.index === $route.params.itemId || activeIndex === item.index">
+            <template v-if="activeIndex === item.index ||
+                            item.index === Number($route.params.itemId)">
             <img :src="require(`./images/civil/desktop/${item.bigImage}.jpg`)"
                         width="100%"/>
              <template v-if="rus">
@@ -157,14 +158,6 @@ export default class Catalog extends Vue {
   activeIndex = 0;
 
   activeIdString = 0;
-
-  // eslint-disable-next-line consistent-return
-  getId() {
-    if (this.activeIndex !== null) {
-      console.log(this.activeIndex, 'число');
-    }
-    console.log(this.activeIndex, 'null');
-  }
 
   getPageId(id: string): object {
     return this.$router.push({
