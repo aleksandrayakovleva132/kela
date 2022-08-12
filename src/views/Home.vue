@@ -4,7 +4,7 @@
     <About />
     <Advantages class="home__advantages"
       :array="advantages"/>
-    <Team />
+<!--    <Team />-->
     <ProjectHome id="projects" />
     <Contacts  id="contact"/>
     <Footer />

@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-      <Header class="banner__header"/>
+      <Header class="banner__header" />
       <SliderMobile v-if = "this.$layout.current === 'phone'" />
       <SliderDesktop v-else />
   </div>

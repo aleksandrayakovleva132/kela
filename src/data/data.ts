@@ -1,5 +1,5 @@
 export default {
-  projects: [
+  civil: [
     {
       index: 1,
       image: 'ferma',
@@ -36,6 +36,34 @@ export default {
       long: false,
       open: false,
       bigImage: 'ferma-1',
+    },
+  ],
+  bim: [
+    {
+      index: 1,
+      image: '01',
+      titleRu: 'BIM',
+      titleEn: 'bim',
+      descriptionRu: ['Bim descr'],
+      descriptionEn: ['Bim descr'],
+      long: true,
+      open: true,
+      images: ['01'],
+      bigImage: '01',
+    },
+  ],
+  industry: [
+    {
+      index: 1,
+      image: '1',
+      titleRu: 'industry',
+      titleEn: 'industry',
+      descriptionRu: ['industry descr'],
+      descriptionEn: ['industry descr'],
+      long: true,
+      open: true,
+      images: ['1'],
+      bigImage: '1',
     },
   ],
 };

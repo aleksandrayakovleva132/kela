@@ -1,7 +1,7 @@
 <template>
   <div class="catalog">
     <div class="catalog__content">
-      <Header light is-horizontal />
+      <Header light-menu horizontal-menu inside-menu/>
       <div class="catalog__box-list">
         <ul class="catalog__list">
           <li class="catalog__list-item"
@@ -9,16 +9,16 @@
             'catalog__list-item--long': item.long,
             'catalog__list-item--open': item.index === activeIndex,
           }"
-              v-for="item in catalogList" :key="item.index"
+              v-for="item in list" :key="item.index"
           >
              <div class="catalog__item-cover">
                <template v-if="mobile" >
-                 <img :src="require(`./images/civil/mobile/${item.image}.jpg`)"
+                 <img :src="require(`./images/${pageName}/mobile/${item.image}.jpg`)"
                       alt="item.image" height="100%"
                  />
                </template>
                <template v-else>
-                 <img :src="require(`./images/civil/desktop/${item.image}.jpg`)"
+                 <img :src="require(`./images/${pageName}/desktop/${item.image}.jpg`)"
                       alt="item.image" width="100%"/>
                </template>
                <p class="catalog__title" @click="showInfo(item.index)">
@@ -53,7 +53,7 @@
                 </template>
                 <div>
                   <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                    <img :src="require(`./images/civil/mobile/${img}.jpg`)" width="100%"/>
+                    <img :src="require(`./images/${pageName}/mobile/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
                 <button class="catalog__show-more" @click="activeIndex = null"> Cвернуть </button>
@@ -63,13 +63,15 @@
         </ul>
         <div class="catalog__item-modal"
              v-if="activeIndex !== null && !mobile
-              && $route.name !== 'catalog'"
+              && $route.name !== pageName"
         >
-          <button class="catalog__modal-close" @click="activeIndex = null "></button>
-          <span v-for="item in catalogList" :key="item.index">
+          <button class="catalog__modal-close"
+                  @click="(activeIndex = null)"></button>
+<!--          activeIndex = null-->
+          <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
                             item.index === Number($route.params.itemId)">
-            <img :src="require(`./images/civil/desktop/${item.bigImage}.jpg`)"
+            <img :src="require(`./images/${pageName}/desktop/${item.bigImage}.jpg`)"
                         width="100%"/>
              <template v-if="rus">
                 <div class="catalog__modal-title"> {{ item.titleRu }} </div>
@@ -89,7 +91,7 @@
           </span>
         </div>
         <div class="catalog__item-mask"
-             v-if="activeIndex !== null &&  !mobile && $route.name !== 'catalog'"
+             v-if="activeIndex !== null &&  !mobile && $route.name !== pageName"
              @click="activeIndex = null "></div>
       </div>
     </div>
@@ -107,15 +109,20 @@ import Footer from '@/components/Footer/Footer.vue';
 import Local from '@/store/enums/Local';
 import DeviceLayout from '@/utils/DeviceLayout';
 
-// eslint-disable-next-line import/extensions
-import data from '@/data/data.ts';
-
 @Component({
   components: { Footer, Link, Header },
 })
 
 export default class Catalog extends Vue {
-  catalogList: catalogTypes[] = data.projects;
+  @Prop({
+    type: Array,
+  })
+  readonly list: catalogTypes[] | undefined;
+
+  @Prop({
+    type: String,
+  })
+  readonly pageName!: string;
 
   isOpen = false;
 
@@ -123,20 +130,22 @@ export default class Catalog extends Vue {
 
   activeIdString = 0;
 
+  pathName = `${this.pageName}Item`;
+
   getPageId(id: string): object {
     return this.$router.push({
-      name: 'catalogItem',
+      name: this.pathName,
       params: { itemId: id },
     });
   }
 
-  // showPageId() {
-  //   return this.getPageId === this.activeIndex;
-  // }
-
   showInfo(index: number): any {
     this.activeIndex = index;
     this.getPageId(index.toString());
+  }
+
+  hiddenInfo(): any {
+    this.getPageId('');
   }
 
   private $local: any;

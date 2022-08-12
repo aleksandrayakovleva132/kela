@@ -19,15 +19,37 @@ const routes: Array<RouteConfig> = [
     component: () => import(/* webpackChunkName: "about" */ '../components/About/About.vue'),
   },
   {
-    path: '/catalog',
-    name: 'catalog',
-    component: () => import('../components/Catalog/Catalog.vue'),
+    path: '/catalog/civil',
+    name: 'civil',
+    component: () => import('../components/Catalog/Civil.vue'),
   },
   {
-    path: '/catalog/:itemId(\\d+)',
+    path: '/catalog/civil/:itemId(\\d+)',
     props: true,
-    name: 'catalogItem',
-    component: () => import('../components/Catalog/Catalog.vue'),
+    name: 'civilItem',
+    component: () => import('../components/Catalog/Civil.vue'),
+  },
+  {
+    path: '/catalog/industry',
+    name: 'industry',
+    component: () => import('../components/Catalog/Industry.vue'),
+  },
+  {
+    path: '/catalog/industry/:itemId(\\d+)',
+    props: true,
+    name: 'industryItem',
+    component: () => import('../components/Catalog/Industry.vue'),
+  },
+  {
+    path: '/catalog/bim',
+    name: 'bim',
+    component: () => import('../components/Catalog/Bim.vue'),
+  },
+  {
+    path: '/catalog/bim/:itemId(\\d+)',
+    props: true,
+    name: 'bimItem',
+    component: () => import('../components/Catalog/Bim.vue'),
   },
   {
     path: '/project-item',

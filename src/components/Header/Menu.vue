@@ -9,7 +9,7 @@
     <Language class="menu__lang" :is-mobile="isMobile" :is-light="isLight"/>
     <ul v-if="this.$layout.current === 'mobile'"
         class="menu__list" :class="{'menu__list--mobile': isMobile}">
-      <li class="menu__item" v-for="(item, index) in menuListMobile"
+      <li class="menu__item" v-for="(item, index) in list"
           :key="index" @click="closeMenu">
         <router-link v-if="rus" :to="item.link">
           {{ item.rus }}
@@ -19,9 +19,9 @@
         </router-link>
       </li>
     </ul>
-    <ul v-else
+    <ul
         class="menu__list">
-      <li class="menu__item" v-for="(item, index) in menuListDesktop"
+      <li class="menu__item" v-for="(item, index) in list"
           :key="index" @click="closeMenu">
         <router-link v-if="rus" :to="item.link">
           {{ item.rus }}
@@ -44,6 +44,9 @@ import MenuStatus from '@/store/enums/MenuStatus';
 import { menuTypes } from '@/components/Header/types';
 import Local from '@/store/enums/Local';
 
+// eslint-disable-next-line import/extensions
+import menu from '@/data/menu.ts';
+
 @Component({
   components: { Language },
 })
@@ -62,6 +65,11 @@ export default class Menu extends Vue {
     type: Boolean,
   })
   readonly isLight!: boolean;
+
+  @Prop({
+    type: Boolean,
+  })
+  readonly isInside!: boolean;
 
   private $menu: any;
 
@@ -99,23 +107,16 @@ export default class Menu extends Vue {
     },
   ];
 
-  menuListDesktop: menuTypes[] = [
-    {
-      eng: 'Projects',
-      rus: 'Проекты',
-      link: { path: '/', hash: '#projects' },
-    },
-    {
-      eng: 'BIM',
-      rus: 'BIM',
-      link: { path: '/', hash: '#bim' },
-    },
-    {
-      eng: 'Contacts',
-      rus: 'Контакты',
-      link: { path: '/', hash: '#contactы' },
-    },
-  ];
+  mainDeskMenu: menuTypes[] = menu.desktopMain;
+
+  insideDeskMenu: menuTypes[] = menu.desktopInside;
+
+  get list(): menuTypes[] {
+    if (this.isInside) {
+      return this.insideDeskMenu;
+    }
+    return this.mainDeskMenu;
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -187,6 +188,7 @@ export default class Menu extends Vue {
     & .menu__list {
       text-align: center;
       font-size: 16px;
+      color: var(--Black);
     }
   }
 
@@ -196,6 +198,7 @@ export default class Menu extends Vue {
 
     & .menu__list {
       display: flex;
+      color: var(--Black);
     }
     & .menu__item {
       margin-bottom: 0;

@@ -8,7 +8,11 @@
     </router-link>
 <!--    v-if="homeMenu && this.$layout.current === 'desktop'-->
     <div class="header__right-column" v-if="this.$layout.current === 'desktop'">
-      <Menu :is-horizontal="isHorizontal" :is-light="light" />
+<!--      <Menu :is-horizontal="isHorizontal" :is-light="light" />-->
+      <Menu :is-horizontal="horizontalMenu"
+            :is-inside="insideMenu"
+            :is-light="lightMenu"
+      />
     </div>
     <div v-else class="header__menu" @click="openMenu">
       <img  v-if="light" src="./images/menu-2.svg" width="39" alt="menu"/>
@@ -38,12 +42,12 @@ export default class Header extends Vue {
   @Prop({
     type: Boolean,
   })
-  readonly light!: boolean;
+  readonly lightMenu!: boolean;
 
   @Prop({
     type: Boolean,
   })
-  readonly homeMenu!: boolean;
+  readonly insideMenu!: boolean;
 
   @Prop({
     type: Boolean,
@@ -53,7 +57,7 @@ export default class Header extends Vue {
   @Prop({
     type: Boolean,
   })
-  readonly isHorizontal!: boolean;
+  readonly horizontalMenu!: boolean;
 
   toggleLang() {
     return this.isRus === !this.isRus;

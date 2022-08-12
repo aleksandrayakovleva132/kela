@@ -2,7 +2,7 @@
   <div class="project-home">
     <div class="project-home__main">
       <div class="project-home__column">
-        <router-link to="/catalog" class="project-home__link">
+        <router-link to="/catalog/industry" class="project-home__link">
           <div class="project-home__item project-home__item--first">
             <div class="project-home__decoration
                         project-home__decoration--desktop project-home__decoration-1">
@@ -25,7 +25,7 @@
         </router-link>
       </div>
       <div class="project-home__column">
-        <router-link to="/catalog" class="project-home__link">
+        <router-link to="/catalog/civil" class="project-home__link">
           <div class="project-home__item project-home__item--second">
             <div class="project-home__decoration project-home__decoration--desktop
             project-home__decoration-2">
@@ -51,18 +51,20 @@
       </div>
     </div>
     <div class="project-home__row">
-     <Link big label="bim"/>
-     <div class="project-home__decoration project-home__decoration--mobile">
-       <Decoration size="180" :width="3"/>
-     </div>
-      <div class="project-home__decoration project-home__decoration--desktop
+      <router-link to="/catalog/bim">
+        <Link big label="bim"/>
+        <div class="project-home__decoration project-home__decoration--mobile">
+          <Decoration size="180" :width="3"/>
+        </div>
+        <div class="project-home__decoration project-home__decoration--desktop
                   project-home__decoration-3">
-        <Decoration size="190" :width="3"/>
-      </div>
-      <div class="project-home__decoration project-home__decoration--desktop
+          <Decoration size="190" :width="3"/>
+        </div>
+        <div class="project-home__decoration project-home__decoration--desktop
                   project-home__decoration-4">
-        <Decoration size="190" :width="3"/>
-      </div>
+          <Decoration size="190" :width="3"/>
+        </div>
+      </router-link>
     </div>
   </div>
 </template>
