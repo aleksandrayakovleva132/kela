@@ -37,6 +37,18 @@ export default {
       open: false,
       bigImage: 'ferma-1',
     },
+    {
+      index: 4,
+      image: '4-cover',
+      titleRu: 'Жилой комплекс "Цивилизация"',
+      titleEn: 'Residential complex “Civilization”',
+      descriptionRu: ['Жилой комплекс "Цивилизация". Разработка раздела КЖ. Санкт-Петербург, 2016-2017.'],
+      descriptionEn: ['Residential complex “Civilization”. St. Petersburg, 2016-2017.'],
+      images: ['4-1', '4-2', '4-3', '4-4', '4-5', '4-6'],
+      long: false,
+      open: false,
+      bigImage: '4-2',
+    },
   ],
   bim: [
     {

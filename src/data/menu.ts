@@ -1,7 +1,7 @@
 export default {
   mobileMain: [],
   mobileInside: [],
-  desktopMain: [
+  main: [
     {
       eng: 'Projects',
       rus: 'Проекты',
@@ -13,31 +13,26 @@ export default {
       link: { path: '/', hash: '#bim' },
     },
     {
-      eng: 'Contacts',
+      eng: 'contacts',
       rus: 'Контакты',
-      link: { path: '/', hash: '#contactы' },
+      link: { path: '/', hash: '#contact' },
     },
   ],
-  desktopInside: [
+  inside: [
     {
-      eng: 'Civil',
+      eng: 'civil',
       rus: 'Гражданское',
       link: { path: '/catalog/civil' },
     },
     {
-      eng: 'Industry',
+      eng: 'industry',
       rus: 'Промышленное',
       link: { path: '/catalog/industry' },
     },
     {
-      eng: 'BIM',
+      eng: 'bim',
       rus: 'BIM',
       link: { path: '/catalog/bim' },
-    },
-    {
-      eng: 'Contacts',
-      rus: 'Контакты',
-      link: { path: '/', hash: '#contact' },
     },
   ],
 };

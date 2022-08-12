@@ -2,7 +2,7 @@
   <div class="header">
     <router-link to="/">
     <div class="header__logo">
-      <img v-if="light" src="./images/kela-2.svg" width="98" alt="kela">
+      <img v-if="lightMenu" src="./images/kela-2.svg" width="98" alt="kela">
       <img v-else src="./images/kela.svg" width="98" alt="kela">
     </div>
     </router-link>
@@ -15,12 +15,12 @@
       />
     </div>
     <div v-else class="header__menu" @click="openMenu">
-      <img  v-if="light" src="./images/menu-2.svg" width="39" alt="menu"/>
+      <img  v-if="lightMenu" src="./images/menu-2.svg" width="39" alt="menu"/>
       <img v-else src="./images/menu.svg" width="39"  alt="menu"/>
     </div>
       <div  v-if="this.$menu.current === 'is-open' && this.$layout.current === 'phone'"
             class="header__mobile-menu">
-        <Menu is-mobile />
+        <Menu is-mobile :is-inside="insideMenu"/>
       </div>
   </div>
 </template>

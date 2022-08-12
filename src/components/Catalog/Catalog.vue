@@ -1,7 +1,7 @@
 <template>
   <div class="catalog">
     <div class="catalog__content">
-      <Header light-menu horizontal-menu inside-menu/>
+      <Header light-menu horizontal-menu inside-menu />
       <div class="catalog__box-list">
         <ul class="catalog__list">
           <li class="catalog__list-item"
@@ -208,6 +208,8 @@ export default class Catalog extends Vue {
     position: relative;
     width: calc(30% - 40px);
     overflow: hidden;
+    box-shadow: 5px 7px 18px 4px rgba(0,0,0,0.06);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 
     &--long {
       width: 40%;
@@ -221,7 +223,7 @@ export default class Catalog extends Vue {
       position: absolute;
       left: 0;
       bottom: 0;
-      background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
+      background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
     }
   }
 
@@ -399,7 +401,7 @@ export default class Catalog extends Vue {
         position: absolute;
         left: 0;
         bottom: 0;
-        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 60%);
+        background: linear-gradient(0deg, #000000 0%, rgba(0, 0, 0, 0) 100%);
       }
     }
 

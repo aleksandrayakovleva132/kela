@@ -7,27 +7,12 @@
       <img src="../../assets/images/cross.svg" alt="" width="22">
     </div>
     <Language class="menu__lang" :is-mobile="isMobile" :is-light="isLight"/>
-    <ul v-if="this.$layout.current === 'mobile'"
-        class="menu__list" :class="{'menu__list--mobile': isMobile}">
+    <ul class="menu__list" :class="{'menu__list--mobile': isMobile}">
       <li class="menu__item" v-for="(item, index) in list"
           :key="index" @click="closeMenu">
-        <router-link v-if="rus" :to="item.link">
-          {{ item.rus }}
-        </router-link>
-        <router-link v-else :to="item.link">
-          {{ item.eng }}
-        </router-link>
-      </li>
-    </ul>
-    <ul
-        class="menu__list">
-      <li class="menu__item" v-for="(item, index) in list"
-          :key="index" @click="closeMenu">
-        <router-link v-if="rus" :to="item.link">
-          {{ item.rus }}
-        </router-link>
-        <router-link v-else :to="item.link">
-          {{ item.eng }}
+        <router-link :to="item.link">
+          <span  v-if="rus">{{ item.rus }}</span>
+          <span v-else>{{ item.eng }}</span>
         </router-link>
       </li>
     </ul>
@@ -71,6 +56,11 @@ export default class Menu extends Vue {
   })
   readonly isInside!: boolean;
 
+  @Prop({
+    type: Boolean,
+  })
+  readonly isActive!: boolean;
+
   private $menu: any;
 
   private $local: any;
@@ -84,38 +74,15 @@ export default class Menu extends Vue {
     return this.$local.current === Local.RU;
   }
 
-  menuListMobile: menuTypes[] = [
-    {
-      eng: 'Industrial engineering',
-      rus: 'Промышленное строительство',
-      link: { path: '/catalog' },
-    },
-    {
-      eng: 'Civil engineering',
-      rus: 'Гражданское строительство',
-      link: { path: '/catalog' },
-    },
-    {
-      eng: 'BIM',
-      rus: 'BIM',
-      link: { path: '/catalog' },
-    },
-    {
-      eng: 'Contacts',
-      rus: 'Контакты',
-      link: { path: '/', hash: '#contact' },
-    },
-  ];
+  mainMenu: menuTypes[] = menu.main;
 
-  mainDeskMenu: menuTypes[] = menu.desktopMain;
-
-  insideDeskMenu: menuTypes[] = menu.desktopInside;
+  insideMenu: menuTypes[] = menu.inside;
 
   get list(): menuTypes[] {
     if (this.isInside) {
-      return this.insideDeskMenu;
+      return this.insideMenu;
     }
-    return this.mainDeskMenu;
+    return this.mainMenu;
   }
 }
 </script>
@@ -164,6 +131,10 @@ export default class Menu extends Vue {
         top: 8px;
         background-color: var(--Orange);
       }
+    }
+
+    &--active {
+      color: var(--Orange);
     }
   }
   &__lang {
