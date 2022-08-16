@@ -136,7 +136,7 @@ export default {
     {
       index: 12,
       image: 'templ-1',
-      titleRu: 'Бизнес-центр "Полис центр"',
+      titleRu: '12 Бизнес-центр "Полис центр"',
       titleEn: 'Business center',
       descriptionRu: ['Бизнес-центр "Полис центр". Разработка разделов КЖ, КМ. Санкт-Петербург, 2014.'],
       descriptionEn: ['Business center. Saint Petersburg, 2014.'],
@@ -148,7 +148,7 @@ export default {
     {
       index: 13,
       image: 'templ-1',
-      titleRu: 'Фонтаны на ж/д ст в Сочи',
+      titleRu: '13 Фонтаны на ж/д ст в Сочи',
       titleEn: 'Fountain in Olympic Park Railway station',
       descriptionRu: ['Фонтаны на ж/д ст. Олимпийский парк. Разработка раздела КЖ. Сочи, 2012.'],
       descriptionEn: ['Fountain in Olympic Park Railway station. Sochi, 2012.'],
@@ -160,7 +160,7 @@ export default {
     {
       index: 14,
       image: 'templ-2',
-      titleRu: 'Жилой комплекс "ЮгТаун',
+      titleRu: '14 Жилой комплекс "ЮгТаун',
       titleEn: 'Residential complex “South Town',
       descriptionRu: ['Жилой комплекс "ЮгТаун. Олимпийские кварталы". Разработка раздела КЖ. Санкт-Петербург, 2021-2022.'],
       descriptionEn: ['Residential complex “South Town. Olympic quarters”. St. Petersburg, 2021-2022.'],
@@ -172,7 +172,7 @@ export default {
     {
       index: 15,
       image: 'templ-2',
-      titleRu: 'Храм Благовещения Пресвятой Богородицы в Парголово',
+      titleRu: '15 Храм Благовещения Пресвятой Богородицы в Парголово',
       titleEn: 'Church of the Annunciation of the Blessed Virgin Mary in Pargolovo',
       descriptionRu: ['Храм Благовещения Пресвятой Богородицы в Парголово. Разработка раздела КЖ. Санкт-Петербург, 2012.'],
       descriptionEn: ['Church of the Annunciation of the Blessed Virgin Mary in Pargolovo. Saint Petersburg, 2012.'],
@@ -184,7 +184,7 @@ export default {
     {
       index: 16,
       image: 'templ-2',
-      titleRu: 'Деревянные башни ',
+      titleRu: '16 Деревянные башни ',
       titleEn: 'Wooden towers',
       descriptionRu: ['Деревянные башни. Разработка разделов КЖ, КД. Берген (Норвегия), Якутск, Ленинградская область, 2016.'],
       descriptionEn: ['Wooden towers. Bergen (Norway), Yakutsk and Leningrad Oblast, 2016.'],
@@ -196,7 +196,7 @@ export default {
     {
       index: 17,
       image: 'templ-2',
-      titleRu: 'Ресторан с покрытием на вантах',
+      titleRu: '17 Ресторан с покрытием на вантах',
       titleEn: 'Cable-stayed roof of restaurant',
       descriptionRu: ['Ресторан с покрытием на вантах. Разработка разделов КЖ, КМ. Ленинградская область, пос. Лисий Нос, 2017.'],
       descriptionEn: ['Cable-stayed roof of restaurant. Leningrad Region, Lisiy Nos, 2017.'],
@@ -208,7 +208,7 @@ export default {
     {
       index: 18,
       image: 'templ-1',
-      titleRu: 'Наземный павильон ст. м. "Беговая"',
+      titleRu: '18 Наземный павильон ст. м. "Беговая"',
       titleEn: 'Ground pavilion of the Begovaya metro station.',
       descriptionRu: ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
       descriptionEn: ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
