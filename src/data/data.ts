@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   civil: [
     {
@@ -51,12 +52,12 @@ export default {
     },
     {
       index: 5,
-      image: '5',
+      image: 'templ-1',
       titleRu: '5',
       titleEn: '5',
       descriptionRu: ['Temp'],
       descriptionEn: ['Temp'],
-      images: ['templ-2'],
+      images: ['templ-1'],
       long: false,
       open: false,
       bigImage: '5-content',
@@ -159,11 +160,13 @@ export default {
     },
     {
       index: 14,
-      image: 'templ-2',
+      image: 'templ-1',
       titleRu: '14 Жилой комплекс "ЮгТаун',
       titleEn: 'Residential complex “South Town',
-      descriptionRu: ['Жилой комплекс "ЮгТаун. Олимпийские кварталы". Разработка раздела КЖ. Санкт-Петербург, 2021-2022.'],
-      descriptionEn: ['Residential complex “South Town. Olympic quarters”. St. Petersburg, 2021-2022.'],
+      descriptionRu:
+      ['Жилой комплекс "ЮгТаун. Олимпийские кварталы". Разработка раздела КЖ. Санкт-Петербург, 2021-2022.'],
+      descriptionEn:
+      ['Residential complex “South Town. Olympic quarters”. St. Petersburg, 2021-2022.'],
       images: ['templ-1'],
       long: false,
       open: false,
@@ -171,11 +174,13 @@ export default {
     },
     {
       index: 15,
-      image: 'templ-2',
+      image: 'templ-1',
       titleRu: '15 Храм Благовещения Пресвятой Богородицы в Парголово',
       titleEn: 'Church of the Annunciation of the Blessed Virgin Mary in Pargolovo',
-      descriptionRu: ['Храм Благовещения Пресвятой Богородицы в Парголово. Разработка раздела КЖ. Санкт-Петербург, 2012.'],
-      descriptionEn: ['Church of the Annunciation of the Blessed Virgin Mary in Pargolovo. Saint Petersburg, 2012.'],
+      descriptionRu:
+      ['Храм Благовещения Пресвятой Богородицы в Парголово. Разработка раздела КЖ. Санкт-Петербург, 2012.'],
+      descriptionEn:
+      ['Church of the Annunciation of the Blessed Virgin Mary in Pargolovo. Saint Petersburg, 2012.'],
       images: ['templ-1'],
       long: false,
       open: false,
@@ -183,10 +188,11 @@ export default {
     },
     {
       index: 16,
-      image: 'templ-2',
+      image: 'templ-1',
       titleRu: '16 Деревянные башни ',
       titleEn: 'Wooden towers',
-      descriptionRu: ['Деревянные башни. Разработка разделов КЖ, КД. Берген (Норвегия), Якутск, Ленинградская область, 2016.'],
+      descriptionRu:
+      ['Деревянные башни. Разработка разделов КЖ, КД. Берген (Норвегия), Якутск, Ленинградская область, 2016.'],
       descriptionEn: ['Wooden towers. Bergen (Norway), Yakutsk and Leningrad Oblast, 2016.'],
       images: ['templ-1'],
       long: false,
@@ -195,11 +201,13 @@ export default {
     },
     {
       index: 17,
-      image: 'templ-2',
+      image: 'templ-1',
       titleRu: '17 Ресторан с покрытием на вантах',
       titleEn: 'Cable-stayed roof of restaurant',
-      descriptionRu: ['Ресторан с покрытием на вантах. Разработка разделов КЖ, КМ. Ленинградская область, пос. Лисий Нос, 2017.'],
-      descriptionEn: ['Cable-stayed roof of restaurant. Leningrad Region, Lisiy Nos, 2017.'],
+      descriptionRu:
+      ['Ресторан с покрытием на вантах. Разработка разделов КЖ, КМ. Ленинградская область, пос. Лисий Нос, 2017.'],
+      descriptionEn:
+      ['Cable-stayed roof of restaurant. Leningrad Region, Lisiy Nos, 2017.'],
       images: ['templ-2'],
       long: false,
       open: false,
@@ -210,8 +218,10 @@ export default {
       image: 'templ-1',
       titleRu: '18 Наземный павильон ст. м. "Беговая"',
       titleEn: 'Ground pavilion of the Begovaya metro station.',
-      descriptionRu: ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
-      descriptionEn: ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
+      descriptionRu:
+      ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
+      descriptionEn:
+      ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
       images: ['templ-1'],
       long: true,
       open: false,

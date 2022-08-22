@@ -50,7 +50,7 @@ export default class Advantages extends Vue {
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
 .advantages {
-  padding: 120px 0 0 0;
+  padding: 120px 0;
   margin: 0 auto;
   width: 82%;
   &__title {
@@ -123,7 +123,7 @@ export default class Advantages extends Vue {
 
   @include for-phone-only {
     width: 100%;
-    padding: 50px 15px 0 15px;
+    padding: 50px 15px;
 
     &__background-image {
       display: none;
@@ -198,5 +198,3 @@ export default class Advantages extends Vue {
   }
 }
 </style>
-
-1440 / 1200
