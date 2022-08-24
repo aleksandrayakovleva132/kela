@@ -13,12 +13,12 @@
           >
              <div class="catalog__item-cover">
                <template v-if="mobile" >
-                 <img :src="require(`./images/${pageName}/mobile/${item.image}.jpg`)"
+                 <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
                       alt="item.image" height="100%"
                  />
                </template>
                <template v-else>
-                 <img :src="require(`./images/${pageName}/desktop/${item.image}.jpg`)"
+                 <img :src="require(`./images/${pageName}/desktop/${item.imageDesktop}.jpg`)"
                       alt="item.image" width="100%"/>
                </template>
                <p class="catalog__title" @click="showInfo(item.index)">

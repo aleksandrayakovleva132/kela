@@ -1,6 +1,7 @@
 export type catalogTypes = {
   index?: number,
-  image?: string,
+  imageMobile?: string,
+  imageDesktop?: string,
   titleRu?: string,
   titleEn?: string,
   date?: string,
