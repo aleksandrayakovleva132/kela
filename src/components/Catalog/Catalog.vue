@@ -10,8 +10,9 @@
             'catalog__list-item--open': item.index === activeIndex,
           }"
               v-for="item in list" :key="item.index"
+              :id="item.index"
           >
-             <div class="catalog__item-cover">
+             <div class="catalog__item-cover" @click="showInfo(item.index)">
                <template v-if="mobile" >
                  <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
                       alt="item.image" height="100%"
@@ -21,7 +22,7 @@
                  <img :src="require(`./images/${pageName}/desktop/${item.imageDesktop}.jpg`)"
                       alt="item.image" width="100%"/>
                </template>
-               <p class="catalog__title" @click="showInfo(item.index)">
+               <p class="catalog__title">
                  <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
                  <span v-else class="catalog__label">
                    {{ item.titleEn }}
@@ -56,7 +57,8 @@
                     <img :src="require(`./images/${pageName}/mobile/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
-                <button class="catalog__show-more" @click="activeIndex = null"> Cвернуть </button>
+                <button class="catalog__show-more"
+                        @click="hiddenInfo(item.index)"> Cвернуть </button>
               </div>
             </div>
           </li>
@@ -126,7 +128,7 @@ export default class Catalog extends Vue {
 
   isOpen = false;
 
-  activeIndex = 0;
+  activeIndex: number | null = 0;
 
   activeIdString = 0;
 
@@ -136,16 +138,18 @@ export default class Catalog extends Vue {
     return this.$router.push({
       name: this.pathName,
       params: { itemId: id },
+      hash: `#${id}`,
     });
   }
 
-  showInfo(index: number): any {
+  showInfo(index: number): void {
     this.activeIndex = index;
     this.getPageId(index.toString());
   }
 
-  hiddenInfo(): any {
-    this.getPageId('');
+  hiddenInfo(index: number): void {
+    this.activeIndex = null;
+    this.getPageId(index.toString());
   }
 
   private $local: any;
@@ -360,10 +364,6 @@ export default class Catalog extends Vue {
       &--open {
         box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
         z-index: 3;
-
-        & .catalog__item-content {
-          padding: 10px;
-        }
       }
     }
 
@@ -417,10 +417,6 @@ export default class Catalog extends Vue {
     &__item-img {
       margin-bottom: 20px;
     }
-
-    &__item-content {
-      background-color: var(--White);
-    }
   }
 
     &__title {
@@ -429,7 +425,8 @@ export default class Catalog extends Vue {
     }
     &__item-content {
       display: block;
-      padding: 15px 0 30px 0;
+      padding: 15px 10px 10px 10px;
+      background-color: var(--White);
     }
 }
 </style>

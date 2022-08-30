@@ -14,6 +14,7 @@ export default {
       open: true,
       images: ['ferma-1', 'ferma-2', 'ferma-3', 'ferma-4'],
       bigImage: 'ferma-1',
+
     },
     {
       index: 2,

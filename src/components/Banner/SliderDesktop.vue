@@ -73,6 +73,7 @@ export default class BannerDesktop extends Vue {
     return this.$router.push({
       name: 'catalogItem',
       params: { itemId: id },
+      hash: `#${id}`,
     });
   }
 }

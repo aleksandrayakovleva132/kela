@@ -76,6 +76,7 @@ export default class BannerMobile extends Vue {
     return this.$router.push({
       name: 'catalogItem',
       params: { itemId: id },
+      hash: `#${id}`,
     });
   }
 }
