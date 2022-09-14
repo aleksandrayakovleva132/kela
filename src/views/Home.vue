@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home" >
     <Banner />
     <About />
     <Advantages class="home__advantages"

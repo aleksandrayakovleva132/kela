@@ -11,6 +11,7 @@
           }"
               v-for="item in list" :key="item.index"
               :id="item.index"
+              :ref="`active-${item.index}`"
           >
              <div class="catalog__item-cover" @click="showInfo(item.index)">
                <template v-if="mobile" >
@@ -63,12 +64,14 @@
             </div>
           </li>
         </ul>
+<!--        Desktop version-->
         <div class="catalog__item-modal"
              v-if="activeIndex !== null && !mobile
               && $route.name !== pageName"
+             :style="{top: activePosition}"
         >
           <button class="catalog__modal-close"
-                  @click="(activeIndex = null)"></button>
+                  @click="modalClose"></button>
 <!--          activeIndex = null-->
           <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
@@ -92,24 +95,23 @@
             </template>
           </span>
         </div>
-        <div class="catalog__item-mask"
-             v-if="activeIndex !== null &&  !mobile && $route.name !== pageName"
-             @click="activeIndex = null "></div>
+<!--        <div class="catalog__item-mask"-->
+<!--             v-if="activeIndex !== null &&  !mobile && $route.name !== pageName"-->
+<!--             @click="activeIndex = null "></div>-->
       </div>
     </div>
     <Footer class="catalog__footer" />
   </div>
 </template>
 <script lang="ts">
-import {
-  Component, Vue, Prop,
-} from 'vue-property-decorator';
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import Header from '@/components/Header/Header.vue';
 import { catalogTypes } from '@/components/Catalog/types';
 import Link from '@/components/Link/Link.vue';
 import Footer from '@/components/Footer/Footer.vue';
 import Local from '@/store/enums/Local';
 import DeviceLayout from '@/utils/DeviceLayout';
+import ItemOpen from '@/store/enums/ItemOpen';
 
 @Component({
   components: { Footer, Link, Header },
@@ -142,14 +144,27 @@ export default class Catalog extends Vue {
     });
   }
 
+  private $openItem: any;
+
+  // get openStatus(): boolean {
+  //   return this.$openItem.current === ItemOpen.IS_OPEN;
+  // }
+
   showInfo(index: number): void {
     this.activeIndex = index;
     this.getPageId(index.toString());
+    if (!this.mobile) {
+      this.$openItem.set(this.$openItem.current === ItemOpen.IS_HIDDEN
+        ? ItemOpen.IS_OPEN : ItemOpen.IS_HIDDEN);
+    }
   }
 
-  hiddenInfo(index: number): void {
+  hiddenInfo(index: number | string): void {
     this.activeIndex = null;
     this.getPageId(index.toString());
+    this.$router.push({
+      params: { itemId: index.toString() },
+    });
   }
 
   private $local: any;
@@ -162,6 +177,12 @@ export default class Catalog extends Vue {
 
   get mobile(): boolean {
     return this.$layout.current === DeviceLayout.PHONE;
+  }
+
+  modalClose(): void {
+    this.activeIndex = null;
+    this.$openItem.set(this.$openItem.current === ItemOpen.IS_OPEN
+      ? ItemOpen.IS_HIDDEN : ItemOpen.IS_OPEN);
   }
 }
 </script>
@@ -303,14 +324,12 @@ export default class Catalog extends Vue {
     background-color: var(--White);
     box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
     position: absolute;
-    top: 100px;
     left: calc(50% - 500px);
     z-index: 5;
     padding: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
-    //border: 2px solid var(--Orange);
   }
 
   &__modal-close {
@@ -428,5 +447,9 @@ export default class Catalog extends Vue {
       padding: 15px 10px 10px 10px;
       background-color: var(--White);
     }
+
+  &__test-image {
+    filter: invert(82%) sepia(34%) saturate(6722%) hue-rotate(69deg) brightness(97%) contrast(110%);
+  }
 }
 </style>

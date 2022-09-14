@@ -11,9 +11,12 @@ import DeviceBrowser from '@/utils/DeviceBrowser.ts';
 import MenuStatus from '@/store/enums/MenuStatus.ts';
 // eslint-disable-next-line import/extensions
 import Local from '@/store/enums/Local.ts';
+import ItemOpen from '@/store/enums/ItemOpen';
 
 export default class RootState {
   menu: MenuStatus = MenuStatus.IS_HIDDEN;
+
+  openItem: ItemOpen = ItemOpen.IS_HIDDEN;
 
   local: Local = Local.RU;
 

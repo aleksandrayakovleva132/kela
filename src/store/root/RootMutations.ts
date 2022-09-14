@@ -7,6 +7,7 @@ import DeviceBrowser from '@/utils/DeviceBrowser';
 import DeviceLayout from '@/utils/DeviceLayout';
 import Local from '@/store/enums/Local';
 import RootState from '@/store/root/RootState';
+import itemOpen from '@/store/enums/ItemOpen';
 
 export default class RootMutations extends Mutations<RootState> {
   setMenu(menu: MenuStatus): void {
@@ -27,5 +28,10 @@ export default class RootMutations extends Mutations<RootState> {
 
   setBrowser(browser: DeviceBrowser): void {
     this.state.browser = browser;
+  }
+
+  // eslint-disable-next-line no-shadow
+  setItemStatus(openItem: itemOpen): void {
+    this.state.openItem = openItem;
   }
 }

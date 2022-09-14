@@ -22,6 +22,12 @@ Vue.prototype.$menu = {
   set: rootModule.context(store).mutations.setMenu,
 };
 
+Vue.prototype.$openItem = {
+  get current() {
+    return rootModule.context(store).state.openItem;
+  },
+  set: rootModule.context(store).mutations.setItemStatus,
+};
 Vue.prototype.$local = {
   get current() {
     return rootModule.context(store).state.local;
