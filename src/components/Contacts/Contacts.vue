@@ -2,17 +2,17 @@
   <div class="contacts">
     <h2 class="contacts__title">Связаться с&nbsp;нами</h2>
     <div class="contacts__block">
-      <div class="contacts__column contacts__column-left">
-        <form class="contacts__form">
-          <input class="contacts__input" type="text" placeholder="Имя*">
-          <input class="contacts__input" type="text" placeholder="Email*">
-          <input class="contacts__input" type="text" placeholder="Тема*">
-          <input class="contacts__input" type="text" placeholder="Отправьте сообщение">
-          <button class="contacts__button" type="submit">
-            <Link label="отправить"/>
-          </button>
-        </form>
-      </div>
+<!--      <div class="contacts__column contacts__column-left">-->
+<!--        <form class="contacts__form">-->
+<!--          <input class="contacts__input" type="text" placeholder="Имя*">-->
+<!--          <input class="contacts__input" type="text" placeholder="Email*">-->
+<!--          <input class="contacts__input" type="text" placeholder="Тема*">-->
+<!--          <input class="contacts__input" type="text" placeholder="Отправьте сообщение">-->
+<!--          <button class="contacts__button" type="submit">-->
+<!--            <Link label="отправить"/>-->
+<!--          </button>-->
+<!--        </form>-->
+<!--      </div>-->
       <div class="contacts__column contacts__column-right">
         <ul class="contacts__list">
           <li class="contacts__item">
@@ -99,6 +99,7 @@ export default class Contacts extends Vue {
   &__block {
     display: flex;
     padding-bottom: 140px;
+    justify-content: center;
   }
 
   &__column {

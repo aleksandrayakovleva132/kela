@@ -12,8 +12,9 @@
               v-for="item in list" :key="item.index"
               :id="item.index"
               ref="itemActive"
+              @click="showInfo(item.index)"
           >
-             <div class="catalog__item-cover" @click="showInfo(item.index)">
+             <div class="catalog__item-cover" >
                <template v-if="mobile" >
                  <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
                       alt="item.image" height="100%"
@@ -58,8 +59,8 @@
                     <img :src="require(`./images/${pageName}/mobile/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
-                <button class="catalog__show-more"
-                        @click="hiddenInfo(item.index)"> Cвернуть </button>
+<!--                <button class="catalog__show-more"-->
+<!--                        @click="hiddenInfo(item.index)"> Cвернуть </button>-->
               </div>
             </div>
           </li>

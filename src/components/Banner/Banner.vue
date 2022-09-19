@@ -30,14 +30,12 @@ export default class Banner extends Vue {
     { id: 0, name: 'img1', img: '1.jpg' },
     { id: 1, name: 'img2', img: '2.jpg' },
     { id: 2, name: 'img3', img: '3.jpg' },
-    // { id: 3, name: 'img3', img: '3.jpg' },
   ];
 
   sliderItemsDesktop: sliderTypes[] = [
     { id: 0, name: 'img1', img: '4.jpg' },
     { id: 1, name: 'img2', img: '2.jpg' },
     { id: 2, name: 'img3', img: '3.jpg' },
-    // { id: 3, name: 'img3', img: '3.jpg' },
   ];
 
   currentSlideIndex = 0;
