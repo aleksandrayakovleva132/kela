@@ -1,7 +1,6 @@
 <template>
   <div id="app" :class="{
     'app--open-menu': this.$menu.current === 'is-open',
-    'app--open-item': this.$openItem.current === 'is-open',
   }">
     <div v-if="this.$menu.current === 'is-open' && this.$layout.current === 'phone'"
          class="app__mask"
@@ -24,16 +23,12 @@ import ItemOpen from '@/store/enums/ItemOpen';
 export default class App extends Vue {
   private $menu: any;
 
-  private $openItem: any;
+  // private $openItem: any;
 
   closeMenu(): void {
     this.$menu.set(this.$menu.current === MenuStatus.IS_OPEN
       ? MenuStatus.IS_HIDDEN : MenuStatus.IS_OPEN);
   }
-
-  // get openItemClass(): void {
-  //   this.$openItem.current = ItemOpen.IS_OPEN ? 'app--open-item' : '';
-  // }
 }
 </script>
 

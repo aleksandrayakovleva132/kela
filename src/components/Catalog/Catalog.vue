@@ -95,9 +95,9 @@
             </template>
           </span>
         </div>
-<!--        <div class="catalog__item-mask"-->
-<!--             v-if="activeIndex !== null &&  !mobile && $route.name !== pageName"-->
-<!--             @click="activeIndex = null "></div>-->
+        <div class="catalog__item-mask"
+             v-if="activeIndex !== null &&  !mobile && $route.name !== pageName"
+             @click="modalClose"></div>
       </div>
     </div>
     <Footer class="catalog__footer" />
@@ -157,19 +157,9 @@ export default class Catalog extends Vue {
       this.$openItem.set(this.$openItem.current === ItemOpen.IS_HIDDEN
         ? ItemOpen.IS_OPEN : ItemOpen.IS_HIDDEN);
     }
-    // this.$router.push({
-    //   hash: `#${index}`,
-    // });
   }
 
-  activeItemPosition = document.getElementsByClassName('catalog__list-item--open');
-
-  el = this.activeItemPosition;
-
-  get itemPosition(): string {
-    console.log(this.activeIndex);
-    return '200px';
-  }
+  scrollPosition = document.documentElement.scrollTop;
 
   hiddenInfo(index: number | string): void {
     this.activeIndex = null;
@@ -191,17 +181,36 @@ export default class Catalog extends Vue {
     return this.$layout.current === DeviceLayout.PHONE;
   }
 
+  windowTop = 0;
+
   modalClose(): void {
     this.activeIndex = null;
     this.$openItem.set(this.$openItem.current === ItemOpen.IS_OPEN
       ? ItemOpen.IS_HIDDEN : ItemOpen.IS_OPEN);
+  }
+
+  onScroll(e: any) {
+    this.windowTop = e.target.documentElement.scrollTop + 50;
+    console.log({ top: this.windowTop });
+  }
+
+  mounted() {
+    window.addEventListener('scroll', this.onScroll);
+  }
+
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.onScroll);
+  }
+
+  get itemPosition(): string {
+    return `${this.windowTop}px`;
   }
 }
 </script>
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
 .catalog {
-  padding-bottom: 120px;
+  padding-bottom: 140px;
   &__content {
     margin-left: 6%;
     margin-right: 6%;
@@ -367,10 +376,11 @@ export default class Catalog extends Vue {
 
   &__item-mask {
     width: 100%;
-    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
     top: 0;
     left: 0;
+    right: 0;
+    bottom: 0;
     position: absolute;
     z-index: 3;
   }
@@ -383,6 +393,7 @@ export default class Catalog extends Vue {
   }
 
   @include for-phone-only {
+    padding-bottom: 150px;
     &__list {
       flex-wrap: wrap;
     }

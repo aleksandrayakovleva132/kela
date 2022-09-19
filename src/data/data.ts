@@ -161,7 +161,7 @@ export default {
     },
     {
       index: 13,
-      imageDesktop: 'templ-1',
+      imageDesktop: '13',
       imageMobile: '13',
       titleRu: '13 Фонтаны на ж/д ст в Сочи',
       titleEn: 'Fountain in Olympic Park Railway station',
@@ -170,7 +170,7 @@ export default {
       images: ['13-1', '13-2'],
       long: true,
       open: false,
-      bigImage: 'templ-1',
+      bigImage: '13-content',
     },
     {
       index: 14,

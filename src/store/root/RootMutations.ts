@@ -30,7 +30,6 @@ export default class RootMutations extends Mutations<RootState> {
     this.state.browser = browser;
   }
 
-  // eslint-disable-next-line no-shadow
   setItemStatus(openItem: itemOpen): void {
     this.state.openItem = openItem;
   }
