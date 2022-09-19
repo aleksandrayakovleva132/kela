@@ -11,7 +11,7 @@
           }"
               v-for="item in list" :key="item.index"
               :id="item.index"
-              :ref="`active-${item.index}`"
+              ref="itemActive"
           >
              <div class="catalog__item-cover" @click="showInfo(item.index)">
                <template v-if="mobile" >
@@ -68,7 +68,7 @@
         <div class="catalog__item-modal"
              v-if="activeIndex !== null && !mobile
               && $route.name !== pageName"
-             :style="{top: activePosition}"
+             :style="{top: itemPosition}"
         >
           <button class="catalog__modal-close"
                   @click="modalClose"></button>
@@ -157,6 +157,18 @@ export default class Catalog extends Vue {
       this.$openItem.set(this.$openItem.current === ItemOpen.IS_HIDDEN
         ? ItemOpen.IS_OPEN : ItemOpen.IS_HIDDEN);
     }
+    // this.$router.push({
+    //   hash: `#${index}`,
+    // });
+  }
+
+  activeItemPosition = document.getElementsByClassName('catalog__list-item--open');
+
+  el = this.activeItemPosition;
+
+  get itemPosition(): string {
+    console.log(this.activeIndex);
+    return '200px';
   }
 
   hiddenInfo(index: number | string): void {
