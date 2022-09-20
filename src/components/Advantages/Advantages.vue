@@ -121,7 +121,7 @@ export default class Advantages extends Vue {
     display: none;
   }
 
-  @include for-phone-only {
+  @include for-phone-and-tablet {
     width: 100%;
     padding: 50px 15px;
 
@@ -154,7 +154,8 @@ export default class Advantages extends Vue {
 
     &__item {
       width: 100%;
-      margin-bottom: 20px;
+      max-width: 420px;
+      margin: 0 auto 20px auto;
       overflow: hidden;
 
       &:last-child {

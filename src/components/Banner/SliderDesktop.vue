@@ -8,7 +8,7 @@
              :key="item.id"
              :style="{'background-image': `url(${item.img})`}"
         >
-          <img :src="require('./images/desktop/' + item.img)" width="100%" height="auto"/>
+          <img :src="require('./images/desktop/' + item.img)"/>
           <router-link to="catalog/civil/1#1">
             <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
                @click="openItem(item.id)">
@@ -19,7 +19,7 @@
           </router-link>
         </div>
         <div class="slider__slide-mask"></div>
-        <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+ <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
         <div  class="slider__counter">
           <div class="slider__counter-item"
                :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
@@ -91,19 +91,30 @@ export default class BannerDesktop extends Vue {
 }
 </script>
 <style lang="scss" scoped>
+@import "../../assets/mixins.scss";
 .slider {
+  min-height: 400px;
   &__header {
     position: absolute;
     z-index: 2;
     width: 88%;
     margin: 0 6%;
-    border: 1px solid green;
   }
 
   &__slide {
     width: 100vw;
     background-color: lightgray;
     display: flex;
+
+    & img {
+      width: 100%;
+      height: auto;
+
+      @include for-phone-and-tablet {
+        height: 100%;
+        width: auto;
+      }
+    }
     &-img {
       position: absolute;
       top: 0;
@@ -158,10 +169,15 @@ export default class BannerDesktop extends Vue {
     bottom: 10vh;
     width: 50%;
     left: 6%;
-    font-size: 64px;
-    line-height: 78px;
+    font-size: 52px;
+    line-height: 60px;
     text-transform: uppercase;
     color: var(--White);
+
+    @include for-big-desktop-up {
+      font-size: 64px;
+      line-height: 78px;
+    }
   }
 
   &__counter {

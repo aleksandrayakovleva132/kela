@@ -218,9 +218,14 @@ export default class Catalog extends Vue {
 .catalog {
   padding-bottom: 140px;
   &__content {
-    margin-left: 6%;
-    margin-right: 6%;
-    max-width: 88%;
+    width: calc(100% - 32px);
+    margin: 0 16px;
+
+    @include for-desktop-up {
+      margin-left: 6%;
+      margin-right: 6%;
+      max-width: 88%;
+    }
   }
 
   &__title {
@@ -236,6 +241,11 @@ export default class Catalog extends Vue {
     color: white;
     align-items: center;
     z-index: 3;
+
+    @include for-tablet-desktop {
+      font-size: 14px;
+      line-height: 18px;
+    }
   }
 
   &__date {
@@ -255,10 +265,10 @@ export default class Catalog extends Vue {
 
   &__list-item {
     padding: 0;
-    margin: 0 0 40px 0;
+    margin: 0 0 1.6vw 0;
     color: var(--Black);
     position: relative;
-    width: calc(30% - 40px);
+    width: calc(30% - 1.6vw);
     overflow: hidden;
     box-shadow: 5px 7px 18px 4px rgba(0,0,0,0.06);
     border: 1px solid rgba(0, 0, 0, 0.1);
@@ -346,31 +356,41 @@ export default class Catalog extends Vue {
   }
 
   &__item-modal {
-    width: 1000px;
+    width: calc(100% - 32px);
     min-height: 668px;
     background-color: var(--White);
     box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
     position: absolute;
-    left: calc(50% - 500px);
+    left: 16px;
     z-index: 5;
     padding: 35px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include for-desktop-up {
+      left: calc(50% - 500px);
+      width: 1000px;
+    }
   }
 
   &__modal-close {
     position: absolute;
     width: 40px;
     height: 40px;
-    top: -8px;
-    right: -46px;
+    top: -40px;
+    right: 0;
     background-image: url("../../assets/images/cross.svg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 24px;
     border: none;
     background-color: transparent;
+
+    @include for-desktop-up {
+      top: -8px;
+      right: -46px;
+    }
   }
 
   &__modal-title {

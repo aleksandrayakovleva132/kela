@@ -224,5 +224,11 @@ export default class ProjectHome extends Vue {
       display: none;
     }
   }
+  @include for-phone-and-tablet {
+    &__text {
+      font-size: 38px;
+      line-height: 43px;
+    }
+  }
 }
 </style>

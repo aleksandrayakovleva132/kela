@@ -171,7 +171,7 @@ export default class About extends Vue {
     }
   }
 
-  @include for-phone-only {
+  @include for-phone-and-tablet {
     flex-direction: column;
 
     &__column {
@@ -185,11 +185,13 @@ export default class About extends Vue {
     &__title {
       font-size: 38px;
       margin-bottom: 10px;
+      max-width: 480px;
     }
 
     &__text {
       font-size: 14px;
       line-height: 20px;
+      max-width: 480px;
     }
 
     &__content-container {

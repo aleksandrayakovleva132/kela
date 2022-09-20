@@ -47,6 +47,12 @@ $desktopBig: 1440px;
   }
 }
 
+@mixin for-phone-and-tablet {
+  @media (min-width: #{$phoneSmall}) and (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
 @mixin for-tablet-landscape-up {
   @media (min-width: #{$tablet}) {
     @content;
