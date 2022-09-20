@@ -9,11 +9,14 @@
              :style="{'background-image': `url(${item.img})`}"
         >
           <img :src="require('./images/desktop/' + item.img)" width="100%" height="auto"/>
-          <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
-             @click="openItem(item.id)">
-            {{ item.name }}
-            <Link class="slider__link"/>
-          </p>
+          <router-link to="catalog/civil/1#1">
+            <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
+               @click="openItem(item.id)">
+              <template v-if="rus">{{ item.name }}</template>
+              <template v-else>{{ item.enName }}</template>
+              <Link class="slider__link"/>
+            </p>
+          </router-link>
         </div>
         <div class="slider__slide-mask"></div>
         <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
@@ -37,6 +40,7 @@ import SliderButtons from '@/components/Banner/SliderButtons.vue';
 import Link from '@/components/Link/Link.vue';
 import Header from '@/components/Header/Header.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: {
@@ -45,13 +49,21 @@ import Decoration from '@/components/Decoration/Decoration.vue';
 })
 export default class BannerDesktop extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 1, name: 'Котедж на крутом склоне', img: '7.jpg' },
-    { id: 2, name: 'Метро', img: '7.jpg' },
-    { id: 3, name: 'Жилой комплекс', img: '7.jpg' },
-    // { id: 3, name: 'img3', img: '3.jpg' },
+    {
+      id: 1,
+      name: 'Котедж на крутом склоне',
+      enName: 'Сottage on the steep slope',
+      img: '7.jpg',
+    },
   ];
 
   currentSlideIndex = 0;
+
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
 
   prevSlide() {
     if (this.currentSlideIndex > 0) {
@@ -71,9 +83,9 @@ export default class BannerDesktop extends Vue {
 
   openItem(id: string) {
     return this.$router.push({
-      name: 'catalogItem',
+      name: 'catalog',
       params: { itemId: id },
-      hash: `#${id}`,
+      hash: `/catalog/civil/${id}#${id}`,
     });
   }
 }

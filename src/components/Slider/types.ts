@@ -1,6 +1,7 @@
 export type sliderTypes = {
     id: number,
     name: string,
+    enName?: string,
     img: string,
 }
 

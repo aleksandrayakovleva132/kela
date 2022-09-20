@@ -10,11 +10,14 @@
                :style="{'background-image': `url(${item.img})`}"
           >
             <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
+            <router-link to="catalog/civil/1#1">
               <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
                  @click="openItem(item.id)">
-                {{ item.name }}
+                <template v-if="rus">{{ item.name }}</template>
+                <template v-else>{{ item.enName }}</template>
                 <Link class="slider__link"/>
               </p>
+            </router-link>
           </div>
           <div class="slider__slide-mask"></div>
           <SliderButtons class="slider__slide-buttons"
@@ -40,6 +43,7 @@ import SliderButtons from '@/components/Banner/SliderButtons.vue';
 import { sliderTypes } from '@/components/Slider/types';
 import Link from '@/components/Link/Link.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: {
@@ -48,13 +52,21 @@ import Decoration from '@/components/Decoration/Decoration.vue';
 })
 export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
-    { id: 1, name: 'Котедж на крутом склоне', img: '1.jpg' },
-    { id: 2, name: 'Метро', img: '2.jpg' },
-    { id: 3, name: 'Жилой комплекс', img: '3.jpg' },
-    // { id: 3, name: 'img3', img: '3.jpg' },
+    {
+      id: 1,
+      name: 'Котедж на крутом склоне',
+      enName: 'Сottage on the steep slope',
+      img: '1.jpg',
+    },
   ];
 
   currentSlideIndex = 0;
+
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
 
   prevSlide() {
     if (this.currentSlideIndex > 0) {

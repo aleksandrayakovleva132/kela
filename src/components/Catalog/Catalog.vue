@@ -191,8 +191,10 @@ export default class Catalog extends Vue {
   }
 
   onScroll(e: any) {
-    this.windowTop = e.target.documentElement.scrollTop + 50;
-    console.log({ top: this.windowTop });
+    if (!this.mobile) {
+      this.windowTop = e.target.documentElement.scrollTop + 50;
+      console.log({ top: this.windowTop });
+    }
   }
 
   mounted() {
@@ -204,7 +206,10 @@ export default class Catalog extends Vue {
   }
 
   get itemPosition(): string {
-    return `${this.windowTop}px`;
+    if (!this.mobile) {
+      return `${this.windowTop}px`;
+    }
+    return '';
   }
 }
 </script>
