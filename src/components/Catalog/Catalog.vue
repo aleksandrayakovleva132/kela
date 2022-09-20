@@ -17,7 +17,7 @@
              <div class="catalog__item-cover" >
                <template v-if="mobile" >
                  <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
-                      alt="item.image" height="100%"
+                      alt="item.image" width="100%"
                  />
                </template>
                <template v-else>
