@@ -1,7 +1,8 @@
 <template>
   <div class="advantages">
     <div class="advantages__container">
-      <h2 class="advantages__title">Наши преимущества</h2>
+      <h2 class="advantages__title" v-if="rus">Наши преимущества</h2>
+      <h2 class="advantages__title" v-else>Our advantages</h2>
       <ul class="advantages__list">
         <li class="advantages__item" v-for="item in array" :key="item.index">
           <div class="advantages__item-inside">
@@ -10,9 +11,15 @@
                 <img :src="require(`./images/${item.image}.svg`)" width="100%">
               </div>
               <div class="advantages__content">
-                <h3 class="advantages__content-title">{{ item.title }}</h3>
+                <h3 class="advantages__content-title" v-if="rus">{{ item.title }}</h3>
+                <h3 class="advantages__content-title" v-else>{{ item.titleEng }}</h3>
                 <p class="advantages__content-text">
-                  {{ item.text }}
+                   <template v-if="rus">
+                     {{ item.text }}
+                   </template>
+                  <template v-else>
+                    {{ item.textEng }}
+                  </template>
                 </p>
               </div>
             </div>
@@ -36,6 +43,7 @@
 import { Component, Vue, Prop } from 'vue-property-decorator';
 import { AdvantagesArray } from '@/components/Advantages/types';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: { Decoration },
@@ -45,6 +53,12 @@ export default class Advantages extends Vue {
     type: Array,
   })
   readonly array!: AdvantagesArray[];
+
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
 }
 </script>
 <style lang="scss" scoped>

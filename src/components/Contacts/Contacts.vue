@@ -1,6 +1,8 @@
 <template>
   <div class="contacts">
-    <h2 class="contacts__title">Связаться с&nbsp;нами</h2>
+    <h2 class="contacts__title" v-if="rus">Связаться с&nbsp;нами</h2>
+    <h2 class="contacts__title" v-else>
+      Connect with us</h2>
     <div class="contacts__block">
 <!--      <div class="contacts__column contacts__column-left">-->
 <!--        <form class="contacts__form">-->
@@ -19,10 +21,13 @@
             <div class="contacts__icon">
               <img src="./images/location.svg">
             </div>
-              <span>
+              <span v-if="rus">
               Санкт-Петербург, ул. Сестрорецкая,
               дом 5, литер А, помещение 11-Н, офис 5
               </span>
+            <span v-else>
+              St. Petersburg, st. Sestroretskaya,
+              building 5, letter A, room 11-N, office 5</span>
           </li>
           <li class="contacts__item">
             <div class="contacts__icon">
@@ -49,11 +54,17 @@ import {
   Component, Vue,
 } from 'vue-property-decorator';
 import Link from '@/components/Link/Link.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: { Link },
 })
 export default class Contacts extends Vue {
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
 }
 </script>
 <style lang="scss" scoped>

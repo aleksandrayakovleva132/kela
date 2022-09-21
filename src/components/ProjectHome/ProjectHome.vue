@@ -14,8 +14,11 @@
             </div>
             <div class="project-home__content">
               <div class="project-home__label">
-                <p class="project-home__text">Объекты <br> промышленного <br>строительства:</p>
-                <Link label="подробнее" />
+                <p class="project-home__text" v-if="rus">Объекты
+                  <br> промышленного<br>строительства</p>
+                <p class="project-home__text" v-else>Industrial <br> construction<br>objects</p>
+                <Link label="подробнее" v-if="rus"/>
+                <Link label="more" v-else />
               </div>
               <div class="project-home__image">
                 <img src="./images/object-1.png" width="100%">
@@ -39,8 +42,11 @@
             </div>
             <div class="project-home__content">
               <div class="project-home__label">
-                <p class="project-home__text">Объекты <br> гражданского <br>строительства:</p>
-                <Link label="подробнее" />
+                <p class="project-home__text" v-if="rus">Объекты <br>
+                  гражданского <br>строительства:</p>
+                <p class="project-home__text" v-else>Сivil<br>engineering<br>facilities</p>
+                <Link label="подробнее" v-if="rus"/>
+                <Link label="more" v-else/>
               </div>
               <div class="project-home__image">
                 <img src="./images/object-2.png" width="100%">
@@ -74,12 +80,18 @@ import {
 } from 'vue-property-decorator';
 import Link from '@/components/Link/Link.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
+import Local from '@/store/enums/Local';
 
 @Component({
   components: { Decoration, Link },
 })
 
 export default class ProjectHome extends Vue {
+  private $local: any;
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
 }
 </script>
 <style lang="scss" scoped>
