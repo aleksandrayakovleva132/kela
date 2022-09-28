@@ -67,6 +67,7 @@ export default class Banner extends Vue {
     position: absolute;
     width: 88%;
     left: 6%;
+    z-index: 5;
   }
 
   @include for-phone-only {

@@ -6,6 +6,7 @@
       :array="advantages"/>
 <!--    <Team />-->
     <ProjectHome id="projects" />
+    <BimHome id="bim" />
     <Contacts  id="contact"/>
     <Footer />
   </div>
@@ -23,9 +24,11 @@ import Contacts from '@/components/Contacts/Contacts.vue';
 import Banner from '@/components/Banner/Banner.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
 import Language from '@/components/Header/Language.vue';
+import BimHome from '@/components/ProjectHome/BimHome.vue';
 
 @Component({
   components: {
+    BimHome,
     Language,
     Decoration,
     Banner,

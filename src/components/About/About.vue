@@ -36,9 +36,9 @@
               <p class="about__text">{{ data.paragraph5.eng}}</p>
             </template>
           </div>
-          <div class="about__slider-container">
-            <AboutSlider />
-          </div>
+<!--          <div class="about__slider-container">-->
+<!--            <AboutSlider />-->
+<!--          </div>-->
           <template v-if="rus">
             <p class="about__text">{{ data.paragraph6.ru}}</p>
           </template>

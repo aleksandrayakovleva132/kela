@@ -15,15 +15,12 @@ import {
   Vue,
 } from 'vue-property-decorator';
 import MenuStatus from '@/store/enums/MenuStatus';
-import ItemOpen from '@/store/enums/ItemOpen';
 
 @Component({
   components: {},
 })
 export default class App extends Vue {
   private $menu: any;
-
-  // private $openItem: any;
 
   closeMenu(): void {
     this.$menu.set(this.$menu.current === MenuStatus.IS_OPEN

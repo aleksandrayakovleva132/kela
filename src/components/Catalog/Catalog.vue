@@ -193,7 +193,6 @@ export default class Catalog extends Vue {
   onScroll(e: any) {
     if (!this.mobile) {
       this.windowTop = e.target.documentElement.scrollTop + 50;
-      console.log({ top: this.windowTop });
     }
   }
 
@@ -205,7 +204,15 @@ export default class Catalog extends Vue {
     window.removeEventListener('scroll', this.onScroll);
   }
 
+  get shortList() {
+    return this.list ? (this.list?.length < 4) : 0;
+  }
+
   get itemPosition(): string {
+    console.log(this.shortList);
+    if (!this.mobile && this.shortList) {
+      return '50px';
+    }
     if (!this.mobile) {
       return `${this.windowTop}px`;
     }
@@ -217,6 +224,7 @@ export default class Catalog extends Vue {
 @import "../../assets/mixins.scss";
 .catalog {
   padding-bottom: 140px;
+  min-height: 100vh;
   &__content {
     width: calc(100% - 32px);
     margin: 0 16px;

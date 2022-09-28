@@ -17,16 +17,16 @@ import { Component, Vue, Prop } from 'vue-property-decorator';
 @Component({})
 export default class Decoration extends Vue {
   @Prop({
-    type: Number,
+    type: [Number, String],
     default: 230,
   })
-  readonly size!: number;
+  readonly size!: [number, string];
 
   @Prop({
-    type: Number,
+    type: [Number, String],
     default: 2,
   })
-  readonly width!: number;
+  readonly width!: [number, string];
 
   @Prop({
     type: String,
