@@ -54,18 +54,14 @@ export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
     {
       id: 1,
-      img: '01.jpg',
-    },
-    {
-      id: 2,
       img: '02.jpg',
     },
     {
-      id: 3,
+      id: 2,
       img: '03.jpg',
     },
     {
-      id: 4,
+      id: 3,
       img: '04.jpg',
     },
   ];
