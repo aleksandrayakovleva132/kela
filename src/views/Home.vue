@@ -55,7 +55,7 @@ export default class Home extends Vue {
       title: 'Ценообразование',
       titleEng: 'Pricing',
       textEng: 'KELA is a medium-sized company with a team of a little over 100 people, which allows us to provide solutions for prices below the market level.',
-      text: 'Наши цены ниже рыночных, поскольку в нашей организации расходы на штат административного персонала сведены к минимуму. По сути, Вы платите исполнителям напрямую.',
+      text: 'Мы некрупный проектный институт со штатом более 100 человек, наш коллектив четко структурирован, что позволяет формировать предложения о стоимости проектирования ниже рыночных.',
       image: 'img-2',
     },
     {
@@ -63,15 +63,15 @@ export default class Home extends Vue {
       title: 'Соблюдение сроков',
       titleEng: 'Serious about deadlines',
       textEng: 'Efficient team management and well-established project-planning allows rigorous but swift decision making and strict compliance with the deadlines for project delivery.',
-      text: 'В нашей компании реализована функциональная схема работы над проектом, что позволяет оперативно принимать решения и строго соблюдать установленные сроки проектирования.',
+      text: 'Командное управление и отработанный регламент планирования и управления проектом, позволяет нам оперативно принимать решения и строго соблюдать установленные сроки проектирования.',
       image: 'img-3',
     },
     {
       index: 4,
       title: 'География',
       titleEng: 'Geography',
-      textEng: 'We run design projects across Russia. Our team members have an extensive experience of designing buildings and constructions located in permafrost zones and areas of increased seismic activity',
-      text: 'Мы работаем над объектами, расположенными в разных точках России. Наши специалисты имеют опыт проектирования в районах вечной мерзлоты, зонах повышенной сейсмической активности.',
+      textEng: 'We run design projects across Russia. Our team members have an extensive experience of designing buildings and constructions located in permafrost zones and areas of increased seismic activity.',
+      text: 'Мы работаем над объектами, расположенными в разных точках России. Наши специалисты имеют богатый опыт проектирования в районах вечной мерзлоты, зонах повышенной сейсмической  активности.',
       image: 'img-4',
     },
   ];

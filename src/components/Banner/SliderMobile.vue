@@ -11,11 +11,11 @@
           >
             <img :src="require('./images/' + item.img)" width="100%" height="100%"/>
             <router-link to="catalog/civil/1#1">
-              <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
-                 @click="openItem(item.id)">
+              <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
+<!--                 @click="openItem(item.id)">-->
                 <template v-if="rus">{{ item.name }}</template>
                 <template v-else>{{ item.enName }}</template>
-                <Link class="slider__link"/>
+<!--                <Link class="slider__link"/>-->
               </p>
             </router-link>
           </div>
@@ -54,9 +54,19 @@ export default class BannerMobile extends Vue {
   sliderItems: sliderTypes[] = [
     {
       id: 1,
-      name: 'Котедж на крутом склоне',
-      enName: 'Сottage on the steep slope',
-      img: '1.jpg',
+      img: '01.jpg',
+    },
+    {
+      id: 2,
+      img: '02.jpg',
+    },
+    {
+      id: 3,
+      img: '03.jpg',
+    },
+    {
+      id: 4,
+      img: '04.jpg',
     },
   ];
 
@@ -120,7 +130,7 @@ export default class BannerMobile extends Vue {
          bottom: 0;
          right: 0;
          left: 0;
-         background-color: rgba(0, 0, 0, 0.4);
+         background-color: rgba(0, 0, 0, 0.05);
        }
    }
 

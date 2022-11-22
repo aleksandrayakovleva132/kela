@@ -109,7 +109,7 @@ export default class About extends Vue {
   &__photo {
     width: 100%;
     padding-bottom: 108.33%; // 12 : 13
-    background-image: url('@/assets/images/about.png');
+    background-image: url('@/assets/images/about.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;

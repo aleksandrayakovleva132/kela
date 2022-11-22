@@ -1,12 +1,12 @@
 export type sliderTypes = {
     id: number,
-    name: string,
+    name?: string,
     enName?: string,
     img: string,
 }
 
 export type sliderItemType = {
   id: number,
-  name: string,
+  name?: string,
   img: string,
 }

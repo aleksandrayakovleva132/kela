@@ -10,11 +10,11 @@
         >
           <img :src="require('./images/desktop/' + item.img)"/>
           <router-link to="catalog/civil/1#1">
-            <p v-if="item.id === currentSlideIndex + 1" class="slider__title"
-               @click="openItem(item.id)">
+            <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
+<!--               @click="openItem(item.id)">-->
               <template v-if="rus">{{ item.name }}</template>
               <template v-else>{{ item.enName }}</template>
-              <Link class="slider__link"/>
+<!--              <Link class="slider__link"/>-->
             </p>
           </router-link>
         </div>
@@ -51,9 +51,19 @@ export default class BannerDesktop extends Vue {
   sliderItems: sliderTypes[] = [
     {
       id: 1,
-      name: 'Котедж на крутом склоне',
-      enName: 'Сottage on the steep slope',
-      img: '7.jpg',
+      img: '01.jpg',
+    },
+    {
+      id: 2,
+      img: '02.jpg',
+    },
+    {
+      id: 3,
+      img: '03.jpg',
+    },
+    {
+      id: 4,
+      img: '04.jpg',
     },
   ];
 
@@ -103,12 +113,13 @@ export default class BannerDesktop extends Vue {
 
   &__slide {
     width: 100vw;
+    height: 60vh;
     background-color: lightgray;
     display: flex;
 
     & img {
       width: 100%;
-      height: auto;
+      position: absolute;
 
       @include for-phone-and-tablet {
         height: 100%;
