@@ -1,5 +1,6 @@
 export type catalogTypes = {
   index?: number,
+  keyWorld?: string,
   imageMobile?: string,
   imageDesktop?: string,
   titleRu?: string,

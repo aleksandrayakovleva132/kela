@@ -81,15 +81,11 @@ export default class Advantages extends Vue {
     list-style: none;
     padding: 0;
     margin: 0;
+    row-gap: 50px;
   }
   &__item {
     width: 48.5%;
     border: 1px solid var(--Black);
-
-    &:nth-child(1),
-    &:nth-child(2){
-      margin-bottom: 50px;
-    }
   }
   &__item-inside {
     width: 100%;
@@ -151,6 +147,7 @@ export default class Advantages extends Vue {
 
     &__list {
       flex-direction: column;
+      row-gap: 20px;
     }
 
     &__item:nth-child(1) {
@@ -169,7 +166,6 @@ export default class Advantages extends Vue {
     &__item {
       width: 100%;
       max-width: 420px;
-      margin: 0 auto 20px auto;
       overflow: hidden;
 
       &:last-child {

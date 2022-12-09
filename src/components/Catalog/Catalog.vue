@@ -16,13 +16,13 @@
           >
              <div class="catalog__item-cover" >
                <template v-if="mobile" >
-                 <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
-                      alt="item.image" width="100%"
+                 <img :src="require(`./images/projects/${item.keyWorld}-m-cover.jpg`)"
+                      :alt="item.keyWorld" width="100%"
                  />
                </template>
                <template v-else>
-                 <img :src="require(`./images/${pageName}/desktop/${item.imageDesktop}.jpg`)"
-                      alt="item.image" width="100%"/>
+                 <img :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
+                      :alt="item.keyWorld" width="100%"/>
                </template>
                <p class="catalog__title">
                  <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
@@ -56,7 +56,7 @@
                 </template>
                 <div>
                   <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                    <img :src="require(`./images/${pageName}/mobile/${img}.jpg`)" width="100%"/>
+                    <img :src="require(`./images/projects/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
 <!--                <button class="catalog__show-more"-->
@@ -77,8 +77,14 @@
           <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
                             item.index === Number($route.params.itemId)">
-            <img :src="require(`./images/${pageName}/desktop/${item.bigImage}.jpg`)"
-                        width="100%"/>
+            <img
+              v-if="item.bigImage"
+              :src="require(`./images/projects/${item.bigImage}.jpg`)"
+                        width="100%" :alt="item.keyWorld"/>
+             <img
+               v-else
+               :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
+               width="100%" :alt="item.keyWorld"/>
              <template v-if="rus">
                 <div class="catalog__modal-title"> {{ item.titleRu }} </div>
                   <div class="catalog__item-paragraph"
