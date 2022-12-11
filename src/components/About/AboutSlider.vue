@@ -9,7 +9,7 @@
               v-for="item in softArray"
               :key="item.index">
             <img class="about-slider__image"
-                 :src="require(`../../assets/logotypes/${item.image}.png`)" height="20"/>
+                 :src="require(`../../assets/logotypes/${item.image}.svg`)" height="20"/>
 <!--            <img class="about-slider__image"-->
 <!--                 :src="item.image"-->
 <!--                 height="20"/>-->
@@ -52,31 +52,11 @@ export default class AboutSlider extends Vue {
       src: 'link',
       image: 'logo-2',
     },
-    {
-      index: 3,
-      src: 'link',
-      image: 'logo-3',
-    },
-    {
-      index: 4,
-      src: 'link',
-      image: 'logo-1',
-    },
-    {
-      index: 5,
-      src: 'link',
-      image: 'logo-2',
-    },
-    {
-      index: 6,
-      src: 'link',
-      image: 'logo-3',
-    },
-    {
-      index: 7,
-      src: 'link',
-      image: 'logo-1',
-    },
+    // {
+    //   index: 3,
+    //   src: 'link',
+    //   image: 'logo-3',
+    // },
   ];
 
   @Prop({
