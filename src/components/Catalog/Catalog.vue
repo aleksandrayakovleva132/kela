@@ -273,22 +273,20 @@ export default class Catalog extends Vue {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     width: 100%;
+    gap: 20px;
   }
 
   &__list-item {
     padding: 0;
-    margin: 0 0 1.6vw 0;
+    margin: 0;
     color: var(--Black);
     position: relative;
-    width: calc(30% - 1.6vw);
+    width: calc(30% - 15px);
     overflow: hidden;
-    box-shadow: 5px 7px 18px 4px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0, 0, 0, 0.1);
 
     &--long {
-      width: 40%;
+      width: calc(40% - 15px);
     }
 
     &:after {
@@ -475,6 +473,8 @@ export default class Catalog extends Vue {
       height: 240px;
       position: relative;
       box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+      overflow: hidden;
+
       &:after {
         content: '';
         display: block;
