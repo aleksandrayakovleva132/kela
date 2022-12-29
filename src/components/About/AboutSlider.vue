@@ -126,6 +126,7 @@ export default class AboutSlider extends Vue {
     width: 360px;
     position: relative;
     overflow-x: hidden;
+    height: 20px;
   }
   &__container {
     display: flex;
@@ -147,7 +148,7 @@ export default class AboutSlider extends Vue {
     padding-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
   &__buttons {
     display: flex;
