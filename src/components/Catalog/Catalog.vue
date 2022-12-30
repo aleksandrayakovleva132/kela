@@ -6,11 +6,11 @@
         <ul class="catalog__list">
           <li class="catalog__list-item"
               :class="{
-            'catalog__list-item--long': item.long,
-            'catalog__list-item--open': item.index === activeIndex,
+              'catalog__list-item--long': longItems.find((number) => number === listIndex + 1),
+              // 'catalog__list-item--open': item.open,
           }"
-              v-for="item in list" :key="item.index"
-              :id="item.index"
+              v-for="(item, listIndex) in list" :key="item.index"
+              :id=" listIndex + 1"
               ref="itemActive"
               @click="showInfo(item.index)"
           >
@@ -215,7 +215,6 @@ export default class Catalog extends Vue {
   }
 
   get itemPosition(): string {
-    console.log(this.shortList);
     if (!this.mobile && this.shortList) {
       return '50px';
     }
@@ -224,6 +223,9 @@ export default class Catalog extends Vue {
     }
     return '';
   }
+
+  // eslint-disable-next-line max-len
+  longItems = [1, 6, 7, 12, 13, 18, 19, 24, 25, 30, 31, 36, 37, 42, 43, 48, 49, 54, 55, 60, 61, 66, 67, 72, 73, 78, 79, 84, 85, 90, 91, 96, 101, 102, 107, 108, 113, 114, 119, 120, 125, 126, 131, 132, 137, 138, 143, 144];
 }
 </script>
 <style lang="scss" scoped>
