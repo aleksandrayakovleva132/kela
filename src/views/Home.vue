@@ -5,6 +5,7 @@
     <Advantages class="home__advantages"
       :array="advantages"/>
 <!--    <Team />-->
+    <Functions />
     <ProjectHome id="projects" />
     <BimHome id="bim" />
     <Contacts  id="contact"/>
@@ -25,9 +26,11 @@ import Banner from '@/components/Banner/Banner.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
 import Language from '@/components/Header/Language.vue';
 import BimHome from '@/components/ProjectHome/BimHome.vue';
+import Functions from '@/components/Functions/Functions.vue';
 
 @Component({
   components: {
+    Functions,
     BimHome,
     Language,
     Decoration,

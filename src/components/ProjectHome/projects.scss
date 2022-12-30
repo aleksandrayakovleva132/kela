@@ -12,20 +12,48 @@
   }
   &__row {
     width: 100%;
-    height: 158px;
-    background-color: var(--Orange);
-    fill: var(--White);
-    color: var(--White);
-    font-size: 58px;
+    height: 605px;
+    position: relative;
+    overflow: hidden;
+  }
+  &__bg {
+    background-image: url('@/components/ProjectHome/images/bi-bg.png');
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  &__bim-content {
+    position: absolute;
+    top: calc(50% - 103px);
+    left: 25%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+  }
+  &__first-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
+    margin-bottom: 30px;
+  }
+  &__bim-label {
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 30px;
+  }
+  &__bim-title{
+    margin: 0 0 0 -15px;
+    font-size: 128px;
+    font-weight: 300;
+    line-height: 156px;
+    text-transform: uppercase;
   }
   &__item {
     width: 100%;
-    padding-bottom: 108.33%;
+    padding-bottom: 100.33%;
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
@@ -138,11 +166,39 @@
     &__decoration--desktop {
       display: none;
     }
+
+    &__bim-content {
+      left: calc(50% - 100px);
+    }
   }
   @include for-phone-and-tablet {
     &__text {
       font-size: 38px;
       line-height: 43px;
+    }
+    &__bg {
+       background-size: auto 100%;
+    }
+
+    &__bim-label {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    &__bim-content {
+      top: calc(50% - 180px);
+       left: calc(50% - 100px);
+     }
+
+
+    &__bim-title {
+      margin-left: -10px;
+      font-size: 100px;
+    }
+
+    &__first-row {
+      flex-direction: column;
+      align-items: flex-start;
     }
   }
 }
