@@ -9,9 +9,7 @@ export default {
       descriptionRu: ['Сельскохозяйственный рынок. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
       descriptionEn: ['Greenmarket. Saint Petersburg, 2011.'],
       date: '20.03.19',
-      open: false,
       images: ['market-m-01', 'market-m-02', 'market-m-03', 'market-m-04'],
-      bigImage: 'market-d-01',
     },
     {
       index: 2,
@@ -21,8 +19,6 @@ export default {
       descriptionRu: ['Многоэтажный паркинг. Разработка раздела КЖ. Санкт-Петербург, 2011.'],
       descriptionEn: ['Multi-storey car park. Saint Petersburg, 2011.'],
       images: ['parking-m-01', 'parking-m-02', 'parking-m-03'],
-      open: false,
-      bigImage: 'parking-d-01',
     },
     {
       index: 3,
@@ -32,7 +28,6 @@ export default {
       descriptionRu: ['Жилой комплекс "Life Лесная". Разработка раздела КЖ. Санкт-Петербург, 2017.'],
       descriptionEn: ['Residential complex “Life Lesnaya”. St. Petersburg, 2017.'],
       images: ['lesnaya-m-01', 'lesnaya-m-02'],
-      open: false,
     },
     {
       index: 4,
@@ -44,8 +39,7 @@ export default {
       descriptionRu: ['Жилой комплекс "Цивилизация". Разработка раздела КЖ. Санкт-Петербург, 2016-2017.'],
       descriptionEn: ['Residential complex “Civilization”. St. Petersburg, 2016-2017.'],
       images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03', 'civilization-m-04', 'civilization-m-05', 'civilization-m-06'],
-      open: false,
-      bigImage: 'civilization-d-01',
+
     },
     {
       index: 5,
@@ -55,8 +49,6 @@ export default {
       descriptionRu: ['Котлованы и свайные поля.'],
       descriptionEn: ['Ditches and pile field for foundations.'],
       images: ['graffito-found-m-01', 'graffito-found-m-02'],
-      open: false,
-      bigImage: 'graffito-found-d-01',
     },
     {
       index: 6,
@@ -74,8 +66,6 @@ export default {
                'graffito-residental-m-07',
                'graffito-residental-m-08'
       ],
-      open: false,
-      bigImage: 'graffito-residental-d-01',
     },
     {
       index: 7,
@@ -85,8 +75,6 @@ export default {
       descriptionRu: ['Многоэтажная парковка.'],
       descriptionEn: ['Multi-storeycar park.'],
       images: ['graffito-parking-m-01', 'graffito-parking-m-02', 'graffito-parking-m-03'],
-      open: false,
-      bigImage: 'graffito-parking-d-01',
     },
     {
       index: 8,
@@ -96,8 +84,6 @@ export default {
       descriptionRu: ['Офис продаж.'],
       descriptionEn: ['Sales office.'],
       images: ['graffito-office-m-01', 'graffito-office-m-02'],
-      open: false,
-      bigImage: 'graffito-office-d-01',
     },
     {
       index: 9,
@@ -107,8 +93,6 @@ export default {
       descriptionRu: ['Подземная парковка.'],
       descriptionEn: ['Underground parking.'],
       images: ['graffito-underground-m-01', 'graffito-underground-m-02', 'graffito-underground-m-03'],
-      open: false,
-      bigImage: 'graffito-underground-d-01',
     },
     {
       index: 10,
@@ -118,8 +102,6 @@ export default {
       descriptionRu: ['Пергола.'],
       descriptionEn: ['Pergola.'],
       images: ['graffito-pergola-m-01', 'graffito-pergola-m-02', 'graffito-pergola-m-03'],
-      open: false,
-      bigImage: 'graffito-pergola-d-01',
     },
     {
       index: 11,
@@ -129,8 +111,6 @@ export default {
       descriptionRu: ['Подземные коммуникации.'],
       descriptionEn: ['Underground services.'],
       images: ['graffito-service-m-01', 'graffito-service-m-02', 'graffito-service-m-03'],
-      open: false,
-      bigImage: 'graffito-service-d-01',
     },
     {
       index: 12,
@@ -140,8 +120,6 @@ export default {
       descriptionRu: ['Бизнес-центр "Полис центр". Разработка разделов КЖ, КМ. Санкт-Петербург, 2014.'],
       descriptionEn: ['Business center. Saint Petersburg, 2014.'],
       images: ['sofiyskaya-m-01', 'sofiyskaya-m-02', 'sofiyskaya-m-03', 'sofiyskaya-m-04', 'sofiyskaya-m-05', 'sofiyskaya-m-06', 'sofiyskaya-m-07'],
-      open: false,
-      bigImage: 'sofiyskaya-d-01',
     },
     {
       index: 13,
@@ -151,8 +129,6 @@ export default {
       descriptionRu: ['Фонтаны на ж/д ст. Олимпийский парк. Разработка раздела КЖ. Сочи, 2012.'],
       descriptionEn: ['Fountain in Olympic Park Railway station. Sochi, 2012.'],
       images: ['sochi-m-01', 'sochi-m-02'],
-      open: false,
-      bigImage: 'sochi-d-01',
     },
     {
       index: 14,
@@ -162,8 +138,6 @@ export default {
       descriptionRu: ['Храм Благовещения Пресвятой Богородицы в Парголово. Разработка раздела КЖ. Санкт-Петербург, 2012.'],
       descriptionEn: ['Church of the Annunciation of the Blessed Virgin Mary in Pargolovo. Saint Petersburg, 2012.'],
       images: ['church-m-01', 'church-m-02'],
-      open: false,
-      bigImage: 'church-d-01',
     },
     {
       index: 15,
@@ -173,30 +147,25 @@ export default {
       descriptionRu:
       ['Деревянные башни. Разработка разделов КЖ, КД. Берген (Норвегия), Якутск, Ленинградская область, 2016.'],
       descriptionEn: ['Wooden towers. Bergen (Norway), Yakutsk and Leningrad Oblast, 2016.'],
-      images: ['wooden-tower-m-01', 'wooden-tower-m-02', 'wooden-tower-m-03', 'wooden-tower-m-04', 'wooden-tower-m-05'],
-      open: false,
-      bigImage: 'wooden-tower-d-01',
+      images: ['wooden-tower-m-01'],
     },
     {
       index: 16,
       keyWorld: 'lisiy-nos',
-      titleRu: '17 Ресторан с покрытием на вантах',
+      titleRu: 'Ресторан с покрытием на вантах',
       titleEn: 'Cable-stayed roof of restaurant',
       descriptionRu: ['Ресторан с покрытием на вантах. Разработка разделов КЖ, КМ. Ленинградская область, пос. Лисий Нос, 2017.'],
       descriptionEn: ['Cable-stayed roof of restaurant. Leningrad Region, Lisiy Nos, 2017.'],
       images: ['lisiy-nos-m-01', 'lisiy-nos-m-02'],
-      open: false,
-      bigImage: 'lisiy-nos-d-01',
     },
     {
       index: 17,
       keyWorld: 'begovaya',
-      titleRu: '18 Наземный павильон ст. м. "Беговая"',
+      titleRu: 'Наземный павильон ст. м. "Беговая"',
       titleEn: 'Ground pavilion of the Begovaya metro station.',
       descriptionRu: ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
       descriptionEn: ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
       images: ['begovaya-m-01', 'begovaya-m-02'],
-      open: false,
     },
     {
       index: 18,
@@ -205,9 +174,7 @@ export default {
       titleEn: 'Сottage on the steep slope',
       descriptionRu: ['Разработка разделов КЖ, КД. Ленинградская область, 2016.'],
       descriptionEn: ['Leningrad Oblast, 2016.'],
-      open: false,
       images: ['cottage-hill-m-01', 'cottage-hill-m-02', 'cottage-hill-m-03', 'cottage-hill-m-04'],
-      bigImage: 'cottage-hill-d-01'
     },
     {
       index: 19,
@@ -217,8 +184,6 @@ export default {
       descriptionRu: ['Разработка раздела КЖ. Ленинградская область, 2019.'],
       descriptionEn: ['Leningrad Oblast, 2019.'],
       images: ['cottage-underground-m-01', 'cottage-underground-m-01'],
-      open: false,
-      bigImage: 'cottage-underground-d-01',
     },
     {
       index: 20,
@@ -228,8 +193,6 @@ export default {
       descriptionRu: ['Разработка раздела КЖ. Ленинградская область, 2020.'],
       descriptionEn: ['Leningrad Oblast, 2020.'],
       images: ['cottage-peat-m-01', 'cottage-peat-m-02', 'cottage-peat-m-03'],
-      open: false,
-      bigImage: 'cottage-peat-d-1' ,
     },
     {
       index: 21,
@@ -238,9 +201,7 @@ export default {
       titleEn: 'Extension to the existing cottage',
       descriptionRu: ['Разработка раздела КЖ. Ленинградская область, 2017.'],
       descriptionEn: ['Leningrad Oblast, 2020.'],
-      open: false,
       images: ['cottage-extension-m-01', 'cottage-extension-m-02', 'cottage-extension-m-03'],
-      bigImage: 'cottage-extension-d-01'
     },
   ],
   bim: [
@@ -252,18 +213,15 @@ export default {
       descriptionRu: ['Корпус АБК, сборочно-сдаточный цех. Построение BIM модели в Autodesk Revit. Уровень детализации: LOD350. Нижний Тагил Свердловской области, 2022.'],
       descriptionEn: ['ABC building, assembly and delivery building. Building a BIM model in Autodesk Revit. Level of detail: LOD350. Nizhny Tagil, Sverdlovsk region, 2022.'],
       images: ['act-18-m-01','act-18-m-02', 'act-18-m-03', 'act-18-m-04', 'act-18-m-05', 'act-18-m-06', 'act-18-m-07', 'act-18-m-08', 'act-18-m-09'],
-      open: false,
     },
     {
       index: 2,
       keyWorld: 'electroplating',
-      imageDesktop: 'electroplating-d-cover',
       titleRu: 'Реконструкция и техническое перевооружение гальванического цеха',
       titleEn: 'Reconstruction and technical re-equipment of electroplating factory',
       descriptionRu: ['Построение BIM модели в Autodesk Revit. Нижний Тагил, Свердловская область, 2020.'],
       descriptionEn: ['Building a BIM model in Autodesk Revit. Nizhny Tagil, Sverdlovsk region, 2020.'],
       images: ['electroplating-m-01','electroplating-m-01'],
-      open: false,
     },
     {
       keyWorld: 'olympic',
@@ -273,7 +231,6 @@ export default {
       descriptionRu: ['Разработка раздела КЖ. Санкт-Петербург, 2021-2022.'],
       descriptionEn: ['St. Petersburg, 2021-2022.'],
       images: ['olympic-m-01','olympic-m-02', 'olympic-m-03', 'olympic-m-04', 'olympic-m-05', 'olympic-m-06', 'olympic-m-07', 'olympic-m-08', 'olympic-m-09'],
-      open: false,
     },
   ],
   industry: [
@@ -285,8 +242,6 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, АР, КЖ, КМ. Мирный (Якутия), 2019.'],
       descriptionEn: ['Mirny (Yakutia), 2019.'],
       images: ['yakutia-m-01', 'yakutia-m-02', 'yakutia-m-03', 'yakutia-m-04', 'yakutia-m-05', 'yakutia-m-06'],
-      open: false,
-      bigImage: 'yakutia-d-01',
     },
     {
       index: 2,
@@ -296,8 +251,6 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, АР, КЖ, КМ ОВ, ВК. Кольская атомная станция, 2019.'],
       descriptionEn: ['Kola Nuclear Power Plant, 2019.'],
       images: ['kola-m-01'],
-      open: false,
-      bigImage: 'kola-d-01',
     },
     {
       index: 3,
@@ -307,8 +260,6 @@ export default {
       descriptionRu: ['Pumping station for oily effluents. 2018.'],
       descriptionEn: [''],
       images: ['pumping-m-01', 'pumping-m-02', 'pumping-m-03', 'pumping-m-04', 'pumping-m-05'],
-      open: false,
-      bigImage: 'pumping-d-01',
     },
     {
       index: 4,
@@ -318,8 +269,6 @@ export default {
       descriptionRu: ['Sewage disposal plant of sanatorium. 2018.'],
       descriptionEn: [''],
       images: ['sanatorium-m-01', 'sanatorium-m-02', 'sanatorium-m-03'],
-      open: false,
-      bigImage: 'sanatorium-d-01',
     },
     {
       index: 5,
@@ -329,8 +278,6 @@ export default {
       descriptionRu: ['Разработка раздела ТХ. 2018.'],
       descriptionEn: [''],
       images: ['heat-m-01', 'heat-m-02'],
-      open: false,
-      bigImage: 'heat-d-01',
     },
     {
       index: 6,
@@ -340,8 +287,6 @@ export default {
       descriptionRu: ['Разработка раздела ТХ. 2018.'],
       descriptionEn: [''],
       images: ['feeding-m-01', 'feeding-m-02', 'feeding-m-03'],
-      open: false,
-      bigImage: 'feeding-d-01',
     },
     {
       index: 7,
@@ -351,8 +296,6 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, КМ. 2016.'],
       descriptionEn: [''],
       images: ['rain-runoff-m-01', 'rain-runoff-m-02', 'rain-runoff-m-03', 'rain-runoff-m-04', 'rain-runoff-m-05'],
-      open: false,
-      bigImage: 'rain-runoff-d-01',
     },
     {
       index: 8,
@@ -362,8 +305,6 @@ export default {
       descriptionRu: ['Разработка разделов КЖ, КМ, АР, АС. Санкт-Петербург, 2017.'],
       descriptionEn: ['St. Petersburg, 2017.'],
       images: ['warehouse-m-01', 'warehouse-m-02', 'warehouse-m-03'],
-      open: false,
-      bigImage: 'warehouse-d-01',
     },
     {
       index: 9,
@@ -373,8 +314,6 @@ export default {
       descriptionRu: ['Блок ОПК, КМО. Разработка разделов КЖ. Московская область, 2022.'],
       descriptionEn: ['Блок ОПК, КМО. Разработка разделов КЖ. Московская область, 2022.'],
       images: ['gamma-m-01'],
-      open: false,
-      bigImage: 'gamma-d-01',
     },
   ],
 };

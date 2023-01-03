@@ -7,7 +7,6 @@
           <li class="catalog__list-item"
               :class="{
               'catalog__list-item--long': longItems.find((number) => number === listIndex + 1),
-              // 'catalog__list-item--open': item.open,
           }"
               v-for="(item, listIndex) in list" :key="item.index"
               :id=" listIndex + 1"
@@ -17,12 +16,14 @@
              <div class="catalog__item-cover" >
                <template v-if="mobile" >
                  <img :src="require(`./images/projects/${item.keyWorld}-m-cover.jpg`)"
-                      :alt="item.keyWorld" width="100%"
+                      :alt="item.keyWorld"
                  />
                </template>
                <template v-else>
-                 <img :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
-                      :alt="item.keyWorld" width="100%"/>
+                 <div class="catalog__item-d-image">
+                   <img :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
+                        :alt="item.keyWorld" width="100%"/>
+                 </div>
                </template>
                <p class="catalog__title">
                  <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
@@ -56,7 +57,7 @@
                 </template>
                 <div>
                   <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                    <img :src="require(`./images/projects/${img}.jpg`)" width="100%"/>
+                    <img :src="require(`./images/projects/${img}.jpg`)" height="100%"/>
                   </div>
                 </div>
 <!--                <button class="catalog__show-more"-->
@@ -73,18 +74,12 @@
         >
           <button class="catalog__modal-close"
                   @click="modalClose"></button>
-<!--          activeIndex = null-->
           <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
                             item.index === Number($route.params.itemId)">
             <img
-              v-if="item.bigImage"
-              :src="require(`./images/projects/${item.bigImage}.jpg`)"
+              :src="require(`./images/projects/${item.keyWorld}-d-01.jpg`)"
                         width="100%" :alt="item.keyWorld"/>
-             <img
-               v-else
-               :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
-               width="100%" :alt="item.keyWorld"/>
              <template v-if="rus">
                 <div class="catalog__modal-title"> {{ item.titleRu }} </div>
                   <div class="catalog__item-paragraph"
@@ -286,6 +281,7 @@ export default class Catalog extends Vue {
     position: relative;
     width: calc(30% - 15px);
     overflow: hidden;
+    cursor: pointer;
 
     &--long {
       width: calc(40% - 15px);
@@ -301,6 +297,18 @@ export default class Catalog extends Vue {
       bottom: 0;
       background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
     }
+  }
+
+  &__item-cover {
+    padding-bottom: 80%;
+  }
+
+  &__item-d-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 
   &__box-list {
