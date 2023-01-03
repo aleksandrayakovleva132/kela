@@ -9,7 +9,7 @@
               v-for="item in softArray"
               :key="item.index">
             <img class="about-slider__image"
-                 :src="require(`../../assets/logotypes/${item.image}.png`)" height="20"/>
+                 :src="require(`../../assets/logotypes/${item.image}`)" height="20"/>
 <!--            <img class="about-slider__image"-->
 <!--                 :src="item.image"-->
 <!--                 height="20"/>-->
@@ -45,37 +45,27 @@ export default class AboutSlider extends Vue {
     {
       index: 1,
       src: 'link',
-      image: 'logo-1',
+      image: 'autocad.svg',
     },
     {
       index: 2,
       src: 'link',
-      image: 'logo-2',
+      image: 'revit.svg',
     },
     {
       index: 3,
       src: 'link',
-      image: 'logo-3',
+      image: 'tekla.svg',
     },
     {
       index: 4,
       src: 'link',
-      image: 'logo-1',
+      image: 'scad.svg',
     },
     {
       index: 5,
       src: 'link',
-      image: 'logo-2',
-    },
-    {
-      index: 6,
-      src: 'link',
-      image: 'logo-3',
-    },
-    {
-      index: 7,
-      src: 'link',
-      image: 'logo-1',
+      image: 'lira.svg',
     },
   ];
 
@@ -134,9 +124,9 @@ export default class AboutSlider extends Vue {
   padding: 30px 0;
   &__frame {
     width: 360px;
-    height: 20px;
     position: relative;
     overflow-x: hidden;
+    height: 20px;
   }
   &__container {
     display: flex;
@@ -155,11 +145,10 @@ export default class AboutSlider extends Vue {
   }
   &__item {
     height: 20px;
-    width: 120px;
     padding-bottom: 0;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
   }
   &__buttons {
     display: flex;
@@ -187,9 +176,6 @@ export default class AboutSlider extends Vue {
     line-height: 20px;
     font-size: 16px;
     font-weight: 400;
-  }
-  &__image {
-    opacity: 20%;
   }
 
   @include for-phone-only {

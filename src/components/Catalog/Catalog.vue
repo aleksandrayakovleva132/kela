@@ -6,23 +6,24 @@
         <ul class="catalog__list">
           <li class="catalog__list-item"
               :class="{
-            'catalog__list-item--long': item.long,
-            'catalog__list-item--open': item.index === activeIndex,
+              'catalog__list-item--long': longItems.find((number) => number === listIndex + 1),
           }"
-              v-for="item in list" :key="item.index"
-              :id="item.index"
+              v-for="(item, listIndex) in list" :key="item.index"
+              :id=" listIndex + 1"
               ref="itemActive"
               @click="showInfo(item.index)"
           >
              <div class="catalog__item-cover" >
                <template v-if="mobile" >
-                 <img :src="require(`./images/${pageName}/mobile/${item.imageMobile}.jpg`)"
-                      alt="item.image" width="100%"
+                 <img :src="require(`./images/projects/${item.keyWorld}-m-cover.jpg`)"
+                      :alt="item.keyWorld"
                  />
                </template>
                <template v-else>
-                 <img :src="require(`./images/${pageName}/desktop/${item.imageDesktop}.jpg`)"
-                      alt="item.image" width="100%"/>
+                 <div class="catalog__item-d-image">
+                   <img :src="require(`./images/projects/${item.keyWorld}-d-cover.jpg`)"
+                        :alt="item.keyWorld" width="100%"/>
+                 </div>
                </template>
                <p class="catalog__title">
                  <span v-if="rus" class="catalog__label">{{ item.titleRu }}</span>
@@ -56,7 +57,7 @@
                 </template>
                 <div>
                   <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                    <img :src="require(`./images/${pageName}/mobile/${img}.jpg`)" width="100%"/>
+                    <img :src="require(`./images/projects/${img}.jpg`)" height="100%"/>
                   </div>
                 </div>
 <!--                <button class="catalog__show-more"-->
@@ -73,12 +74,12 @@
         >
           <button class="catalog__modal-close"
                   @click="modalClose"></button>
-<!--          activeIndex = null-->
           <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
                             item.index === Number($route.params.itemId)">
-            <img :src="require(`./images/${pageName}/desktop/${item.bigImage}.jpg`)"
-                        width="100%"/>
+            <img
+              :src="require(`./images/projects/${item.keyWorld}-d-01.jpg`)"
+                        width="100%" :alt="item.keyWorld"/>
              <template v-if="rus">
                 <div class="catalog__modal-title"> {{ item.titleRu }} </div>
                   <div class="catalog__item-paragraph"
@@ -209,7 +210,6 @@ export default class Catalog extends Vue {
   }
 
   get itemPosition(): string {
-    console.log(this.shortList);
     if (!this.mobile && this.shortList) {
       return '50px';
     }
@@ -218,6 +218,9 @@ export default class Catalog extends Vue {
     }
     return '';
   }
+
+  // eslint-disable-next-line max-len
+  longItems = [1, 6, 7, 12, 13, 18, 19, 24, 25, 30, 31, 36, 37, 42, 43, 48, 49, 54, 55, 60, 61, 66, 67, 72, 73, 78, 79, 84, 85, 90, 91, 96, 101, 102, 107, 108, 113, 114, 119, 120, 125, 126, 131, 132, 137, 138, 143, 144];
 }
 </script>
 <style lang="scss" scoped>
@@ -267,22 +270,21 @@ export default class Catalog extends Vue {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     width: 100%;
+    gap: 20px;
   }
 
   &__list-item {
     padding: 0;
-    margin: 0 0 1.6vw 0;
+    margin: 0;
     color: var(--Black);
     position: relative;
-    width: calc(30% - 1.6vw);
+    width: calc(30% - 15px);
     overflow: hidden;
-    box-shadow: 5px 7px 18px 4px rgba(0,0,0,0.06);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 
     &--long {
-      width: 40%;
+      width: calc(40% - 15px);
     }
 
     &:after {
@@ -295,6 +297,18 @@ export default class Catalog extends Vue {
       bottom: 0;
       background: linear-gradient(0deg, black 0%, rgba(0, 0, 0, 0) 100%);
     }
+  }
+
+  &__item-cover {
+    padding-bottom: 80%;
+  }
+
+  &__item-d-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
   }
 
   &__box-list {
@@ -469,6 +483,8 @@ export default class Catalog extends Vue {
       height: 240px;
       position: relative;
       box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+      overflow: hidden;
+
       &:after {
         content: '';
         display: block;

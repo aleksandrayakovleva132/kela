@@ -1,0 +1,24 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="128" height="128" fill="white"/>
+<circle cx="23" cy="68" r="5" fill="#EB5B35"/>
+<circle cx="43" cy="68" r="5" fill="#EB5B35"/>
+<circle cx="63" cy="68" r="5" fill="#EB5B35"/>
+<circle cx="25" cy="68" r="4.5" stroke="black"/>
+<circle cx="45" cy="68" r="4.5" stroke="black"/>
+<circle cx="65" cy="68" r="4.5" stroke="black"/>
+<mask id="path-7-inside-1_625_20" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M8 43H82V70V93H31.8889L16 106V93H8V43Z"/>
+</mask>
+<path d="M82 43V42H83V43H82ZM8 43H7V42H8V43ZM82 93H83V94H82V93ZM31.8889 93L31.2557 92.226L31.5319 92H31.8889V93ZM16 106L16.6332 106.774L15 108.11V106H16ZM16 93V92H17V93H16ZM8 93V94H7V93H8ZM82 44H8V42H82V44ZM81 70V43H83V70H81ZM81 93V70H83V93H81ZM31.8889 92H82V94H31.8889V92ZM15.3668 105.226L31.2557 92.226L32.5221 93.774L16.6332 106.774L15.3668 105.226ZM17 93V106H15V93H17ZM8 92H16V94H8V92ZM9 43V93H7V43H9Z" fill="black" mask="url(#path-7-inside-1_625_20)"/>
+<mask id="path-9-inside-2_625_20" fill="white">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M119 21H45V71H95.1111L111 84V71H119V21Z"/>
+</mask>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M119 21H45V71H95.1111L111 84V71H119V21Z" fill="white"/>
+<path d="M45 21V20H44V21H45ZM119 21H120V20H119V21ZM45 71H44V72H45V71ZM95.1111 71L95.7443 70.226L95.4681 70H95.1111V71ZM111 84L110.367 84.774L112 86.1102V84H111ZM111 71V70H110V71H111ZM119 71V72H120V71H119ZM45 22H119V20H45V22ZM46 71V21H44V71H46ZM95.1111 70H45V72H95.1111V70ZM111.633 83.226L95.7443 70.226L94.4779 71.774L110.367 84.774L111.633 83.226ZM110 71V84H112V71H110ZM119 70H111V72H119V70ZM118 21V71H120V21H118Z" fill="black" mask="url(#path-9-inside-2_625_20)"/>
+<circle cx="60" cy="45" r="5" fill="#EB5B35"/>
+<circle cx="80" cy="45" r="5" fill="#EB5B35"/>
+<circle cx="100" cy="45" r="5" fill="#EB5B35"/>
+<circle cx="62" cy="45" r="4.5" stroke="black"/>
+<circle cx="82" cy="45" r="4.5" stroke="black"/>
+<circle cx="102" cy="45" r="4.5" stroke="black"/>
+</svg>
