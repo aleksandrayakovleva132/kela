@@ -3,6 +3,7 @@ export type sliderTypes = {
     name?: string,
     enName?: string,
     img: string,
+    light?: boolean,
 }
 
 export type sliderItemType = {

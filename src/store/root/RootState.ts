@@ -12,9 +12,12 @@ import MenuStatus from '@/store/enums/MenuStatus.ts';
 // eslint-disable-next-line import/extensions
 import Local from '@/store/enums/Local.ts';
 import ItemOpen from '@/store/enums/ItemOpen';
+import ColorLogo from '@/store/enums/ColorLogo';
 
 export default class RootState {
   menu: MenuStatus = MenuStatus.IS_HIDDEN;
+
+  colorLogo: ColorLogo = ColorLogo.LIGHT;
 
   openItem: ItemOpen = ItemOpen.IS_HIDDEN;
 

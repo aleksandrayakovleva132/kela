@@ -46,21 +46,6 @@ export default class App extends Vue {
     height: 100vh;
   }
 
-  //&__mask-open-item  {
-  //  position: absolute;
-  //  top: 0;
-  //  bottom: 0;
-  //  left: 0;
-  //  right: 0;
-  //  overflow: hidden;
-  //  background-color: rgba(0, 0, 0, 0.4);
-  //  z-index: 5;
-  //  max-height: 100vh;
-  //  display: none;
-  //}
-  //&--open-item .app__mask-open-item {
-  //  display: block;
-  //}
   &__mask {
     width: 100%;
     height: 100vh;

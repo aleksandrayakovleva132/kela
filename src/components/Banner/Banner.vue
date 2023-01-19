@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import {
-  Component, Vue,
+  Component, Vue, Prop,
 } from 'vue-property-decorator';
 import { sliderTypes } from '@/components/Slider/types';
 import Slider from '@/components/Slider/Slider.vue';
@@ -54,6 +54,11 @@ export default class Banner extends Vue {
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
   }
+
+  @Prop({
+    type: Boolean,
+  })
+  readonly isLightSlide!: boolean;
 }
 </script>
 <style lang="scss" scoped>

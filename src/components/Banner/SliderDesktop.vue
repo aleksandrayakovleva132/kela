@@ -7,7 +7,17 @@
         <div class="slider__slide" v-for="item in sliderItems"
              :key="item.id"
              :style="{'background-image': `url(${item.img})`}"
+             @click="sliderClick()"
         >
+<!--          <span-->
+<!--            style="-->
+<!--            background-color: olive;-->
+<!--            padding: 50px 100px;-->
+<!--            color: white;-->
+<!--            position:absolute; top: 200px;-->
+<!--            left: 400px; z-index: 300;">-->
+<!--            {{ item.id }}-->
+<!--          </span>-->
           <img :src="require('./images/desktop/' + item.img)"/>
           <router-link to="catalog/civil/1#1">
             <p v-if="item.id === currentSlideIndex + 1" class="slider__title">
@@ -19,7 +29,7 @@
           </router-link>
         </div>
         <div class="slider__slide-mask"></div>
- <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
+      <SliderButtons class="slider__slide-buttons" @nextSlide="nextSlide" @prevSlide="prevSlide"/>
         <div  class="slider__counter">
           <div class="slider__counter-item"
                :class="{'slider__counter-item--active': slide.id === currentSlideIndex + 1 }"
@@ -41,6 +51,7 @@ import Link from '@/components/Link/Link.vue';
 import Header from '@/components/Header/Header.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
 import Local from '@/store/enums/Local';
+import ColorLogo from '@/store/enums/ColorLogo';
 
 @Component({
   components: {
@@ -56,6 +67,7 @@ export default class BannerDesktop extends Vue {
     {
       id: 2,
       img: '02.jpg',
+      light: true,
     },
     {
       id: 3,
@@ -69,7 +81,11 @@ export default class BannerDesktop extends Vue {
 
   currentSlideIndex = 0;
 
+  currentColorLogo = ColorLogo.DARK;
+
   private $local: any;
+
+  private $colorLogo: any;
 
   get rus(): boolean {
     return this.$local.current === Local.RU;
@@ -98,6 +114,12 @@ export default class BannerDesktop extends Vue {
       hash: `/catalog/civil/${id}#${id}`,
     });
   }
+
+  // eslint-disable-next-line class-methods-use-this
+  sliderClick(): any {
+    // eslint-disable-next-line no-console
+    console.log('clickk');
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -116,6 +138,7 @@ export default class BannerDesktop extends Vue {
     height: 60vh;
     background-color: lightgray;
     display: flex;
+    position: relative;
 
     & img {
       width: 100%;
@@ -136,7 +159,7 @@ export default class BannerDesktop extends Vue {
   }
 
   &__slide-buttons {
-    z-index: 3;
+    z-index: 20;
     position: absolute;
     right: 6%;
     bottom: 104px;

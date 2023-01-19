@@ -57,44 +57,44 @@ export default class Functions extends Vue {
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
 .functions {
-  width: 82%;
-  margin: 0  auto;
-  height: 360px;
+  margin: 0 auto;
 
   &__row {
     background: rgba(235, 91, 53, 0.2);
-    padding-top: 60px;
-    padding-bottom: 7px;
+    padding: 42px 0;
   }
 
   &__title {
-    margin: 0 auto 56px;
-    font-size: 48px;
-    line-height: 58px;
+    margin: 0 auto 36px;
+    font-size: 40px;
+    line-height: 50px;
     font-weight: 300;
     text-transform: uppercase;
     text-align: center;
   }
 
   &__list {
-    padding: 0;
+    padding: 0 30px;
     margin: 0;
     list-style: none;
     height: 108px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1110px;
+    margin-left: auto;
+    margin-right: auto;
   }
   &__item {
     font-weight: 400;
-    font-size: 32px;
+    font-size: 26px;
     display: flex;
     align-items: center;
   }
 
   &__num {
     font-weight: 700;
-    font-size: 48px;
+    font-size: 36px;
     line-height: 58px;
     margin-right: 28px;
     color: var(--Orange);
@@ -102,6 +102,8 @@ export default class Functions extends Vue {
 
   @include for-phone-and-tablet {
     height: auto;
+    width: 100%;
+    margin: 0;
 
     &__row {
       padding: 46px 20px;
@@ -116,6 +118,9 @@ export default class Functions extends Vue {
       flex-direction: column;
       height: auto;
       align-items: baseline;
+      padding: 0 20px;
+      width: 100%;
+      max-width: 430px;
     }
 
     &__item {
@@ -130,6 +135,10 @@ export default class Functions extends Vue {
       line-height: 24px;
       margin-right: 24px;
     }
+  }
+
+  @media (min-width: 1720px) {
+    width: 60%;
   }
 }
 </style>

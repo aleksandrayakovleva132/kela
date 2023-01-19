@@ -1,6 +1,7 @@
 <template>
   <div class="about-slider">
-    <p class="about-slider__label">Мы работаем в программных комплексах:</p>
+    <p class="about-slider__label" v-if="rus">Мы работаем в программных комплексах:</p>
+    <p class="about-slider__label" v-else>Our software:</p>
     <div class="about-slider__container">
       <div class="about-slider__frame">
         <ul class="about-slider__list" :style="{ left: listPosition }">
@@ -37,6 +38,7 @@ import {
   Component, Vue, Prop,
 } from 'vue-property-decorator';
 import { sliderTypes } from '@/components/About/types';
+import Local from '@/store/enums/Local';
 
 @Component({
 })
@@ -114,6 +116,12 @@ export default class AboutSlider extends Vue {
   get sliderWidthCss(): string {
     return `${this.sliderWidth}px`;
   }
+
+  get rus(): boolean {
+    return this.$local.current === Local.RU;
+  }
+
+  private $local: any;
 }
 </script>
 <style lang="scss" scoped>

@@ -59,10 +59,12 @@ export default class BannerMobile extends Vue {
     {
       id: 2,
       img: '03.jpg',
+      light: true,
     },
     {
       id: 3,
       img: '04.jpg',
+      light: true,
     },
   ];
 

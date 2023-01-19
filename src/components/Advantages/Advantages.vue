@@ -64,9 +64,9 @@ export default class Advantages extends Vue {
 <style lang="scss" scoped>
 @import "../../assets/mixins.scss";
 .advantages {
-  padding: 120px 0;
+  padding: 50px 0;
   margin: 0 auto;
-  width: 82%;
+  width: 68%;
   &__title {
     margin: 0 0 50px 0;
     font-size: 48px;
@@ -89,7 +89,7 @@ export default class Advantages extends Vue {
   }
   &__item-inside {
     width: 100%;
-    padding-bottom: 48%;
+    padding-bottom: 36%;
     position: relative;
     background-repeat: no-repeat;
     background-position: bottom left;
@@ -121,7 +121,7 @@ export default class Advantages extends Vue {
    }
    &__image {
      width: 25%;
-     margin-right: 8%;
+     margin-right: 6%;
    }
    &__content {
      width: 67%;
@@ -148,6 +148,7 @@ export default class Advantages extends Vue {
     &__list {
       flex-direction: column;
       row-gap: 20px;
+      align-items: center;
     }
 
     &__item:nth-child(1) {
@@ -206,6 +207,36 @@ export default class Advantages extends Vue {
       left: 0;
       transform: scaleX(-1);
     }
+  }
+
+  @media (min-width: 901px) and (max-width: 999px){
+    width: 96%;
+    &__item-inside {
+      padding-bottom: 65%;
+    }
+  }
+
+  @media (min-width: 1000px) and (max-width: 1179px){
+    width: 96%;
+    &__item-inside {
+      padding-bottom: 50%;
+    }
+  }
+
+  @media (min-width: 1180px) and (max-width: 1650px){
+    width: 96%;
+
+    &__item-inside {
+      padding-bottom: 50%;
+    }
+  }
+
+  @media (min-width: 1250px) {
+    width: 80%
+  }
+
+  @media (min-width: 1700px) {
+    width: 70%
   }
 }
 </style>

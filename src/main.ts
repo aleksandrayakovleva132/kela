@@ -42,6 +42,13 @@ Vue.prototype.$layout = {
   set: rootModule.context(store).mutations.setLayout,
 };
 
+Vue.prototype.$colorLogo = {
+  get current() {
+    return rootModule.context(store).state.colorLogo;
+  },
+  set: rootModule.context(store).mutations.setColorLogo,
+};
+
 new Vue({
   router,
   store,

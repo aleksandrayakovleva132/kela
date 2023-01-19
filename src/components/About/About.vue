@@ -1,50 +1,65 @@
 <template>
-  <div class="about">
-    <div class="about__column">
-      <div class="about__photo">
-        <div class="about__decoration about__decoration--top">
-          <Decoration :size="this.$layout.current === 'phone' ? 120 : 232" width="3"/>
+  <div>
+    <div class="about">
+      <div class="about__column about__column--left">
+        <div class="about__photo">
+          <div class="about__decoration about__decoration--top">
+            <Decoration :size="this.$layout.current === 'phone' ? 120 : 232" width="3"/>
+          </div>
+          <div class="about__decoration about__decoration--bottom">
+            <Decoration :size="this.$layout.current === 'phone' ? 232 : 418"
+                        :width="this.$layout.current === 'phone' ? 3 : 2"/>
+          </div>
         </div>
-        <div class="about__decoration about__decoration--bottom">
-          <Decoration :size="this.$layout.current === 'phone' ? 232 : 418"
-                      :width="this.$layout.current === 'phone' ? 3 : 2"/>
+      </div>
+      <div class="about__column about__column--right">
+        <div class="about__content">
+          <div class="about__content-container">
+            <div class="about__text-block">
+              <h2 class="about__title">
+                <template v-if="rus">
+                  {{ data.title.ru }}
+                </template>
+                <template v-else>{{ data.title.eng }}</template>
+              </h2>
+              <template v-if="rus">
+                <p class="about__text">{{ data.paragraph1.ru }}</p>
+                <p class="about__text">{{ data.paragraph2.ru }}</p>
+                <p class="about__text">{{ data.paragraph3.ru }}</p>
+                <p class="about__text">{{ data.paragraph4.ru}}</p>
+                <p class="about__text about__hidden-tablet">{{ data.paragraph5.ru}}</p>
+              </template>
+              <template v-else>
+                <p class="about__text">{{ data.paragraph1.eng }}</p>
+                <p class="about__text">{{ data.paragraph2.eng }}</p>
+                <p class="about__text">{{ data.paragraph3.eng }}</p>
+                <p class="about__text">{{ data.paragraph4.eng}}</p>
+                <p class="about__text about__hidden-tablet">{{ data.paragraph5.eng}}</p>
+              </template>
+            </div>
+            <div class="about__slider-container about__hidden-tablet">
+              <AboutSlider />
+            </div>
+            <template v-if="rus">
+              <p class="about__text about__hidden-tablet">{{ data.paragraph6.ru}}</p>
+            </template>
+            <template v-else class="about__hidden-tablet">
+              <p class="about__text">{{ data.paragraph6.eng }}</p>
+            </template>
+          </div>
         </div>
       </div>
     </div>
-    <div class="about__column">
-      <div class="about__content">
-        <div class="about__content-container">
-          <div class="about__text-block">
-          <h2 class="about__title">
-            <template v-if="rus">
-              {{ data.title.ru }}
-            </template>
-            <template v-else>{{ data.title.eng }}</template>
-          </h2>
-           <template v-if="rus">
-             <p class="about__text">{{ data.paragraph1.ru }}</p>
-             <p class="about__text">{{ data.paragraph2.ru }}</p>
-             <p class="about__text">{{ data.paragraph3.ru }}</p>
-             <p class="about__text">{{ data.paragraph4.ru}}</p>
-             <p class="about__text">{{ data.paragraph5.ru}}</p>
-           </template>
-            <template v-else>
-              <p class="about__text">{{ data.paragraph1.eng }}</p>
-              <p class="about__text">{{ data.paragraph2.eng }}</p>
-              <p class="about__text">{{ data.paragraph3.eng }}</p>
-              <p class="about__text">{{ data.paragraph4.eng}}</p>
-              <p class="about__text">{{ data.paragraph5.eng}}</p>
-            </template>
-          </div>
-          <div class="about__slider-container">
-            <AboutSlider />
-          </div>
-          <template v-if="rus">
-            <p class="about__text">{{ data.paragraph6.ru}}</p>
-          </template>
-          <template v-else><p class="about__text">{{ data.paragraph6.eng }}</p></template>
-        </div>
+
+<!--    extra block-->
+    <div class="about__row">
+      <p class="about__text"  v-if="rus">{{ data.paragraph5.ru}}</p>
+      <p class="about__text"  v-else>{{ data.paragraph5.eng}}</p>
+      <div class="about__slider-container">
+        <AboutSlider />
       </div>
+      <p v-if="rus" class="about__text">{{ data.paragraph6.ru}}</p>
+      <p v-else class="about__text">{{ data.paragraph6.eng}}</p>
     </div>
   </div>
 </template>
@@ -103,13 +118,22 @@ export default class About extends Vue {
 @import "../../assets/mixins.scss";
 .about {
   display: flex;
+  &__row {
+     display: none;
+  }
   &__column {
     width: 50%;
+    &--left {
+      width: 40%;
+    }
+    &--right {
+      width: 60%;
+    }
   }
   &__photo {
     width: 100%;
     padding-bottom: 108.33%; // 12 : 13
-    background-image: url('@/assets/images/about.jpg');
+    background-image: url('@/assets/images/about.png');
     background-size: 100%;
     background-repeat: no-repeat;
     position: relative;
@@ -117,7 +141,7 @@ export default class About extends Vue {
   }
   &__content {
     width: 100%;
-    padding-bottom: 108.33%;
+    padding-bottom: 72.33%;
     background: rgba(235, 91, 53, 0.2);
     position: relative;
   }
@@ -130,10 +154,10 @@ export default class About extends Vue {
   }
   &__content-container {
     position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 7%;
-    right: 16%;
+    top: 4%;
+    bottom: 4%;
+    left: 5%;
+    right: 5%;
   }
 
   &__text {
@@ -224,6 +248,42 @@ export default class About extends Vue {
         height: 216px;
         bottom: -80px;
         left: -127px;
+      }
+    }
+  }
+  @media (min-width: 901px) and (max-width: 1365px) {
+    &__hidden-tablet {
+      display: none;
+    }
+    &__content {
+      padding-bottom: 108.33%;
+    }
+    &__column {
+      &--left {
+        width: 50%;
+      }
+      &--right {
+        width: 50%;
+      }
+    }
+
+    &__row {
+      display: block;
+      width: 100%;
+      background: rgba(235, 91, 53, 0.2);
+      padding: 26px;
+    }
+  }
+  @media (min-width: 1366px) and (max-width: 1700px) {
+    &__content {
+      padding-bottom: 108.33%;
+    }
+    &__column {
+      &--left {
+        width: 50%;
+      }
+      &--right {
+        width: 50%;
       }
     }
   }

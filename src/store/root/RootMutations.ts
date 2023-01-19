@@ -8,10 +8,15 @@ import DeviceLayout from '@/utils/DeviceLayout';
 import Local from '@/store/enums/Local';
 import RootState from '@/store/root/RootState';
 import itemOpen from '@/store/enums/ItemOpen';
+import ColorLogo from '@/store/enums/ColorLogo';
 
 export default class RootMutations extends Mutations<RootState> {
   setMenu(menu: MenuStatus): void {
     this.state.menu = menu;
+  }
+
+  setColorLogo(colorLogo: ColorLogo): void {
+    this.state.colorLogo = colorLogo;
   }
 
   setLayout(layout: DeviceLayout): void {

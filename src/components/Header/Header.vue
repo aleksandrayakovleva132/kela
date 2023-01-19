@@ -2,9 +2,7 @@
   <div class="header">
     <router-link to="/">
     <div class="header__logo">
-      <img v-if="lightMenu" src="./images/kela-2.svg" width="98" alt="kela">
-      <img v-else src="./images/kela.svg" width="98" alt="kela">
-    </div>
+      <img src="./images/kela.svg" width="98" alt="kela"> </div>
     </router-link>
 <!--    v-if="homeMenu && this.$layout.current === 'desktop'-->
     <div class="header__right-column" v-if="this.$layout.current === 'desktop'">
@@ -47,6 +45,11 @@ export default class Header extends Vue {
   @Prop({
     type: Boolean,
   })
+  readonly lightLogo!: boolean;
+
+  @Prop({
+    type: Boolean,
+  })
   readonly insideMenu!: boolean;
 
   @Prop({
@@ -67,9 +70,9 @@ export default class Header extends Vue {
 
   private $layout: any;
 
+  private $colorLogo: any;
+
   openMenu(): void {
-    console.log(this.$menu.current);
-    console.log(this.$layout.current);
     this.$menu.set(this.$menu.current === MenuStatus.IS_HIDDEN
       ? MenuStatus.IS_OPEN : MenuStatus.IS_HIDDEN);
   }

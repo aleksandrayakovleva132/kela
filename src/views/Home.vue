@@ -47,8 +47,8 @@ export default class Home extends Vue {
   advantages: AdvantagesArray[] = [
     {
       index: 1,
-      title: 'Индивидуальный подход к каждому проектируемому объекту',
-      text: 'Проектирование ведется в зависимости от конкретных условий, в рамках  индивидуального технического задания. Каждый проект прорабатывается детально с целью оптимизации проектных решений и дальнейшей экономией капиталовложений, ресурсов, трудозатрат.',
+      title: 'Индивидуальный подход к каждому объекту',
+      text: 'Проектирование ведется в зависимости от конкретных условий, в рамках  индивидуального технического задания. Каждый проект прорабатывается детально с целью оптимизации проектных решений.',
       titleEng: 'Individual approach to each design project',
       textEng: 'The design project is informed by specific conditions and individual technical assignment. The projects are developed with the aim to optimize design solutions capital investment and other resources.',
       image: '1',
