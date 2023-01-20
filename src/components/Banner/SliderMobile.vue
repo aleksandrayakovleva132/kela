@@ -44,6 +44,7 @@ import { sliderTypes } from '@/components/Slider/types';
 import Link from '@/components/Link/Link.vue';
 import Decoration from '@/components/Decoration/Decoration.vue';
 import Local from '@/store/enums/Local';
+import ColorLogo from '@/store/enums/ColorLogo';
 
 @Component({
   components: {
@@ -76,11 +77,28 @@ export default class BannerMobile extends Vue {
     return this.$local.current === Local.RU;
   }
 
+  private $colorLogo: any;
+
+  // eslint-disable-next-line consistent-return
+  lightLogo() {
+    // eslint-disable-next-line no-console
+    const current = this.currentSlideIndex + 1;
+    const array = this.sliderItems;
+    const newArr = array.find((item) => item.id === current);
+    if (newArr?.light === true) {
+      this.$colorLogo.set(ColorLogo.LIGHT);
+    }
+    if (newArr?.light === undefined) {
+      this.$colorLogo.set(ColorLogo.DARK);
+    }
+  }
+
   prevSlide() {
     if (this.currentSlideIndex > 0) {
       // eslint-disable-next-line no-plusplus
       this.currentSlideIndex--;
     }
+    this.lightLogo();
   }
 
   nextSlide() {
@@ -90,6 +108,7 @@ export default class BannerMobile extends Vue {
     }
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
+    this.lightLogo();
   }
 
   openItem(id: string) {
