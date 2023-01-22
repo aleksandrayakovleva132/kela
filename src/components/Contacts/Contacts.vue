@@ -79,7 +79,7 @@ export default class Contacts extends Vue {
     width: 82%;
   }
   &__title {
-    margin: 80px 0 60px 150px;
+    margin: 50px 0 50px 150px;
     font-size: 48px;
     line-height: 55px;
     text-align: center;

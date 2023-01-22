@@ -2,7 +2,7 @@
   <div class="about-slider">
     <p class="about-slider__label" v-if="rus">Мы работаем в программных комплексах:</p>
     <p class="about-slider__label" v-else>Our software:</p>
-    <div class="about-slider__container">
+    <div v-if = "this.$layout.current === 'phone'" class="about-slider__container">
       <div class="about-slider__frame">
         <ul class="about-slider__list" :style="{ left: listPosition }">
           <li class="about-slider__item"
@@ -31,6 +31,13 @@
         </button>
       </div>
     </div>
+    <ul v-else class="about-slider__list-desktop">
+      <li class="about-slider__item-desktop" v-for="item in softArray"
+          :key="item.index">
+        <img class="about-slider__image"
+             :src="require(`../../assets/logotypes/${item.image}`)" height="20"/><img src="" alt="">
+      </li>
+    </ul>
   </div>
 </template>
 <script lang="ts">
@@ -207,6 +214,14 @@ export default class AboutSlider extends Vue {
       justify-content: flex-end;
       margin:  0 auto 0 0;
     }
+  }
+
+  &__list-desktop {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    gap: 30px;
   }
 }
 </style>

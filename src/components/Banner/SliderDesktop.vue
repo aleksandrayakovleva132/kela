@@ -44,7 +44,10 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {
+  Component,
+  Vue,
+} from 'vue-property-decorator';
 import { sliderTypes } from '@/components/Slider/types';
 import SliderButtons from '@/components/Banner/SliderButtons.vue';
 import Link from '@/components/Link/Link.vue';
@@ -76,6 +79,7 @@ export default class BannerDesktop extends Vue {
     {
       id: 4,
       img: '04.jpg',
+      light: true,
     },
   ];
 
@@ -91,11 +95,26 @@ export default class BannerDesktop extends Vue {
     return this.$local.current === Local.RU;
   }
 
+  // eslint-disable-next-line consistent-return
+  lightLogo() {
+    // eslint-disable-next-line no-console
+    const current = this.currentSlideIndex + 1;
+    const array = this.sliderItems;
+    const newArr = array.find((item) => item.id === current);
+    if (newArr?.light === true) {
+      this.$colorLogo.set(ColorLogo.LIGHT);
+    }
+    if (newArr?.light === undefined) {
+      this.$colorLogo.set(ColorLogo.DARK);
+    }
+  }
+
   prevSlide() {
     if (this.currentSlideIndex > 0) {
       // eslint-disable-next-line no-plusplus
       this.currentSlideIndex--;
     }
+    this.lightLogo();
   }
 
   nextSlide() {
@@ -105,6 +124,7 @@ export default class BannerDesktop extends Vue {
     }
     // eslint-disable-next-line no-plusplus
     this.currentSlideIndex++;
+    this.lightLogo();
   }
 
   openItem(id: string) {

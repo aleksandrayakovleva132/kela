@@ -2,7 +2,10 @@
   <div class="header">
     <router-link to="/">
     <div class="header__logo">
-      <img src="./images/kela.svg" width="98" alt="kela"> </div>
+      <img v-if="this.$colorLogo.current === 'light'"
+           src="./images/kela-2.svg" width="98" alt="kela">
+      <img v-else src="./images/kela.svg" width="98" alt="kela">
+    </div>
     </router-link>
 <!--    v-if="homeMenu && this.$layout.current === 'desktop'-->
     <div class="header__right-column" v-if="this.$layout.current === 'desktop'">

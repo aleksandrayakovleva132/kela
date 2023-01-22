@@ -52,7 +52,6 @@ export default class Language extends Vue {
   }
 
   changeLang(): void {
-    console.log(this.$local.current);
     this.$local.set(this.$local.current === Local.RU ? Local.ENG : Local.RU);
   }
 }
