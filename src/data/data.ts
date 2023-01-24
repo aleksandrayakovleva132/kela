@@ -242,6 +242,7 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, АР, КЖ, КМ. Мирный (Якутия), 2019.'],
       descriptionEn: ['Mirny (Yakutia), 2019.'],
       images: ['yakutia-m-01', 'yakutia-m-02', 'yakutia-m-03', 'yakutia-m-04', 'yakutia-m-05', 'yakutia-m-06'],
+      imagesDesktop: ['yakutia-d-01', 'yakutia-d-02'],
     },
     {
       index: 2,

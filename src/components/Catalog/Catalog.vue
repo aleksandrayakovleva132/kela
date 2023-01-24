@@ -77,23 +77,53 @@
           <span v-for="item in  list" :key="item.index">
             <template v-if="activeIndex === item.index ||
                             item.index === Number($route.params.itemId)">
-            <img
-              :src="require(`./images/projects/${item.keyWorld}-d-01.jpg`)"
-                        width="100%" :alt="item.keyWorld"/>
-             <template v-if="rus">
-                <div class="catalog__modal-title"> {{ item.titleRu }} </div>
-                  <div class="catalog__item-paragraph"
-                       v-for="(description, index) in item.descriptionRu" :key="index">
-                    {{ description }}
+              <template v-if="item.imagesDesktop !== undefined">
+                <div class="catalog__modal-img-field">
+                  <div v-for="(img, index) in item.imagesDesktop" :key="index"
+                    class="catalog__modal-img"
+                    :class="{
+                    'catalog__modal-img--active': currentSlider === index + 1
+                  }">
+                    <span>
+                        <img :src="require(`./images/projects/${img}.jpg`)"
+                             :alt="img" width="924">
+                    </span>
                   </div>
-                </template>
-                <template v-else>
-                  <div class="catalog__modal-title"> {{ item.titleEn }} </div>
-                  <div class="catalog__item-paragraph"
-                       v-for="(description, index) in item.descriptionEn" :key="index">
-                    {{ description }}
+                </div>
+              </template>
+              <template v-else>
+                <img
+                  :src="require(`./images/projects/${item.keyWorld}-d-01.jpg`)"
+                  width="100%" :alt="item.keyWorld"/>
+              </template>
+              <div class="catalog__modal-footer">
+                <div v-if="rus">
+                    <div class="catalog__modal-title"> {{ item.titleRu }} </div>
+                    <div class="catalog__item-paragraph"
+                         v-for="(description, index) in item.descriptionRu" :key="index">
+                      {{ description }}
+                    </div>
                   </div>
-                </template>
+                <div v-else>
+                    <div class="catalog__modal-title"> {{ item.titleEn }} </div>
+                    <div class="catalog__item-paragraph"
+                         v-for="(description, index) in item.descriptionEn" :key="index">
+                      {{ description }}
+                    </div>
+                 </div>
+                <div class="catalog__modal-buttons" v-if="item.imagesDesktop !== undefined">
+                  <div class="catalog__modal-counter">
+                      <span class="catalog__modal-active-slider">{{ currentSlider }}</span>
+                      <span > / {{ item.imagesDesktop.length }}</span>
+                  </div>
+                  <button class="catalog__modal-btn" @click="backSlide">
+                    <img src="./images/left.svg" alt="back">
+                  </button>
+                  <button class="catalog__modal-btn" @click="nextSlide(item.imagesDesktop.length)">
+                    <img src="./images/right.svg" alt="next">
+                  </button>
+                </div>
+              </div>
             </template>
           </span>
         </div>
@@ -135,6 +165,22 @@ export default class Catalog extends Vue {
   activeIndex: number | null = 0;
 
   activeIdString = 0;
+
+  currentSlider = 1;
+
+  nextSlide(lastImagesNumber: number): number {
+    if (this.currentSlider !== lastImagesNumber) {
+      this.currentSlider += 1;
+    }
+    return this.currentSlider;
+  }
+
+  backSlide(): number {
+    if (this.currentSlider !== 1) {
+      this.currentSlider -= 1;
+    }
+    return 1;
+  }
 
   pathName = `${this.pageName}Item`;
 
@@ -228,6 +274,7 @@ export default class Catalog extends Vue {
 .catalog {
   padding-bottom: 140px;
   min-height: 100vh;
+
   &__content {
     width: calc(100% - 32px);
     margin: 0 16px;
@@ -319,6 +366,7 @@ export default class Catalog extends Vue {
   &__arrow {
     fill: white;
   }
+
   &__show-more {
     width: 100%;
     height: 38px;
@@ -381,7 +429,7 @@ export default class Catalog extends Vue {
     width: calc(100% - 32px);
     min-height: 668px;
     background-color: var(--White);
-    box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+    box-shadow: 0px -1px 31px -23px rgba(0, 0, 0, 0.66);
     position: absolute;
     left: 16px;
     z-index: 5;
@@ -448,11 +496,13 @@ export default class Catalog extends Vue {
 
     &__list-item {
       width: 100%;
+
       &:after {
         display: none;
       }
+
       &--open {
-        box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+        box-shadow: 0px -1px 31px -23px rgba(0, 0, 0, 0.66);
         z-index: 3;
       }
     }
@@ -482,7 +532,7 @@ export default class Catalog extends Vue {
     &__item-cover {
       height: 240px;
       position: relative;
-      box-shadow: 0px -1px 31px -23px rgba(0,0,0,0.66);
+      box-shadow: 0px -1px 31px -23px rgba(0, 0, 0, 0.66);
       overflow: hidden;
 
       &:after {
@@ -511,18 +561,68 @@ export default class Catalog extends Vue {
     }
   }
 
-    &__title {
-      font-size: 18px;
-      line-height: 24px;
-    }
-    &__item-content {
-      display: block;
-      padding: 15px 10px 10px 10px;
-      background-color: var(--White);
-    }
+  &__title {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  &__item-content {
+    display: block;
+    padding: 15px 10px 10px 10px;
+    background-color: var(--White);
+  }
 
   &__test-image {
     filter: invert(82%) sepia(34%) saturate(6722%) hue-rotate(69deg) brightness(97%) contrast(110%);
   }
+
+  &__modal-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__modal-btn {
+    width: 38px;
+    height: 38px;
+    border: 1px solid var(--Black);
+    background-color: transparent;
+    padding-bottom: 0;
+    align-self: flex-end;
+    cursor: pointer;
+    border-radius: 8px;
+    opacity: 0.6;
+  }
+
+  &__modal-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__modal-counter {
+    align-self: flex-end;
+    margin: 0 10px 2px 0;
+  }
+
+  &__modal-active-slider {
+    color: var(--Orange);
+  }
+
+  &__modal-img {
+    position: absolute;
+    top: 35px;
+    left: 35px;
+    opacity: 0;
+    transition: 0.7s;
+    &--active {
+      opacity: 1;
+      transition: 0.7s;
+    }
+  }
+
+  &__modal-img-field {
+    height: 565.18px;
+    width: 924px;
+  }
 }
+
 </style>
