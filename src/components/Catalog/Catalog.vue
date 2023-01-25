@@ -84,10 +84,10 @@
                     :class="{
                     'catalog__modal-img--active': currentSlider === index + 1
                   }">
-                    <span>
+                    <div class="catalog__modal-img-container">
                         <img :src="require(`./images/projects/${img}.jpg`)"
-                             :alt="img" width="924">
-                    </span>
+                             :alt="img" height="565.18" width="auto">
+                    </div>
                   </div>
                 </div>
               </template>
@@ -116,12 +116,14 @@
                       <span class="catalog__modal-active-slider">{{ currentSlider }}</span>
                       <span > / {{ item.imagesDesktop.length }}</span>
                   </div>
-                  <button class="catalog__modal-btn" @click="backSlide">
+                  <div class="catalog__modal-btn-container">
+                    <button class="catalog__modal-btn" @click="backSlide">
                     <img src="./images/left.svg" alt="back">
                   </button>
                   <button class="catalog__modal-btn" @click="nextSlide(item.imagesDesktop.length)">
                     <img src="./images/right.svg" alt="next">
                   </button>
+                  </div>
                 </div>
               </div>
             </template>
@@ -578,6 +580,16 @@ export default class Catalog extends Vue {
 
   &__modal-buttons {
     display: flex;
+    flex-direction: column;
+    align-self: flex-end;
+    justify-content: flex-end;
+    gap: 15px;
+    width: 260px;
+  }
+
+  &__modal-btn-container {
+    display: flex;
+    justify-content: flex-end;
     gap: 10px;
   }
 
@@ -622,6 +634,11 @@ export default class Catalog extends Vue {
   &__modal-img-field {
     height: 565.18px;
     width: 924px;
+  }
+
+  &__modal-img-container {
+    display: flex;
+    justify-content: center;
   }
 }
 
