@@ -39,7 +39,7 @@ export default {
       descriptionRu: ['Жилой комплекс "Цивилизация". Разработка раздела КЖ. Санкт-Петербург, 2016-2017.'],
       descriptionEn: ['Residential complex “Civilization”. St. Petersburg, 2016-2017.'],
       images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03', 'civilization-m-04', 'civilization-m-05', 'civilization-m-06'],
-
+      imagesDesktop: ['civilization-d-01', 'civilization-d-02'],
     },
     {
       index: 5,
@@ -213,6 +213,8 @@ export default {
       descriptionRu: ['Корпус АБК, сборочно-сдаточный цех. Построение BIM модели в Autodesk Revit. Уровень детализации: LOD350. Нижний Тагил Свердловской области, 2022.'],
       descriptionEn: ['ABC building, assembly and delivery building. Building a BIM model in Autodesk Revit. Level of detail: LOD350. Nizhny Tagil, Sverdlovsk region, 2022.'],
       images: ['act-18-m-01','act-18-m-02', 'act-18-m-03', 'act-18-m-04', 'act-18-m-05', 'act-18-m-06', 'act-18-m-07', 'act-18-m-08', 'act-18-m-09'],
+      imagesDesktop: ['act-18-d-01', 'act-18-d-02', 'act-18-d-03', 'act-18-d-04', 'act-18-d-05', 'act-18-d-06', 'act-18-d-07' ],
+
     },
     {
       index: 2,
@@ -231,6 +233,7 @@ export default {
       descriptionRu: ['Разработка раздела КЖ. Санкт-Петербург, 2021-2022.'],
       descriptionEn: ['St. Petersburg, 2021-2022.'],
       images: ['olympic-m-01','olympic-m-02', 'olympic-m-03', 'olympic-m-04', 'olympic-m-05', 'olympic-m-06', 'olympic-m-07', 'olympic-m-08', 'olympic-m-09'],
+      imagesDesktop: ['olympic-d-01', 'olympic-d-02', 'olympic-d-03', 'olympic-d-04', 'olympic-d-05', 'olympic-d-06', 'olympic-d-07', 'olympic-d-08', 'olympic-d-09', 'olympic-d-10', 'olympic-d-11']
     },
   ],
   industry: [
@@ -242,6 +245,7 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, АР, КЖ, КМ. Мирный (Якутия), 2019.'],
       descriptionEn: ['Mirny (Yakutia), 2019.'],
       images: ['yakutia-m-01', 'yakutia-m-02', 'yakutia-m-03', 'yakutia-m-04', 'yakutia-m-05', 'yakutia-m-06'],
+      imagesDesktop: ['yakutia-d-01', 'yakutia-d-02'],
     },
     {
       index: 2,
@@ -260,6 +264,7 @@ export default {
       descriptionRu: ['Pumping station for oily effluents. 2018.'],
       descriptionEn: [''],
       images: ['pumping-m-01', 'pumping-m-02', 'pumping-m-03', 'pumping-m-04', 'pumping-m-05'],
+      imagesDesktop: ['pumping-d-01', 'pumping-d-02'],
     },
     {
       index: 4,
@@ -296,6 +301,7 @@ export default {
       descriptionRu: ['Разработка разделов ТХ, КМ. 2016.'],
       descriptionEn: [''],
       images: ['rain-runoff-m-01', 'rain-runoff-m-02', 'rain-runoff-m-03', 'rain-runoff-m-04', 'rain-runoff-m-05'],
+      imagesDesktop: ['rain-runoff-d-01', 'rain-runoff-d-02'],
     },
     {
       index: 8,
@@ -314,6 +320,7 @@ export default {
       descriptionRu: ['Блок ОПК, КМО. Разработка разделов КЖ. Московская область, 2022.'],
       descriptionEn: ['Блок ОПК, КМО. Разработка разделов КЖ. Московская область, 2022.'],
       images: ['gamma-m-01'],
+      imagesDesktop: ['gamma-d-01', 'gamma-d-02']
     },
   ],
 };

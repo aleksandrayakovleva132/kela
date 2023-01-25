@@ -2,7 +2,6 @@ export type catalogTypes = {
   index?: number,
   keyWorld?: string,
   imageMobile?: string,
-  imageDesktop?: string,
   titleRu?: string,
   titleEn?: string,
   date?: string,
@@ -12,4 +11,5 @@ export type catalogTypes = {
   descriptionRu?: object,
   descriptionEn?: object,
   open?: boolean,
+  imagesDesktop?: object,
 }
