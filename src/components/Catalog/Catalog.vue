@@ -34,7 +34,7 @@
                    <img src="./images/arrow.svg"/>
                  </button>
                  <button v-else class="catalog__open-item">
-                   <img class="catalog__open-arrow" src="./images/right.svg"/>
+                   <img class="catalog__open-arrow" src="./images/right-w.svg"/>
                  </button>
                </p>
              </div>
@@ -56,8 +56,9 @@
                   </div>
                 </template>
                 <div>
-                  <div class="catalog__item-img" v-for="(img, index) in item.images" :key="index">
-                    <img :src="require(`./images/projects/${img}.jpg`)" height="100%"/>
+                  <div class="catalog__item-img" v-for="(img, index) in item.images"
+                       :key="index">
+                    <img :src="require(`./images/projects/${img}.jpg`)" width="100%"/>
                   </div>
                 </div>
 <!--                <button class="catalog__show-more"-->
