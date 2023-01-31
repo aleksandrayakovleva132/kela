@@ -1,5 +1,5 @@
 <template>
-  <div class="about-slider">
+  <div class="about-slider" @scroll="getScrollPosition(window.scrollY)">
     <p class="about-slider__label" v-if="rus">Мы работаем в программных комплексах:</p>
     <p class="about-slider__label" v-else>Our software:</p>
     <div v-if = "this.$layout.current === 'phone'" class="about-slider__container">
@@ -129,6 +129,11 @@ export default class AboutSlider extends Vue {
   }
 
   private $local: any;
+
+  // eslint-disable-next-line class-methods-use-this
+  getScrollPosition(data: any): any {
+    console.log(data);
+  }
 }
 </script>
 <style lang="scss" scoped>
