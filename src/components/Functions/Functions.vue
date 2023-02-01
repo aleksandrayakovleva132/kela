@@ -1,5 +1,5 @@
 <template>
-  <VAnimationStarter ref="functions" class="project-home__row functions__row">
+  <div class="project-home__row functions__row">
     <div class="functions">
       <h3  v-if="rus" class="functions__title"> Наш функционал:</h3>
       <h3  v-else class="functions__title"> Our services:</h3>
@@ -8,8 +8,7 @@
             <div class="functions__item-border functions__item-border--active"
                  ref="function">
               <VAnimationStarter
-                root-margin="0px  0px -150px 0px"
-              >
+                :root-margin="rootMargin(item.id)">
                 <svg width="100%" height="112px" viewBox="0 0 414 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M413.5 54C413.5 61.1803 407.913 68.1532 397.47 74.5937C387.056 81.017
                      371.952 86.8197 353.245 91.7C315.837 101.458 264.132 107.5 207 107.5C149.868
@@ -30,7 +29,7 @@
           </div>
         </div>
     </div>
-  </VAnimationStarter>
+  </div>
 </template>
 <script lang="ts">
 import {
@@ -67,6 +66,21 @@ export default class Functions extends Vue {
 
   get rus(): boolean {
     return this.$local.current === Local.RU;
+  }
+
+  topMargin = 150;
+
+  rootMargin(id: number): string | undefined {
+    if (id === 1) {
+      return `0px  0px -${this.topMargin}px 0px`;
+    }
+    if (id === 2) {
+      return `0px  0px -${this.topMargin * 2}px 0px`;
+    }
+    if (id === 3) {
+      return `0px  0px -${this.topMargin * 2.5}px 0px`;
+    }
+    return '';
   }
 }
 </script>
@@ -122,7 +136,7 @@ export default class Functions extends Vue {
 
     &--active {
       opacity: 1;
-      transition: all 0.3s ease-in-out;
+      transition: 0.3s ease-in-out;
     }
   }
 
@@ -173,9 +187,6 @@ export default class Functions extends Vue {
     &__item-border {
       display: none;
     }
-    &__border--active {
-
-    }
   }
 
   @media (min-width: 1720px) {
@@ -185,28 +196,34 @@ export default class Functions extends Vue {
   .anim-starter svg  path {
     stroke: transparent;
     transition: 0.3s ease-in-out;
+    opacity: 0;
   }
 
   .anim-starter--animated svg path {
      stroke: black;
      stroke-dasharray: 1000;
      stroke-dashoffset: 1000;
-     animation: draw 1.4s linear backwards;
+     animation: draw 1.2s  linear backwards;
+  }
+
+  .functions__item:nth-child(1) .anim-starter--animated svg path {
+    animation-delay: 0s;
+    opacity: 0;
   }
 
   .functions__item:nth-child(2) .anim-starter--animated svg path {
     animation-delay: 0.8s;
+    opacity: 0;
   }
 
   .functions__item:nth-child(3) .anim-starter--animated svg path {
     animation-delay: 1.6s;
+    opacity: 0;
   }
 
   @keyframes draw {
-    50% {
-      stroke-dashoffset: 100;
-    }
     100% {
+      opacity: 1;
       stroke-dashoffset: 0;
     }
   }
