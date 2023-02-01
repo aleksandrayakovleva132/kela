@@ -8,7 +8,7 @@
             <div class="functions__item-border functions__item-border--active"
                  ref="function">
               <VAnimationStarter
-                :root-margin="rootMargin(item.id, $refs)"
+                root-margin="0px  0px -150px 0px"
               >
                 <svg width="100%" height="112px" viewBox="0 0 414 108" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M413.5 54C413.5 61.1803 407.913 68.1532 397.47 74.5937C387.056 81.017
@@ -67,24 +67,6 @@ export default class Functions extends Vue {
 
   get rus(): boolean {
     return this.$local.current === Local.RU;
-  }
-
-  topMargin = 150;
-
-  rootMargin(id: number, el: HTMLHtmlElement): string | undefined {
-    if (id === 1) {
-      const num = this.topMargin;
-      return `0px  0px -${num}px 0px`;
-    }
-    if (id === 2) {
-      const num = this.topMargin * 2;
-      return `0px  0px -${num}px 0px`;
-    }
-    if (id === 3) {
-      const num = this.topMargin * 2.5;
-      return `0px  0px -${num}px 0px`;
-    }
-    return '';
   }
 }
 </script>
@@ -209,15 +191,15 @@ export default class Functions extends Vue {
      stroke: black;
      stroke-dasharray: 1000;
      stroke-dashoffset: 1000;
-     animation: draw 0.8s linear backwards;
+     animation: draw 1.4s linear backwards;
   }
 
   .functions__item:nth-child(2) .anim-starter--animated svg path {
-    animation-delay: 0.4s;
+    animation-delay: 0.8s;
   }
 
   .functions__item:nth-child(3) .anim-starter--animated svg path {
-    animation-delay: 0.6s;
+    animation-delay: 1.6s;
   }
 
   @keyframes draw {
