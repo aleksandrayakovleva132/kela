@@ -1,13 +1,17 @@
 <template>
-  <div class="project-home__row functions__row"  @click-scroll="emitClick">
+  <VAnimationStarter ref="functions" class="project-home__row functions__row">
     <div class="functions">
       <h3  v-if="rus" class="functions__title"> Наш функционал:</h3>
       <h3  v-else class="functions__title"> Our services:</h3>
-      <ul  class="functions__list">
-        <li class="functions__item" v-for="item in list" :key="item.id">
-               <div class="functions__item-border" v-if="item.id === activeId">
-                 <svg width="100%" height="112px" viewBox="0 0 414 108" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M413.5 54C413.5 61.1803 407.913 68.1532 397.47 74.5937C387.056 81.017
+        <div  class="functions__list">
+          <div class="functions__item" v-for="item in list" :key="item.id">
+            <div class="functions__item-border functions__item-border--active"
+                 ref="function">
+              <VAnimationStarter
+                :root-margin="rootMargin(item.id, $refs)"
+              >
+                <svg width="100%" height="112px" viewBox="0 0 414 108" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M413.5 54C413.5 61.1803 407.913 68.1532 397.47 74.5937C387.056 81.017
                      371.952 86.8197 353.245 91.7C315.837 101.458 264.132 107.5 207 107.5C149.868
                      107.5 98.1628 101.458 60.7551 91.7C42.0475 86.8197
                      26.9441 81.017 16.5296 74.5937C6.08724 68.1532
@@ -16,24 +20,27 @@
                      60.7551 16.3C98.1628 6.54151 149.868 0.5 207 0.5C264.132 0.5
                      315.837 6.54151 353.245 16.3C371.952
                      21.1803 387.056 26.983 397.47 33.4063C407.913 39.8468 413.5
-                     46.8197 413.5 54Z" stroke="black"/>
-                 </svg>
-               </div>
-           <span class="functions__num">{{item.id}}</span>
-           <span  v-if="rus">{{ item.text }}</span>
-          <span v-else> {{ item.textEng }}</span>
-        </li>
-      </ul>
+                     46.8197 413.5 54Z" />
+                </svg>
+              </VAnimationStarter>
+            </div>
+            <span class="functions__num">{{item.id}}</span>
+            <span  v-if="rus">{{ item.text }}</span>
+            <span v-else> {{ item.textEng }}</span>
+          </div>
+        </div>
     </div>
-  </div>
+  </VAnimationStarter>
 </template>
 <script lang="ts">
 import {
   Component, Vue,
 } from 'vue-property-decorator';
 import Local from '@/store/enums/Local';
+import VAnimationStarter from '@/components/AnimationStarter/AnimationStarter.vue';
 
 @Component({
+  components: { VAnimationStarter },
 })
 export default class Functions extends Vue {
   list: Array<{id: number, text: string, textEng: string}> = [
@@ -60,6 +67,24 @@ export default class Functions extends Vue {
 
   get rus(): boolean {
     return this.$local.current === Local.RU;
+  }
+
+  topMargin = 150;
+
+  rootMargin(id: number, el: HTMLHtmlElement): string | undefined {
+    if (id === 1) {
+      const num = this.topMargin;
+      return `0px  0px -${num}px 0px`;
+    }
+    if (id === 2) {
+      const num = this.topMargin * 2;
+      return `0px  0px -${num}px 0px`;
+    }
+    if (id === 3) {
+      const num = this.topMargin * 2.5;
+      return `0px  0px -${num}px 0px`;
+    }
+    return '';
   }
 }
 </script>
@@ -110,6 +135,13 @@ export default class Functions extends Vue {
     position: absolute;
     top: 0;
     left: 0;
+    opacity: 0;
+    transition: all 0.3s ease-in-out;
+
+    &--active {
+      opacity: 1;
+      transition: all 0.3s ease-in-out;
+    }
   }
 
   &__num {
@@ -159,10 +191,42 @@ export default class Functions extends Vue {
     &__item-border {
       display: none;
     }
+    &__border--active {
+
+    }
   }
 
   @media (min-width: 1720px) {
     width: 60%;
+  }
+
+  .anim-starter svg  path {
+    stroke: transparent;
+    transition: 0.3s ease-in-out;
+  }
+
+  .anim-starter--animated svg path {
+     stroke: black;
+     stroke-dasharray: 1000;
+     stroke-dashoffset: 1000;
+     animation: draw 0.8s linear backwards;
+  }
+
+  .functions__item:nth-child(2) .anim-starter--animated svg path {
+    animation-delay: 0.4s;
+  }
+
+  .functions__item:nth-child(3) .anim-starter--animated svg path {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes draw {
+    50% {
+      stroke-dashoffset: 100;
+    }
+    100% {
+      stroke-dashoffset: 0;
+    }
   }
 }
 </style>
