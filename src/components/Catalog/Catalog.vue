@@ -283,9 +283,9 @@ export default class Catalog extends Vue {
     margin: 0 16px;
 
     @include for-desktop-up {
-      margin-left: 6%;
-      margin-right: 6%;
-      max-width: 88%;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1450px;
     }
   }
 
@@ -351,6 +351,11 @@ export default class Catalog extends Vue {
 
   &__item-cover {
     padding-bottom: 80%;
+
+    & img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   &__item-d-image {

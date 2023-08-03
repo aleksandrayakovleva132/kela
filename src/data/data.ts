@@ -38,7 +38,7 @@ export default {
       titleEn: 'Residential complex “Civilization”',
       descriptionRu: ['Жилой комплекс "Цивилизация". Разработка раздела КЖ. Санкт-Петербург, 2016-2017.'],
       descriptionEn: ['Residential complex “Civilization”. St. Petersburg, 2016-2017.'],
-      images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03', 'civilization-m-04', 'civilization-m-05', 'civilization-m-06'],
+      images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03', 'civilization-m-04'],
       imagesDesktop: ['civilization-d-01', 'civilization-d-02'],
     },
     {
@@ -165,7 +165,8 @@ export default {
       titleEn: 'Ground pavilion of the Begovaya metro station.',
       descriptionRu: ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
       descriptionEn: ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
-      images: ['begovaya-m-01', 'begovaya-m-02'],
+      images: ['begovaya-m-01', 'begovaya-m-02', 'begovaya-m-03'],
+      imagesDesktop: ['begovaya-d-01', 'begovaya-d-02', 'begovaya-d-03'],
     },
     {
       index: 18,
