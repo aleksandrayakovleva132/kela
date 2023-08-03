@@ -38,8 +38,8 @@ export default {
       titleEn: 'Residential complex “Civilization”',
       descriptionRu: ['Жилой комплекс "Цивилизация". Разработка раздела КЖ. Санкт-Петербург, 2016-2017.'],
       descriptionEn: ['Residential complex “Civilization”. St. Petersburg, 2016-2017.'],
-      images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03', 'civilization-m-04'],
-      imagesDesktop: ['civilization-d-01', 'civilization-d-02'],
+      images: ['civilization-m-01', 'civilization-m-02', 'civilization-m-03'],
+      imagesDesktop: ['civilization-d-01', 'civilization-d-02', 'civilization-d-03', 'civilization-d-04', 'civilization-d-05','civilization-d-06'],
     },
     {
       index: 5,
@@ -137,6 +137,7 @@ export default {
       titleEn: 'Church of the Annunciation of the Blessed Virgin Mary in Pargolovo',
       descriptionRu: ['Храм Благовещения Пресвятой Богородицы в Парголово. Разработка раздела КЖ. Санкт-Петербург, 2012.'],
       descriptionEn: ['Church of the Annunciation of the Blessed Virgin Mary in Pargolovo. Saint Petersburg, 2012.'],
+      imagesDesktop: ['church-d-01', 'church-d-02', 'church-d-03'],
       images: ['church-m-01', 'church-m-02'],
     },
     {
@@ -165,8 +166,8 @@ export default {
       titleEn: 'Ground pavilion of the Begovaya metro station.',
       descriptionRu: ['Наземный павильон №1, №2, павильон вентшахты ст. м. "Беговая". Разработка разделов КМ, КМД. Санкт-Петербург, 2018.'],
       descriptionEn: ['Ground pavilion No. 1, No. 2, pavilion of the ventshahty of the Begovaya metro station. St. Petersburg, 2018.'],
-      images: ['begovaya-m-01', 'begovaya-m-02', 'begovaya-m-03'],
-      imagesDesktop: ['begovaya-d-01', 'begovaya-d-02', 'begovaya-d-03'],
+      images: ['begovaya-m-01', 'begovaya-m-02'],
+      imagesDesktop: ['begovaya-d-01', 'begovaya-d-02', 'begovaya-d-03', 'begovaya-d-04'],
     },
     {
       index: 18,
