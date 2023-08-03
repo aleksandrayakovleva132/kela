@@ -227,6 +227,7 @@ export default class AboutSlider extends Vue {
     list-style: none;
     display: flex;
     gap: 30px;
+    flex-wrap: wrap;
   }
 }
 </style>

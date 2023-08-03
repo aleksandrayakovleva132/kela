@@ -92,6 +92,7 @@ export default class Functions extends Vue {
   &__row {
     background: rgba(235, 91, 53, 0.2);
     padding: 42px 0;
+    overflow: hidden;
   }
 
   &__title {
